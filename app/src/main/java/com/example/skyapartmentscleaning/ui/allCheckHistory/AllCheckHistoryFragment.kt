@@ -1,13 +1,15 @@
-package com.example.skycleaning.ui.allCheckHistory
+package com.example.skyapartmentscleaning.ui.allCheckHistory
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.ui.allApart.AllApartsAdapter
+import kotlinx.android.synthetic.main.all_check_history_fragment.*
 
 
 class AllCheckHistoryFragment : Fragment() {

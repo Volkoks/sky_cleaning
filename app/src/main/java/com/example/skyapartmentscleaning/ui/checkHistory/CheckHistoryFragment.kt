@@ -1,13 +1,14 @@
-package com.example.skycleaning.ui.checkHistory
+package com.example.skyapartmentscleaning.ui.checkHistory
 
-import androidx.lifecycle.ViewModelProvider
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.skycleaning.R
+import com.example.skyapartmentscleaning.R
+
 
 class CheckHistoryFragment : Fragment() {
 

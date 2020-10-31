@@ -1,4 +1,4 @@
-package com.example.skycleaning
+package com.example.skyapartmentscleaning
 
 import android.content.Context
 import android.content.Intent

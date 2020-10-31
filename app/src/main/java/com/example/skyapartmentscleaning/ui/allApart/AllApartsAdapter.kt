@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skycleaning.R
-import com.example.skycleaning.data.entity.apart.Apart
+import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import kotlinx.android.synthetic.main.apart_card.view.*
+
 
 class AllApartsAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
     RecyclerView.Adapter<AllApartsAdapter.ViewHolder>() {

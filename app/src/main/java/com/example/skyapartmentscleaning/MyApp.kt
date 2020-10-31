@@ -1,4 +1,4 @@
-package com.example.skycleaning
+package com.example.skyapartmentscleaning
 
 import android.app.Application
 import com.example.skyapartmentscleaning.data.entites.apart.ApartDatabase

@@ -1,4 +1,4 @@
-package com.example.skycleaning.ui.main
+package com.example.skyapartmentscleaning.ui.main
 
 import androidx.lifecycle.ViewModel
 

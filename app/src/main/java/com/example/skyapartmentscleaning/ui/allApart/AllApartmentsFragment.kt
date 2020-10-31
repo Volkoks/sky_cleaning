@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.ui.apart.ApartFragment
+import kotlinx.android.synthetic.main.all_apartments_fragment.*
 
 
 class AllApartmentsFragment : Fragment() {

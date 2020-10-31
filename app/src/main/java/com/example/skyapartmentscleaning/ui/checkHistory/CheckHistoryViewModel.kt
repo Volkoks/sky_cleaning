@@ -1,4 +1,4 @@
-package com.example.skycleaning.ui.checkHistory
+package com.example.skyapartmentscleaning.ui.checkHistory
 
 import androidx.lifecycle.ViewModel
 

@@ -1,12 +1,15 @@
-package com.example.skycleaning.ui.main
+package com.example.skyapartmentscleaning.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
-import com.example.skycleaning.ui.allCheckHistory.AllCheckHistoryFragment
+import com.example.skyapartmentscleaning.ui.allCheckHistory.AllCheckHistoryFragment
+import kotlinx.android.synthetic.main.main_fragment.*
 
 
 class MainFragment : Fragment() {

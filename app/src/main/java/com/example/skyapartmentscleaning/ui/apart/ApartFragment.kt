@@ -1,4 +1,4 @@
-package com.example.skycleaning.ui.apart
+package com.example.skyapartmentscleaning.ui.apart
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,10 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.skycleaning.R
-import com.example.skycleaning.data.entity.apart.Apart
+import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import kotlinx.android.synthetic.main.apart_fragment.*
+
 
 class ApartFragment : Fragment() {
 

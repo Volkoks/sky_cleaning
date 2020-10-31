@@ -1,12 +1,12 @@
-package com.example.skycleaning.ui.apart
+package com.example.skyapartmentscleaning.ui.apart
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.example.skycleaning.MyApp
-import com.example.skycleaning.data.entity.apart.Apart
-import com.example.skycleaning.data.entity.apart.ApartSource
-import com.example.skycleaning.generateFileCSVToInternalStorage
-import com.example.skycleaning.shareFile
+import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.data.entites.apart.ApartSource
+import com.example.skyapartmentscleaning.MyApp
+import com.example.skyapartmentscleaning.generateFileCSVToInternalStorage
+import com.example.skyapartmentscleaning.shareFile
 import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

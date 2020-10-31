@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="cleaning_apartment">Уборка апартаментов</string>
+    <string name="apartment">Апартамент №</string>
+    <string name="basic_cleaning">Основная уборка</string>
+    <string name="date_cleaning">Дата уборки: </string>
+    <string name="decor">Декор</string>
+    <string name="corridor">Коридор</string>
+    <string name="federation_tower">Башня "Федерация"</string>
+    <string name="level_49">Этаж 49</string>
+    <string name="tower_oko">Башня OKO</string>
+    <string name="cleaning_start">Начало уборки</string>
+    <string name="bypassing_the_apartment_the_degree_of_pollution">Обход аппартамента.Степень загрезнения</string>
+    <string name="make_a_video_recording_of_the_apartment">Сделать видеозапись аппартамента</string>
+    <string name="dirty">Грязно</string>
+    <string name="normal">Норм</string>
+    <string name="adjust_the_temperature_regime_in_the_apartment_checking">Настроить температурный режим в аппартаменте(провертривание)</string>
+    <string name="open_bridges_windows_during_the_warm_season">Открыть штроры, окна(в теплое время года)</string>
+    <string name="collect_all_garbage_in_the_apartment">Собрать весь мусор в аппартаменте</string>
+    <string name="the_technical_part_of_the_apartment">Техническая часть аппартамента</string>
+    <string name="smart_home_operation_if_available">Работа умного дома(при наличии)</string>
+    <string name="tv">Телевизор</string>
+    <string name="remote_contrller">Пульты</string>
+    <string name="refrigerator">Холодильник</string>
+    <string name="lighting">Освещение</string>
+    <string name="bluetooth_column">Bluetooth колонка</string>
+    <string name="other_equipment">Инная аппартура по необходимости</string>
+    <string name="bathroom_cleaning">Уборка ванной комнаты</string>
+    <string name="collect_and_wash_dishes">Собрать и вымыть посуду</string>
+    <string name="collect_and_remove_bed_linen">Собрать и убрать постельное белье</string>
+    <string name="making_bed">Заправить постель</string>
+    <string name="cleaning_sinks_tiles_hygiene_areas_walls_and_bathroom_doors">Чистка раковины, кафеля, гигиенических зон, стен и двери ванной комнаты</string>
+    <string name="shower_bath_cleaning">Чистка душевой кабины/ванны</string>
+    <string name="cleaning_toilet">Чистка туалета</string>
+    <string name="changing_towels_and_supplies">Замена полотенец  и расходных материалов</string>
+    <string name="wipe_down_the_mirror_and_bathroom_door">Протереть зеркало и  дверь ванной комнаты</string>
+    <string name="cleaning_of_the_apartment">Уборка аппартамента</string>
+    <string name="wipe_the_shelves_furniture_in_the_apartment">Протереть  полки, мебель в аппартаменте</string>
+    <string name="wipe_down_the_mirrors_and_decor_in_the_apartment">Wipe down the mirrors and decor in the apartment</string>
+    <string name="wash_windows_wash_if_necessary">Вымыть окна(при необходимости вымыть)</string>
+    <string name="check_window">Проверить окна</string>
+    <string name="top_up_the_guest_accessories_of_the_apartment">Пополнить гостевые принадлежности аппартамента</string>
+    <string name="remove_the_floor_vacuum_wash">Убрать пол(пропылесосить/вымыть)</string>
+    <string name="commentaries">Коментарии по уборке:</string>
+    <string name="tower_empery">Башня Империя</string>
+    <string name="tower_gorod_stolic">Башня Город Столиц</string>
+
+</resources>

@@ -1,4 +1,4 @@
-package com.example.skycleaning.ui.allApart
+package com.example.skyapartmentscleaning.ui.allApart
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.skycleaning.R
-import com.example.skycleaning.data.entity.apart.Apart
-import com.example.skycleaning.ui.apart.ApartFragment
-import kotlinx.android.synthetic.main.all_apartments_fragment.*
+import com.example.skyapartmentscleaning.R
+
 
 class AllApartmentsFragment : Fragment() {
 

@@ -1,7 +1,8 @@
-package com.example.skycleaning.ui.allApart
+package com.example.skyapartmentscleaning.ui.allApart
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.skyapartmentscleaning.data.ViewState
 import com.example.skycleaning.data.ViewState
 import com.example.skycleaning.data.repository.ApartsRepository
 

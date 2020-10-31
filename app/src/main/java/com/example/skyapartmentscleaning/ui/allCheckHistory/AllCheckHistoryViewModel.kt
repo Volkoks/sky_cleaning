@@ -2,15 +2,11 @@ package com.example.skycleaning.ui.allCheckHistory
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.skyapartmentscleaning.data.ViewState
+import com.example.skyapartmentscleaning.data.entites.apart.ApartSource
 import com.example.skycleaning.MyApp
-import com.example.skycleaning.data.ViewState
-import com.example.skycleaning.data.entity.apart.Apart
-import com.example.skycleaning.data.entity.apart.ApartSource
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
+
 
 class AllCheckHistoryViewModel : ViewModel(), CoroutineScope {
 

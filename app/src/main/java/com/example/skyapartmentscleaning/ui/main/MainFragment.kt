@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.skycleaning.ui.allApart.AllApartmentsFragment
+import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skycleaning.ui.allCheckHistory.AllCheckHistoryFragment
 
 

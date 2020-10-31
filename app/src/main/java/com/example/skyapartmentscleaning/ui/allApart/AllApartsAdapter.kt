@@ -1,14 +1,12 @@
-package com.example.skycleaning.ui.allApart
+package com.example.skyapartmentscleaning.ui.allApart
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skycleaning.R
 import com.example.skycleaning.data.entity.apart.Apart
-import com.example.skycleaning.ui.allCheckHistory.AllCheckHistoryFragment
 import kotlinx.android.synthetic.main.apart_card.view.*
 
 class AllApartsAdapter(val onItemClick: ((Apart) -> Unit)? = null) :

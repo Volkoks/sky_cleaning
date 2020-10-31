@@ -1,12 +1,11 @@
-package com.example.skycleaning.ui.allCheckHistory
+package com.example.skyapartmentscleaning.ui.allCheckHistory
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skycleaning.R
-import com.example.skycleaning.data.entity.apart.Apart
-
+import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.data.entites.apart.Apart
 
 
 class AllCheckHistoryAdapter : RecyclerView.Adapter<AllCheckHistoryAdapter.ViewHolder>() {

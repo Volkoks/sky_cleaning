@@ -2,9 +2,12 @@ package com.example.skycleaning.data.entity.dailyСleaningOfTheApartment
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 data class CleaningApart(
+    @PrimaryKey(autoGenerate = true)
+    var id:Int,
     @ColumnInfo(name = BYPASSING_APART)
     var bypassingApart: String = "",
     @ColumnInfo(name = VIDEO_RECORDING)

@@ -81,6 +81,24 @@ class ApartFragment : Fragment() {
                 R.id.no_collect_all_garbage_radioButton -> cleaningApart?.collectGarbage = NOT_DONE
             }
         }
+        smart_home_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.yes_smart_home_radioButton->cleaningApart?.smartHome = DONE
+                R.id.no_smart_home_radioButton->cleaningApart?.smartHome = NOT_DONE
+            }
+        }
+        tv_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.yes_tv_radioButton->cleaningApart?.tv = DONE
+                R.id.no_tv_radioButton->cleaningApart?.tv = NOT_DONE
+            }
+        }
+        remote_controller_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.yes_remote_controller_radioButton->cleaningApart?.tvController = DONE
+                R.id.no_remote_controller_radioButton->cleaningApart?.tvController = NOT_DONE
+            }
+        }
 
 
 

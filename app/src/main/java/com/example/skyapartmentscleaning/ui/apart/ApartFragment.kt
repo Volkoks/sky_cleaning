@@ -24,14 +24,14 @@ class ApartFragment : Fragment() {
             var cleaningApart = CleaningApart()
             val bundle = Bundle()
             bundle.putParcelable("apart", apart)
-            bundle.putParcelable("cleaningApart",cleaningApart)
+            bundle.putParcelable("cleaningApart", cleaningApart)
             fragment.arguments = bundle
             return fragment
         }
     }
 
     private var apart: Apart? = null
-    private var cleaningApart:CleaningApart? = null
+    private var cleaningApart: CleaningApart? = null
     private val viewModel: ApartViewModel by viewModels()
 
 
@@ -50,12 +50,12 @@ class ApartFragment : Fragment() {
         date_test.setText(viewModel.getCurrentFormattedDate(apart))
 
         bypassing_apart_radiogroup.setOnCheckedChangeListener { radioGroup, checkedId ->
-            when(checkedId){
-                R.id.yes_bypassing_apart_radioButton->{
+            when (checkedId) {
+                R.id.yes_bypassing_apart_radioButton -> {
                     cleaningApart?.bypassingApart = DONE
                     video_recording_linear_layout.layoutParams = visibleLayout()
                 }
-                R.id.no_bypassing_apart_radioButton->{
+                R.id.no_bypassing_apart_radioButton -> {
                     cleaningApart?.bypassingApart = NOT_DONE
                     video_recording_linear_layout.layoutParams =
                         invisibleLayout()
@@ -63,14 +63,30 @@ class ApartFragment : Fragment() {
             }
         }
         make_a_video_recording_radiogroup.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
-                yes_make_a_video_recording_radioButton->{cleaningApart.}
+            when (checkedId) {
+                R.id.yes_make_a_video_recording_radioButton -> cleaningApart?.videoRecording = DONE
+                R.id.no_make_a_video_recording_radioButton -> cleaningApart?.videoRecording =
+                    NOT_DONE
+            }
+        }
+        open_window_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_open_window_radioButton -> cleaningApart?.openWindowBridges = DONE
+                R.id.no_open_window_radioButton -> cleaningApart?.openWindowBridges = NOT_DONE
+            }
+        }
+        collect_all_garbage_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_collect_all_garbage_radioButton -> cleaningApart?.collectGarbage = DONE
+                R.id.no_collect_all_garbage_radioButton -> cleaningApart?.collectGarbage = NOT_DONE
             }
         }
 
+
+
         save_apart_btn.setOnClickListener {
-            viewModel.saveApartCleaningReport(apart,cleaningApart)
-            activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1,apart) }
+            viewModel.saveApartCleaningReport(apart, cleaningApart)
+            activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart) }
             Toast.makeText(activity, "СОХРАНИЛИ", Toast.LENGTH_SHORT).show()
         }
     }
@@ -79,8 +95,10 @@ class ApartFragment : Fragment() {
         LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0)
 
     private fun visibleLayout(): ViewGroup.LayoutParams? {
-        return LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT)
+        return LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 
     override fun onPause() {

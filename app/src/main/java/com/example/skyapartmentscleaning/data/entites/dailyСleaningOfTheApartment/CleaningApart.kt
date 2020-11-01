@@ -1,17 +1,20 @@
 package com.example.skycleaning.data.entity.dailyСleaningOfTheApartment
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity
 data class CleaningApart(
     @PrimaryKey(autoGenerate = true)
-    var id:Int,
+    var id:Int = 0,
     @ColumnInfo(name = BYPASSING_APART)
     var bypassingApart: String = "",
     @ColumnInfo(name = VIDEO_RECORDING)
-    var cideoRecording: String = "",
+    var videoRecording: String = "",
     @ColumnInfo(name = TEMPERATURE_MODE)
     var temperarureMode: String = "",
     @ColumnInfo(name = OPEN_WINDOW_BRIDGES)
@@ -65,7 +68,7 @@ data class CleaningApart(
     @ColumnInfo(name = CLEANING_COMMENT)
     var cleaningComment: String = "",
 
-    ) {
+    ): Parcelable {
     companion object {
         //        Начало уборки
         const val BYPASSING_APART = "Обход аппартамента.Степень загрезнения"

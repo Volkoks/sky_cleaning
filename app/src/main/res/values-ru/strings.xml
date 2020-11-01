@@ -46,5 +46,7 @@
     <string name="commentaries">Коментарии по уборке:</string>
     <string name="tower_empery">Башня Империя</string>
     <string name="tower_gorod_stolic">Башня Город Столиц</string>
+    <string name="done">Выполнено</string>
+    <string name="nor_done">Не выполнено</string>
 
 </resources>

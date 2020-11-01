@@ -55,5 +55,7 @@
     <string name="commentaries">Commentaries</string>
     <string name="tower_empery">Tower Empery</string>
     <string name="tower_gorod_stolic">Tower Gorod Stolic</string>
+    <string name="done">Done</string>
+    <string name="nor_done">Not done</string>
 
 </resources>

@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.data.DIRTY
 import com.example.skyapartmentscleaning.data.DONE
+import com.example.skyapartmentscleaning.data.NORMAL
 import com.example.skyapartmentscleaning.data.NOT_DONE
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
@@ -52,11 +54,12 @@ class ApartFragment : Fragment() {
         bypassing_apart_radiogroup.setOnCheckedChangeListener { radioGroup, checkedId ->
             when (checkedId) {
                 R.id.yes_bypassing_apart_radioButton -> {
-                    cleaningApart?.bypassingApart = DONE
+                    cleaningApart?.bypassingApart = DIRTY
                     video_recording_linear_layout.layoutParams = visibleLayout()
                 }
                 R.id.no_bypassing_apart_radioButton -> {
-                    cleaningApart?.bypassingApart = NOT_DONE
+                    cleaningApart?.bypassingApart = NORMAL
+                    cleaningApart?.videoRecording = "-"
                     video_recording_linear_layout.layoutParams =
                         invisibleLayout()
                 }
@@ -69,10 +72,22 @@ class ApartFragment : Fragment() {
                     NOT_DONE
             }
         }
+        temperature_regime_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.yes_temperature_regime_radioButton->cleaningApart?.temperarureMode = DONE
+                R.id.no_temperature_regime_radioButton->cleaningApart?.temperarureMode = NOT_DONE
+            }
+        }
         open_window_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.yes_open_window_radioButton -> cleaningApart?.openWindowBridges = DONE
                 R.id.no_open_window_radioButton -> cleaningApart?.openWindowBridges = NOT_DONE
+            }
+        }
+        flush_toilet_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.yes_flush_toilet_radioButton->cleaningApart?.flushToilet = DONE
+                R.id.no_flush_toilet_radioButton->cleaningApart?.flushToilet = NOT_DONE
             }
         }
         collect_all_garbage_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
@@ -82,21 +97,127 @@ class ApartFragment : Fragment() {
             }
         }
         smart_home_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
-                R.id.yes_smart_home_radioButton->cleaningApart?.smartHome = DONE
-                R.id.no_smart_home_radioButton->cleaningApart?.smartHome = NOT_DONE
+            when (checkedId) {
+                R.id.yes_smart_home_radioButton -> cleaningApart?.smartHome = DONE
+                R.id.no_smart_home_radioButton -> cleaningApart?.smartHome = NOT_DONE
             }
         }
         tv_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
-                R.id.yes_tv_radioButton->cleaningApart?.tv = DONE
-                R.id.no_tv_radioButton->cleaningApart?.tv = NOT_DONE
+            when (checkedId) {
+                R.id.yes_tv_radioButton -> cleaningApart?.tv = DONE
+                R.id.no_tv_radioButton -> cleaningApart?.tv = NOT_DONE
             }
         }
         remote_controller_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
-                R.id.yes_remote_controller_radioButton->cleaningApart?.tvController = DONE
-                R.id.no_remote_controller_radioButton->cleaningApart?.tvController = NOT_DONE
+            when (checkedId) {
+                R.id.yes_remote_controller_radioButton -> cleaningApart?.tvController = DONE
+                R.id.no_remote_controller_radioButton -> cleaningApart?.tvController = NOT_DONE
+            }
+        }
+        refrigerator_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_refrigerator_radioButton -> cleaningApart?.regrigerator = DONE
+                R.id.no_refrigerator_radioButton -> cleaningApart?.regrigerator = NOT_DONE
+            }
+        }
+        lighting_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_lighting_radioButton -> cleaningApart?.lighting = DONE
+                R.id.no_lighting_radioButton -> cleaningApart?.lighting = NOT_DONE
+            }
+        }
+        bluetooth_column_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_bluetooth_column_radioButton -> cleaningApart?.bluetoothColumn = DONE
+                R.id.no_bluetooth_column_radioButton -> cleaningApart?.bluetoothColumn = NOT_DONE
+            }
+        }
+        other_equipment_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_other_equipment_radioButton -> cleaningApart?.otherEquipment = DONE
+                R.id.no_other_equipment_radioButton -> cleaningApart?.otherEquipment = NOT_DONE
+            }
+        }
+        wash_dishes_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_wash_dishes_radioButton -> cleaningApart?.washDishes = DONE
+                R.id.no_wash_dishes_radioButton -> cleaningApart?.washDishes = NOT_DONE
+            }
+        }
+        remove_bed_linen_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_remove_bed_linen_radioButton -> cleaningApart?.removeBedLinen = DONE
+                R.id.no_remove_bed_linen_radioButton -> cleaningApart?.removeBedLinen = NOT_DONE
+            }
+        }
+        making_bed_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_making_bed_radioButton -> cleaningApart?.makingBed = DONE
+                R.id.no_making_bed_radioButton -> cleaningApart?.makingBed = NOT_DONE
+            }
+        }
+        cleaning_hygiene_areas_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_cleaning_hygiene_areas_radioButton -> cleaningApart?.cleaningOfSinksAndHygieneAreas =
+                    DONE
+                R.id.no_cleaning_hygiene_areas_radioButton -> cleaningApart?.cleaningOfSinksAndHygieneAreas =
+                    NOT_DONE
+            }
+        }
+        cleaning_shower_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_cleaning_shower_radioButton -> cleaningApart?.cleaningShowerBath = DONE
+                R.id.no_cleaning_shower_radioButton -> cleaningApart?.cleaningShowerBath = NOT_DONE
+            }
+        }
+        cleaning_toilet_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_cleaning_toilet_radioButton -> cleaningApart?.cleaningToilet = DONE
+                R.id.no_cleaning_toilet_radioButton -> cleaningApart?.cleaningToilet = NOT_DONE
+            }
+        }
+        changing_towels_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_changing_towels_radioButton -> cleaningApart?.changingTowelsSupplies = DONE
+                R.id.no_changing_towels_radioButton -> cleaningApart?.changingTowelsSupplies =
+                    NOT_DONE
+            }
+        }
+        wipe_mirror_and_dooor_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_wipe_mirror_and_dooor_radioButton -> cleaningApart?.wipeMirrorAndDoor =
+                    DONE
+                R.id.no_wipe_mirror_and_dooor_radioButton -> cleaningApart?.wipeMirrorAndDoor =
+                    NOT_DONE
+            }
+        }
+        wipe_shelves_furniture_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_wipe_shelves_furniture_radioButton -> cleaningApart?.wipeShelvesFurnitureInApart =
+                    DONE
+                R.id.no_wipe_shelves_furniture_radioButton -> cleaningApart?.wipeShelvesFurnitureInApart =
+                    NOT_DONE
+            }
+        }
+        wipe_decor_mirror_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_wipe_decor_mirror_radioButton -> cleaningApart?.wipeDecorMirrorInApart =
+                    DONE
+                R.id.no_wipe_decor_mirror_radioButton -> cleaningApart?.wipeDecorMirrorInApart =
+                    NOT_DONE
+            }
+        }
+        check_window_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_check_window_radioButton -> {
+                    cleaningApart?.checkWindow = DIRTY
+                    wash_window_layout_container.layoutParams = visibleLayout()
+                }
+                R.id.no_check_window_radioButton->{
+                    cleaningApart?.checkWindow = NORMAL
+                    cleaningApart?.washWindow = "-"
+                    wash_window_layout_container.layoutParams = invisibleLayout()
+                }
             }
         }
 

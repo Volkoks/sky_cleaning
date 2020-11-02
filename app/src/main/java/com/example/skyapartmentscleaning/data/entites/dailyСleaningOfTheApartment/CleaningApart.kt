@@ -25,6 +25,8 @@ data class CleaningApart(
     var collectGarbage: String = "",
     @ColumnInfo(name = CHECK_FORGOTTEN_ITEM)
     var checkforgottenItem: String = "",
+    @ColumnInfo(name = FORGOTTEN_ITEM)
+    var forgottenItem:String = "",
     @ColumnInfo(name = SMART_HOME)
     var smartHome: String = "",
     @ColumnInfo(name = TV)
@@ -80,6 +82,7 @@ data class CleaningApart(
         const val FLUSH_TOILET = "Спустите туалет и нанесите чистящее средство в унитаз"
         const val COLLECT_GARBAGE = "Собрать весь мусор в аппартаменте"
         const val CHECK_FORGOTTEN_ITEM = "Проверить на наличие забытых вещей гостей"
+        const val FORGOTTEN_ITEM = "Забытые вещи"
 
         //        Техническая часть аппартамента
         const val SMART_HOME = "Работа умного дома(при наличии)"

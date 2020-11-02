@@ -49,5 +49,9 @@
     <string name="done">Выполнено</string>
     <string name="nor_done">Не выполнено</string>
     <string name="flush_toilet">Спустите туалет и нанесите чистящее средство в унитаз</string>
+    <string name="check_forgottem_item">Проверить на наличие забытых вещей гостей</string>
+    <string name="there_are">Имеются</string>
+    <string name="not_available">Не имеются</string>
+    <string name="forgotten_things">Забытые вещи</string>
 
 </resources>

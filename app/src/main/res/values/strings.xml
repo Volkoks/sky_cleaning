@@ -58,5 +58,9 @@
     <string name="done">Done</string>
     <string name="nor_done">Not done</string>
     <string name="flush_toilet">Flush toilet</string>
+    <string name="check_forgottem_item">Check forgottem item</string>
+    <string name="there_are">There are</string>
+    <string name="not_available">Not Available</string>
+    <string name="forgotten_things">Forgotten things</string>
 
 </resources>

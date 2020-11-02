@@ -9,10 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.skyapartmentscleaning.R
-import com.example.skyapartmentscleaning.data.DIRTY
-import com.example.skyapartmentscleaning.data.DONE
-import com.example.skyapartmentscleaning.data.NORMAL
-import com.example.skyapartmentscleaning.data.NOT_DONE
+import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
 import kotlinx.android.synthetic.main.apart_fragment.*
@@ -23,7 +20,7 @@ class ApartFragment : Fragment() {
     companion object {
         fun newInstance(apart: Apart): ApartFragment {
             val fragment = ApartFragment()
-            var cleaningApart = CleaningApart()
+            val cleaningApart = CleaningApart()
             val bundle = Bundle()
             bundle.putParcelable("apart", apart)
             bundle.putParcelable("cleaningApart", cleaningApart)
@@ -55,6 +52,7 @@ class ApartFragment : Fragment() {
 
         save_apart_btn.setOnClickListener {
             cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
+            cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
             viewModel.saveApartCleaningReport(apart, cleaningApart)
             activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart) }
             Toast.makeText(activity, "СОХРАНИЛИ", Toast.LENGTH_SHORT).show()
@@ -107,6 +105,20 @@ class ApartFragment : Fragment() {
                 R.id.no_collect_all_garbage_radioButton -> cleaningApart?.collectGarbage = NOT_DONE
             }
         }
+        check_forgotten_item_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_check_forgotten_item_radioButton -> {
+                    cleaningApart?.checkforgottenItem = AVAILABLE
+                    forgotten_item_TIL.layoutParams = visibleLayout()
+                }
+                R.id.no_check_forgotten_item_radioButton -> {
+                    cleaningApart?.checkforgottenItem =
+                        NOT_AVAILABLE
+                    forgotten_item_TIL.layoutParams = invisibleLayout()
+                }
+            }
+        }
+
         smart_home_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.yes_smart_home_radioButton -> cleaningApart?.smartHome = DONE
@@ -140,7 +152,8 @@ class ApartFragment : Fragment() {
         bluetooth_column_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.yes_bluetooth_column_radioButton -> cleaningApart?.bluetoothColumn = DONE
-                R.id.no_bluetooth_column_radioButton -> cleaningApart?.bluetoothColumn = NOT_DONE
+                R.id.no_bluetooth_column_radioButton -> cleaningApart?.bluetoothColumn =
+                    NOT_DONE
             }
         }
         other_equipment_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
@@ -178,7 +191,8 @@ class ApartFragment : Fragment() {
         cleaning_shower_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.yes_cleaning_shower_radioButton -> cleaningApart?.cleaningShowerBath = DONE
-                R.id.no_cleaning_shower_radioButton -> cleaningApart?.cleaningShowerBath = NOT_DONE
+                R.id.no_cleaning_shower_radioButton -> cleaningApart?.cleaningShowerBath =
+                    NOT_DONE
             }
         }
         cleaning_toilet_radiogroup.setOnCheckedChangeListener { group, checkedId ->
@@ -189,7 +203,8 @@ class ApartFragment : Fragment() {
         }
         changing_towels_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_changing_towels_radioButton -> cleaningApart?.changingTowelsSupplies = DONE
+                R.id.yes_changing_towels_radioButton -> cleaningApart?.changingTowelsSupplies =
+                    DONE
                 R.id.no_changing_towels_radioButton -> cleaningApart?.changingTowelsSupplies =
                     NOT_DONE
             }

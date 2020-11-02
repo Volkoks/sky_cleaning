@@ -44,7 +44,7 @@ data class CleaningApart(
     @ColumnInfo(name = REMOVE_BED_LINEN)
     var removeBedLinen: String = "",
     @ColumnInfo(name = MAKING_BED)
-    var makengBed: String = "",
+    var makingBed: String = "",
     @ColumnInfo(name = CLEANING_OF_SINKS_AND_HYGIENE_AREAS)
     var cleaningOfSinksAndHygieneAreas: String = "",
     @ColumnInfo(name = CLEANING_SHOWER_BATH)
@@ -59,6 +59,8 @@ data class CleaningApart(
     var wipeShelvesFurnitureInApart: String = "",
     @ColumnInfo(name = WIPE_DECOR_MIRROR_IN_APART)
     var wipeDecorMirrorInApart: String = "",
+    @ColumnInfo(name = CHECK_WINDOW)
+    var checkWindow:String = "",
     @ColumnInfo(name = WASH_WINDOW)
     var washWindow: String = "",
     @ColumnInfo(name = TOP_GUEST_ACCESSORIES)

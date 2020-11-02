@@ -5,3 +5,5 @@ import com.example.skyapartmentscleaning.R
 
 const val DONE:String = "Выполнено"
 const val NOT_DONE:String = "Не выполнено"
+const val DIRTY:String = "Грязные"
+const val NORMAL:String = "Норм"

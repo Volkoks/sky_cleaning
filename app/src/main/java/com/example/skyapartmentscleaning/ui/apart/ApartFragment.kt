@@ -73,9 +73,9 @@ class ApartFragment : Fragment() {
             }
         }
         temperature_regime_radiogroup.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
-                R.id.yes_temperature_regime_radioButton->cleaningApart?.temperarureMode = DONE
-                R.id.no_temperature_regime_radioButton->cleaningApart?.temperarureMode = NOT_DONE
+            when (checkedId) {
+                R.id.yes_temperature_regime_radioButton -> cleaningApart?.temperarureMode = DONE
+                R.id.no_temperature_regime_radioButton -> cleaningApart?.temperarureMode = NOT_DONE
             }
         }
         open_window_radiogroup.setOnCheckedChangeListener { group, checkedId ->
@@ -85,9 +85,9 @@ class ApartFragment : Fragment() {
             }
         }
         flush_toilet_radiogroup.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
-                R.id.yes_flush_toilet_radioButton->cleaningApart?.flushToilet = DONE
-                R.id.no_flush_toilet_radioButton->cleaningApart?.flushToilet = NOT_DONE
+            when (checkedId) {
+                R.id.yes_flush_toilet_radioButton -> cleaningApart?.flushToilet = DONE
+                R.id.no_flush_toilet_radioButton -> cleaningApart?.flushToilet = NOT_DONE
             }
         }
         collect_all_garbage_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
@@ -213,13 +213,30 @@ class ApartFragment : Fragment() {
                     cleaningApart?.checkWindow = DIRTY
                     wash_window_layout_container.layoutParams = visibleLayout()
                 }
-                R.id.no_check_window_radioButton->{
+                R.id.no_check_window_radioButton -> {
                     cleaningApart?.checkWindow = NORMAL
                     cleaningApart?.washWindow = "-"
                     wash_window_layout_container.layoutParams = invisibleLayout()
                 }
             }
         }
+        top_guest_accessories_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_top_guest_accessories_radioButton -> cleaningApart?.topGuestAccessries =
+                    DONE
+                R.id.no_top_guest_accessories_radioButton -> cleaningApart?.topGuestAccessries =
+                    NOT_DONE
+            }
+        }
+        remove_floor_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_remove_floor_radioButton -> cleaningApart?.removeFloor = DONE
+                R.id.no_remove_floor_radioButton -> cleaningApart?.removeFloor = NOT_DONE
+            }
+        }
+
+        cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
+
 
 
 

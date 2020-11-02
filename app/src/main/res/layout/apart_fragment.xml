@@ -236,6 +236,50 @@
                 </LinearLayout>
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/flush_toilet_layout_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/flush_toilet_text"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="@string/flush_toilet"
+                        android:textSize="17sp" />
+
+                    <RadioGroup
+                        android:id="@+id/flush_toilet_radiogroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/yes_flush_toilet_radioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/no_flush_toilet_radioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/no" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/collect_all_garbage_layout_container"
@@ -598,7 +642,7 @@
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/other_equipment_radioButton"
+                            android:id="@+id/yes_other_equipment_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -655,7 +699,7 @@
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/wash_dishes_radioButton"
+                            android:id="@+id/yes_wash_dishes_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -1129,7 +1173,7 @@
                 <LinearLayout
                     android:id="@+id/wash_window_layout_container"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:orientation="vertical">
 
                     <LinearLayout

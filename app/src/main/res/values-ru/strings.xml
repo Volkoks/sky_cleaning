@@ -48,5 +48,6 @@
     <string name="tower_gorod_stolic">Башня Город Столиц</string>
     <string name="done">Выполнено</string>
     <string name="nor_done">Не выполнено</string>
+    <string name="flush_toilet">Спустите туалет и нанесите чистящее средство в унитаз</string>
 
 </resources>

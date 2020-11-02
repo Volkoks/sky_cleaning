@@ -51,6 +51,17 @@ class ApartFragment : Fragment() {
         number_apart_fragment.setText(apart?.numberApart.toString())
         date_test.setText(viewModel.getCurrentFormattedDate(apart))
 
+        handlingRadioBtnClicks()
+
+        save_apart_btn.setOnClickListener {
+            cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
+            viewModel.saveApartCleaningReport(apart, cleaningApart)
+            activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart) }
+            Toast.makeText(activity, "СОХРАНИЛИ", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun handlingRadioBtnClicks() {
         bypassing_apart_radiogroup.setOnCheckedChangeListener { radioGroup, checkedId ->
             when (checkedId) {
                 R.id.yes_bypassing_apart_radioButton -> {
@@ -233,17 +244,6 @@ class ApartFragment : Fragment() {
                 R.id.yes_remove_floor_radioButton -> cleaningApart?.removeFloor = DONE
                 R.id.no_remove_floor_radioButton -> cleaningApart?.removeFloor = NOT_DONE
             }
-        }
-
-        cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
-
-
-
-
-        save_apart_btn.setOnClickListener {
-            viewModel.saveApartCleaningReport(apart, cleaningApart)
-            activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart) }
-            Toast.makeText(activity, "СОХРАНИЛИ", Toast.LENGTH_SHORT).show()
         }
     }
 

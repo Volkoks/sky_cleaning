@@ -1,14 +1,20 @@
 package com.example.skycleaning.data.entity.dailyСleaningOfTheApartment
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity
 data class CleaningApart(
+    @PrimaryKey(autoGenerate = true)
+    var id:Int = 0,
     @ColumnInfo(name = BYPASSING_APART)
     var bypassingApart: String = "",
     @ColumnInfo(name = VIDEO_RECORDING)
-    var cideoRecording: String = "",
+    var videoRecording: String = "",
     @ColumnInfo(name = TEMPERATURE_MODE)
     var temperarureMode: String = "",
     @ColumnInfo(name = OPEN_WINDOW_BRIDGES)
@@ -19,6 +25,8 @@ data class CleaningApart(
     var collectGarbage: String = "",
     @ColumnInfo(name = CHECK_FORGOTTEN_ITEM)
     var checkforgottenItem: String = "",
+    @ColumnInfo(name = FORGOTTEN_ITEM)
+    var forgottenItem:String = "",
     @ColumnInfo(name = SMART_HOME)
     var smartHome: String = "",
     @ColumnInfo(name = TV)
@@ -38,7 +46,7 @@ data class CleaningApart(
     @ColumnInfo(name = REMOVE_BED_LINEN)
     var removeBedLinen: String = "",
     @ColumnInfo(name = MAKING_BED)
-    var makengBed: String = "",
+    var makingBed: String = "",
     @ColumnInfo(name = CLEANING_OF_SINKS_AND_HYGIENE_AREAS)
     var cleaningOfSinksAndHygieneAreas: String = "",
     @ColumnInfo(name = CLEANING_SHOWER_BATH)
@@ -53,6 +61,8 @@ data class CleaningApart(
     var wipeShelvesFurnitureInApart: String = "",
     @ColumnInfo(name = WIPE_DECOR_MIRROR_IN_APART)
     var wipeDecorMirrorInApart: String = "",
+    @ColumnInfo(name = CHECK_WINDOW)
+    var checkWindow:String = "",
     @ColumnInfo(name = WASH_WINDOW)
     var washWindow: String = "",
     @ColumnInfo(name = TOP_GUEST_ACCESSORIES)
@@ -62,7 +72,7 @@ data class CleaningApart(
     @ColumnInfo(name = CLEANING_COMMENT)
     var cleaningComment: String = "",
 
-    ) {
+    ): Parcelable {
     companion object {
         //        Начало уборки
         const val BYPASSING_APART = "Обход аппартамента.Степень загрезнения"
@@ -72,6 +82,7 @@ data class CleaningApart(
         const val FLUSH_TOILET = "Спустите туалет и нанесите чистящее средство в унитаз"
         const val COLLECT_GARBAGE = "Собрать весь мусор в аппартаменте"
         const val CHECK_FORGOTTEN_ITEM = "Проверить на наличие забытых вещей гостей"
+        const val FORGOTTEN_ITEM = "Забытые вещи"
 
         //        Техническая часть аппартамента
         const val SMART_HOME = "Работа умного дома(при наличии)"

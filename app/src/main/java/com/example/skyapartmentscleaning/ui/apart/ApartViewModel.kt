@@ -7,6 +7,7 @@ import com.example.skyapartmentscleaning.data.entites.apart.ApartSource
 import com.example.skyapartmentscleaning.MyApp
 import com.example.skyapartmentscleaning.generateFileCSVToInternalStorage
 import com.example.skyapartmentscleaning.shareFile
+import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
 import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,6 +25,9 @@ class ApartViewModel : ViewModel(), CoroutineScope {
     private val apartDao by lazy {
         MyApp.apartDB.getApartDao()
     }
+    private val cleaningApartDao by lazy {
+        MyApp.apartDB.getCleaningApartDao()
+    }
     private val apartSource: ApartSource? by lazy {
         ApartSource(apartDao)
     }
@@ -36,9 +40,13 @@ class ApartViewModel : ViewModel(), CoroutineScope {
         return formattedDate
     }
 
-    fun saveApartCleaningReport(apart: Apart?) {
+    /**
+     * Возможно понадоится сделать класс для работы с CleaningApart по аналогии с ApartSource
+     */
+    fun saveApartCleaningReport(apart: Apart?,cleaningApart: CleaningApart?) {
         launch {
             apart?.let { apartSource?.addApart(it) }
+            cleaningApart?.let { cleaningApartDao.addCA(it) }
         }
     }
 

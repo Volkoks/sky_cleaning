@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.skyapartmentscleaning.data.entites.dailyСleaningOfTheApartment.CleaningApartDao
+import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
 
-@Database(entities = arrayOf(Apart::class), version = 1)
+@Database(entities = arrayOf(Apart::class,CleaningApart::class), version = 1)
 abstract class ApartDatabase : RoomDatabase() {
 
     companion object {
@@ -17,5 +19,6 @@ abstract class ApartDatabase : RoomDatabase() {
     }
 
     abstract fun getApartDao(): ApartDao
+    abstract fun getCleaningApartDao(): CleaningApartDao
 
 }

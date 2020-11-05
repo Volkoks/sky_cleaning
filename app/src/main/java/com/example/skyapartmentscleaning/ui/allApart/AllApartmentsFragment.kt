@@ -48,18 +48,10 @@ class AllApartmentsFragment : Fragment() {
 
         initRecyclerView(itemDecoration)
 
-        adapterForTowerFederation = AllApartsAdapter {
-            initFragment(it)
-        }
-        adapterForTowerOKO = AllApartsAdapter{
-            initFragment(it)
-        }
-        adapterForTowerEmpery = AllApartsAdapter{
-            initFragment(it)
-        }
-        adapterForTowerGorodStolic = AllApartsAdapter{
-            initFragment(it)
-        }
+        adapterForTowerFederation = AllApartsAdapter {initFragment(it)}
+        adapterForTowerOKO = AllApartsAdapter{ initFragment(it)}
+        adapterForTowerEmpery = AllApartsAdapter{initFragment(it)}
+        adapterForTowerGorodStolic = AllApartsAdapter{initFragment(it)}
 
         aparts_tower_federation_recycler_view.adapter = adapterForTowerFederation
         aparts_tower_OKO_recycler_view.adapter = adapterForTowerOKO

@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/apart_card"
     android:layout_width="175dp"
-    android:layout_height="200dp">
+    android:layout_height="200dp"
+    android:elevation="5dp"
+    app:cardBackgroundColor="@color/primary_light"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="6dp"
+    app:cardMaxElevation="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,13 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
 
         <TextView
             android:id="@+id/number_apart_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:accessibilityLiveRegion="none"
             android:textAlignment="center"
             android:textSize="24sp" />
 

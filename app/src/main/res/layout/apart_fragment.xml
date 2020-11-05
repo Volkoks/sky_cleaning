@@ -15,6 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="12dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -236,6 +238,7 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/flush_toilet_layout_container"
                 android:layout_width="match_parent"
@@ -325,6 +328,7 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/check_forgotten_item_layout_container"
                 android:layout_width="match_parent"
@@ -367,6 +371,7 @@
                     </RadioGroup>
 
                 </LinearLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/forgotten_item_TIL"
                     android:layout_width="match_parent"

@@ -53,5 +53,6 @@
     <string name="there_are">Имеются</string>
     <string name="not_available">Не имеются</string>
     <string name="forgotten_things">Забытые вещи</string>
+    <string name="apart_check_history">История уборок</string>
 
 </resources>

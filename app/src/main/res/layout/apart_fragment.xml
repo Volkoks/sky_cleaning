@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -103,14 +103,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/dirty" />
+                        android:text="@string/dirty"
+                        android:textSize="10sp" />
 
                     <RadioButton
                         android:id="@+id/no_bypassing_apart_radioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/normal" />
+                        android:text="@string/normal"
+                        android:textSize="10sp" />
                 </RadioGroup>
             </LinearLayout>
 

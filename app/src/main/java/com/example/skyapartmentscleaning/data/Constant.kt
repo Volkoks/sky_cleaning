@@ -1,7 +1,7 @@
 package com.example.skyapartmentscleaning.data
 
-const val DONE:String = "✔"
-const val NOT_DONE:String = "Х"
+const val DONE_DAW:String = "✔"
+const val NOT_DONE_CROSS:String = "✗"
 const val DIRTY:String = "Грязные"
 const val NORMAL:String = "Норм"
 const val AVAILABLE = "Имеются"

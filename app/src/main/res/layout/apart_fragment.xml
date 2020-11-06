@@ -141,14 +141,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/yes" />
+                        android:text="@string/yes_daw" />
 
                     <RadioButton
                         android:id="@+id/no_make_a_video_recording_radioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/no" />
+                        android:text="@string/no_cross" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -182,14 +182,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_temperature_regime_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -227,14 +227,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_open_window_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -272,14 +272,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_flush_toilet_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -317,14 +317,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_collect_all_garbage_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -431,14 +431,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_smart_home_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -480,14 +480,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_tv_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -525,14 +525,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_remote_controller_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -574,14 +574,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_refrigerator_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -619,14 +619,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_lighting_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -664,14 +664,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_bluetooth_column_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -709,14 +709,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_other_equipment_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -766,14 +766,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_wash_dishes_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -812,14 +812,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_remove_bed_linen_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -858,14 +858,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_making_bed_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -902,14 +902,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes_daw" />
 
                         <RadioButton
                             android:id="@+id/no_cleaning_hygiene_areas_radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no_cross" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -945,14 +945,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_cleaning_shower_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -989,14 +989,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_cleaning_toilet_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -1033,14 +1033,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_changing_towels_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -1077,14 +1077,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_wipe_mirror_and_dooor_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -1132,14 +1132,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_wipe_shelves_furniture_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -1176,14 +1176,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_wipe_decor_mirror_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -1264,14 +1264,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_wash_window_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -1308,14 +1308,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_top_guest_accessories_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -1352,14 +1352,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/yes" />
+                                android:text="@string/yes_daw" />
 
                             <RadioButton
                                 android:id="@+id/no_remove_floor_radioButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/no" />
+                                android:text="@string/no_cross" />
                         </RadioGroup>
 
                     </LinearLayout>

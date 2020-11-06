@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="yes">Да</string>
-    <string name="no">Нет</string>
+    <string name="yes_daw">✔</string>
+    <string name="no_cross">✗</string>
     <string name="cleaning_apartment">Уборка апартаментов</string>
     <string name="apartment">Апартамент №</string>
     <string name="basic_cleaning">Основная уборка</string>
@@ -38,7 +38,7 @@
     <string name="wipe_down_the_mirror_and_bathroom_door">Протереть зеркало и  дверь ванной комнаты</string>
     <string name="cleaning_of_the_apartment">Уборка аппартамента</string>
     <string name="wipe_the_shelves_furniture_in_the_apartment">Протереть  полки, мебель в аппартаменте</string>
-    <string name="wipe_down_the_mirrors_and_decor_in_the_apartment">Wipe down the mirrors and decor in the apartment</string>
+    <string name="wipe_down_the_mirrors_and_decor_in_the_apartment">Протереть зеркала и декор в квартире</string>
     <string name="wash_windows_wash_if_necessary">Вымыть окна(при необходимости вымыть)</string>
     <string name="check_window">Проверить окна</string>
     <string name="top_up_the_guest_accessories_of_the_apartment">Пополнить гостевые принадлежности аппартамента</string>

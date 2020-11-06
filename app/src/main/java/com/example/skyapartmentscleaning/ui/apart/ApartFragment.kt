@@ -64,7 +64,7 @@ class ApartFragment : Fragment() {
         cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
         cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
         viewModel.saveApartCleaningReport(apart, cleaningApart)
-        activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart) }
+        activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart,cleaningApart) }
         Toast.makeText(activity, "СОХРАНИЛИ", Toast.LENGTH_SHORT).show()
     }
 
@@ -151,8 +151,8 @@ class ApartFragment : Fragment() {
         }
         refrigerator_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_refrigerator_radioButton -> cleaningApart?.regrigerator = DONE_DAW
-                R.id.no_refrigerator_radioButton -> cleaningApart?.regrigerator = NOT_DONE_CROSS
+                R.id.yes_refrigerator_radioButton -> cleaningApart?.refrigerator = DONE_DAW
+                R.id.no_refrigerator_radioButton -> cleaningApart?.refrigerator = NOT_DONE_CROSS
             }
         }
         lighting_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->

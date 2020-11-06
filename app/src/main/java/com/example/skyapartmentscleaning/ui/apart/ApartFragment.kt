@@ -48,18 +48,24 @@ class ApartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         apart = arguments?.getParcelable("apart")
         cleaningApart = arguments?.getParcelable("cleaningApart")
+
         number_apart_fragment.setText(apart?.numberApart.toString())
         date_test.setText(viewModel.getCurrentFormattedDate(apart))
 
         handlingRadioBtnClicks()
 
-        save_apart_btn.setOnClickListener {
-            cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
-            cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
-            viewModel.saveApartCleaningReport(apart, cleaningApart)
-            activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart) }
-            Toast.makeText(activity, "СОХРАНИЛИ", Toast.LENGTH_SHORT).show()
-        }
+        save_apart_btn.setOnClickListener { saveAndSendFileReport() }
+    }
+
+    /**
+     * Функция сохранения и отправки файла отчёта
+     */
+    private fun saveAndSendFileReport() {
+        cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
+        cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
+        viewModel.saveApartCleaningReport(apart, cleaningApart)
+        activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart) }
+        Toast.makeText(activity, "СОХРАНИЛИ", Toast.LENGTH_SHORT).show()
     }
 
     /**
@@ -275,9 +281,15 @@ class ApartFragment : Fragment() {
         }
     }
 
+    /**
+     * Метод скрытия LinearLayout в чек листе(для программного скрытия)
+     */
     private fun invisibleLayout() =
         LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0)
 
+    /**
+     * Метод появления LinearLayout в чек листе(для программного появления)
+     */
     private fun visibleLayout(): ViewGroup.LayoutParams? {
         return LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,

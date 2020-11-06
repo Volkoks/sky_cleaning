@@ -391,7 +391,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:text="@string/the_technical_part_of_the_apartment"
                 android:textAlignment="center"
                 android:textAllCaps="true"

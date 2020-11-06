@@ -34,7 +34,7 @@ data class CleaningApart(
     @ColumnInfo(name = TV_CONTOLLER)
     var tvController: String = "",
     @ColumnInfo(name = REFRIGERATOR)
-    var regrigerator: String = "",
+    var refrigerator: String = "",
     @ColumnInfo(name = LIGHTING)
     var lighting: String = "",
     @ColumnInfo(name = BLUETOOTH_COLUMN)

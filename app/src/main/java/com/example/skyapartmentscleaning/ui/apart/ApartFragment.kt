@@ -14,7 +14,10 @@ import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
 import kotlinx.android.synthetic.main.apart_fragment.*
 
-
+/**
+ * Данный фрагмент отображает фрагмент чек листа уборки аппартамента - производит запись в БД, генерацию отправки
+ * файла(Пока что CSV файл) в другое приложение.
+ */
 class ApartFragment : Fragment() {
 
     companion object {
@@ -59,6 +62,9 @@ class ApartFragment : Fragment() {
         }
     }
 
+    /**
+     * Метод обработки радио-кнопок в чек листе(запись значений в локальный экземпляр CleaningApart
+     */
     private fun handlingRadioBtnClicks() {
         bypassing_apart_radiogroup.setOnCheckedChangeListener { radioGroup, checkedId ->
             when (checkedId) {
@@ -246,6 +252,13 @@ class ApartFragment : Fragment() {
                 }
             }
         }
+        wash_window_mirror_radiogroup.setOnCheckedChangeListener{group,checkedId->
+            when(checkedId){
+                R.id.yes_wash_window_mirror_radioButton->cleaningApart?.washWindow = DONE
+                R.id.no_wash_window_radioButton->cleaningApart?.washWindow = NOT_DONE
+            }
+        }
+
         top_guest_accessories_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.yes_top_guest_accessories_radioButton -> cleaningApart?.topGuestAccessries =

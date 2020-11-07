@@ -35,6 +35,12 @@ class MainFragment : Fragment() {
                 .addToBackStack("AllApart")
                 .commit()
         }
+        floatingActionButton.setOnClickListener {
+            activity?.supportFragmentManager!!.beginTransaction()
+                .replace(R.id.fragment_container, AllApartmentsFragment.newInstance())
+                .addToBackStack("AllApart")
+                .commit()
+        }
         check_history_apartments_btn.setOnClickListener {
             activity?.supportFragmentManager!!.beginTransaction()
                 .replace(R.id.fragment_container, AllCheckHistoryFragment.newInstance())

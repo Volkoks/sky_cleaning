@@ -83,13 +83,13 @@ class AllApartmentsFragment : Fragment() {
         aparts_tower_Empery_recycler_view.setHasFixedSize(true)
         aparts_tower_Gorod_stolic_recycler_view.setHasFixedSize(true)
 
-        aparts_tower_federation_recycler_view.layoutManager = GridLayoutManager(activity, 2)
+        aparts_tower_federation_recycler_view.layoutManager = GridLayoutManager(activity, 3)
         aparts_tower_federation_recycler_view.addItemDecoration(itemDecoration)
-        aparts_tower_OKO_recycler_view.layoutManager = GridLayoutManager(activity, 2)
+        aparts_tower_OKO_recycler_view.layoutManager = GridLayoutManager(activity, 3)
         aparts_tower_OKO_recycler_view.addItemDecoration(itemDecoration)
-        aparts_tower_Empery_recycler_view.layoutManager = GridLayoutManager(activity, 2)
+        aparts_tower_Empery_recycler_view.layoutManager = GridLayoutManager(activity, 3)
         aparts_tower_Empery_recycler_view.addItemDecoration(itemDecoration)
-        aparts_tower_Gorod_stolic_recycler_view.layoutManager = GridLayoutManager(activity, 2)
+        aparts_tower_Gorod_stolic_recycler_view.layoutManager = GridLayoutManager(activity, 3)
         aparts_tower_Gorod_stolic_recycler_view.addItemDecoration(itemDecoration)
     }
 

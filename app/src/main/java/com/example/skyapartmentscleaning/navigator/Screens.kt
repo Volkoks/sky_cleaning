@@ -1,7 +1,7 @@
 package com.example.skyapartmentscleaning.navigator
 
 
-
+import androidx.fragment.app.Fragment
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skyapartmentscleaning.ui.apart.ApartFragment

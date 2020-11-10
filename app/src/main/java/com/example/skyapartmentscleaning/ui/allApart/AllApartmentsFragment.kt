@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import com.example.skyapartmentscleaning.ui.apart.ApartFragment
 import kotlinx.android.synthetic.main.all_apartments_fragment.*
@@ -51,10 +52,10 @@ class AllApartmentsFragment : Fragment() {
 
         initRecyclerView(itemDecoration)
 
-        listAdapterForTowerFederation = ApartsListAdapter {initFragment(it)}
-        listAdapterForTowerOKO = ApartsListAdapter{ initFragment(it)}
-        listAdapterForTowerEmpery = ApartsListAdapter{initFragment(it)}
-        listAdapterForTowerGorodStolic = ApartsListAdapter{initFragment(it)}
+        listAdapterForTowerFederation = ApartsListAdapter {viewModel.router.navigateTo(Screens.ApartScreen(it))}
+        listAdapterForTowerOKO = ApartsListAdapter{ viewModel.router.navigateTo(Screens.ApartScreen(it))}
+        listAdapterForTowerEmpery = ApartsListAdapter{viewModel.router.navigateTo(Screens.ApartScreen(it))}
+        listAdapterForTowerGorodStolic = ApartsListAdapter{viewModel.router.navigateTo(Screens.ApartScreen(it))}
 
         aparts_tower_federation_recycler_view.adapter = listAdapterForTowerFederation
         aparts_tower_OKO_recycler_view.adapter = listAdapterForTowerOKO
@@ -105,13 +106,4 @@ class AllApartmentsFragment : Fragment() {
         return itemDecoration
     }
 
-    /**
-     * Создание фрагмента чек листа
-     */
-    private fun initFragment(it: Apart) {
-        activity?.supportFragmentManager!!.beginTransaction()
-            .replace(R.id.fragment_container, ApartFragment.newInstance(it))
-            .addToBackStack("Apart")
-            .commit()
-    }
 }

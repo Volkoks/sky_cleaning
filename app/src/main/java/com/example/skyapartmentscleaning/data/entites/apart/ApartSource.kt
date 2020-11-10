@@ -24,9 +24,7 @@ class ApartSource(apartDao: ApartDao) {
         return apartDao.getCountApart()
     }
     fun loadListAllApart(): List<Apart>? {
-        if (apartList==null){
             loadApart()
-        }
         return apartList
     }
 

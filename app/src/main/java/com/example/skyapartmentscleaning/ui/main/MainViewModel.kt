@@ -25,9 +25,10 @@ class MainViewModel : ViewModel(), CoroutineScope {
     var verifiedApartments: MutableLiveData<ViewState> = MutableLiveData()
 
     init {
-       loadData()
+        loadData()
     }
-    fun loadData(){
+
+    fun loadData() {
         launch {
             verifiedApartments.postValue(apartSource?.loadListAllApart()?.let { ViewState(it) })
         }

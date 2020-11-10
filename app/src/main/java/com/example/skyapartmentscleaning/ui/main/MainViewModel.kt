@@ -10,10 +10,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.terrakok.cicerone.Router
 import kotlin.coroutines.CoroutineContext
+
 /**
  * @author Alexander Volkov (Volkoks)
  */
 class MainViewModel : ViewModel(), CoroutineScope {
+
+    val router: Router = MyApp.instance.getRouter
+
     override val coroutineContext: CoroutineContext by lazy {
         Dispatchers.Default
     }

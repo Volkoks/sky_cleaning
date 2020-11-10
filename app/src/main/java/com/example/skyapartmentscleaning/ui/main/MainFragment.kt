@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -37,10 +38,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         floatingActionButton.setOnClickListener {
-            activity?.supportFragmentManager!!.beginTransaction()
-                .replace(R.id.fragment_container, AllApartmentsFragment.newInstance())
-                .addToBackStack("AllApart")
-                .commit()
+            viewModel.router.navigateTo(Screens.AllApartmentsScreen())
         }
 
         listAdapter = ApartsListAdapter {}

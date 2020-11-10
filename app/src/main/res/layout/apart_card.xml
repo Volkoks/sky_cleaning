@@ -2,8 +2,15 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/apart_card"
-    android:layout_width="175dp"
-    android:layout_height="200dp">
+    android:layout_width="80dp"
+    android:layout_height="100dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    app:cardBackgroundColor="@color/teal_translucent"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="6dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,13 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
         <TextView
             android:id="@+id/number_apart_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:accessibilityLiveRegion="none"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -29,7 +37,8 @@
             android:id="@+id/check_date"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0" />
+            android:layout_weight="0"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">SkyCleaning</string>
     <string name="string">cleaning apartment</string>
-    <string name="yes">YES</string>
-    <string name="no">NO</string>
+    <string name="yes_daw">YES</string>
+    <string name="no_cross">NO</string>
     <string name="cleaning_apartment">apartment</string>
     <string name="floor_cleaning">Floor cleaning</string>
     <string name="wall_cleaning">Wall cleaning</string>
@@ -62,5 +62,7 @@
     <string name="there_are">There are</string>
     <string name="not_available">Not Available</string>
     <string name="forgotten_things">Forgotten things</string>
+    <string name="apart_check_history">Apart check history</string>
+    <string name="jornal_checks">Jornal checks</string>
 
 </resources>

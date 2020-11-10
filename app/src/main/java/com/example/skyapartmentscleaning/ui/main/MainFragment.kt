@@ -1,14 +1,19 @@
 package com.example.skyapartmentscleaning.ui.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
-import com.example.skyapartmentscleaning.ui.allCheckHistory.AllCheckHistoryFragment
+import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
 
 
@@ -18,29 +23,58 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
+    lateinit var listAdapter: ApartsListAdapter
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
+    ) = View.inflate(context, R.layout.main_fragment, null)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        apartments_btn.setOnClickListener {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        floatingActionButton.setOnClickListener {
             activity?.supportFragmentManager!!.beginTransaction()
                 .replace(R.id.fragment_container, AllApartmentsFragment.newInstance())
                 .addToBackStack("AllApart")
                 .commit()
         }
-        check_history_apartments_btn.setOnClickListener {
-            activity?.supportFragmentManager!!.beginTransaction()
-                .replace(R.id.fragment_container, AllCheckHistoryFragment.newInstance())
-                .addToBackStack("AllCheckHistoryApart")
-                .commit()
-        }
+
+        listAdapter = ApartsListAdapter {}
+        val itemDecoration = initVerticalDecoration()
+        intitRV(itemDecoration)
+        viewModel.verifiedApartments.observe(viewLifecycleOwner, {
+            it?.let {
+                listAdapter?.listAparts = it.listApart
+            }
+        })
+
+    }
+
+    /**
+     * Инициализация RecyclerView
+     */
+    private fun intitRV(decor: DividerItemDecoration) {
+        apart_history_list_rv.setHasFixedSize(true)
+        apart_history_list_rv.layoutManager = GridLayoutManager(context, 3)
+        apart_history_list_rv.addItemDecoration(decor)
+        apart_history_list_rv.adapter = listAdapter
+    }
+
+    /**
+     * Инициализация вертикального разделителя
+     */
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun initVerticalDecoration(): DividerItemDecoration {
+        val itemDecoration = DividerItemDecoration(activity, RecyclerView.VERTICAL)
+        itemDecoration.setDrawable(
+            resources?.getDrawable(
+                R.drawable.separator_vertical,
+                activity?.theme
+            )
+        )
+        return itemDecoration
     }
 
 }

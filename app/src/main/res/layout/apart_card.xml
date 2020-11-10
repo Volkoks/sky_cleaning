@@ -2,13 +2,15 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/apart_card"
-    android:layout_width="75dp"
+    android:layout_width="80dp"
     android:layout_height="100dp"
-    android:elevation="5dp"
-    app:cardBackgroundColor="@color/primary_light"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    app:cardBackgroundColor="@color/teal_translucent"
     app:cardCornerRadius="10dp"
     app:cardElevation="6dp"
-    app:cardMaxElevation="8dp">
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +37,8 @@
             android:id="@+id/check_date"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0" />
+            android:layout_weight="0"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

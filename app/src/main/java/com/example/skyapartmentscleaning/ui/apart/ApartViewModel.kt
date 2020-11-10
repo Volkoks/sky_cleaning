@@ -53,7 +53,7 @@ class ApartViewModel : ViewModel(), CoroutineScope {
 
     fun generateCSVFileAndSend(context: Context, apart: Apart?, cleaningApart: CleaningApart?) {
         launch {
-            val newCSVFile = generateFileCSVToInternalStorage(context, "checkApart.csv")
+            val newCSVFile = generateFileCSVToInternalStorage(context, "Проверка: "+"${apart?.numberApart} ${apart?.checkDate}"+".csv")
             newCSVFile?.let {
                 csvWriter().open(it) {
                     apart?.let {

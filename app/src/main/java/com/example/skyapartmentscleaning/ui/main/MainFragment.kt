@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
@@ -39,7 +41,8 @@ class MainFragment : Fragment() {
         }
 
         listAdapter = ApartsListAdapter{}
-        intitRV()
+        val itemDecoration = initVerticalDecoration()
+        intitRV(itemDecoration)
         viewModel.verifiedApartments.observe(viewLifecycleOwner,{
             it?.let {
                 listAdapter.listAparts = it.listApart
@@ -48,10 +51,23 @@ class MainFragment : Fragment() {
 
     }
 
-    private fun intitRV() {
+    /**
+     * Инициализация RecyclerView
+     */
+    private fun intitRV(decor:DividerItemDecoration) {
         apart_history_list_rv.setHasFixedSize(true)
         apart_history_list_rv.layoutManager = GridLayoutManager(context, 3)
+        apart_history_list_rv.addItemDecoration(decor)
         apart_history_list_rv.adapter = listAdapter
+    }
+
+    /**
+     * Инициализация вертикального разделителя
+     */
+    private fun initVerticalDecoration(): DividerItemDecoration {
+        val itemDecoration = DividerItemDecoration(activity, RecyclerView.VERTICAL)
+        itemDecoration.setDrawable(resources?.getDrawable(R.drawable.separator_vertical, activity?.theme))
+        return itemDecoration
     }
 
 }

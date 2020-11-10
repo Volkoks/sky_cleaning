@@ -56,19 +56,22 @@ class ApartViewModel : ViewModel(), CoroutineScope {
             val newCSVFile = generateFileCSVToInternalStorage(context, "Проверка: "+"${apart?.numberApart} ${apart?.checkDate}"+".csv")
             newCSVFile?.let {
                 csvWriter().open(it) {
-                    apart?.let {
-                        writeRow(listOf("[${Apart.NUMBER_APARTS}]", apart.numberApart))
-                        writeRow(listOf("[${Apart.CHECK_DATE}]", apart.checkDate))
-                    }
+                    apart?.let { writingStringsApart(apart)}
                     cleaningApart?.let { writingStringsCleaningApart(cleaningApart) }
                 }
             }
             newCSVFile?.let { shareFile(context, it) }
         }
     }
-
     /**
-     *Метод записи строк с класса чек листа уборки апартамента
+     *Метод записи строк с класса чек листа уборки апартамента класса Apart
+     */
+    private fun ICsvFileWriter.writingStringsApart(apart: Apart) {
+        writeRow(listOf("[${Apart.NUMBER_APARTS}]", apart.numberApart))
+        writeRow(listOf("[${Apart.CHECK_DATE}]", apart.checkDate))
+    }
+    /**
+     *Метод записи строк с класса чек листа уборки апартамента класса CleaningApart
      */
     private fun ICsvFileWriter.writingStringsCleaningApart(cleaningApart: CleaningApart) {
 

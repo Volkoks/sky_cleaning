@@ -1,9 +1,11 @@
 package com.example.skyapartmentscleaning.ui.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -30,9 +32,8 @@ class MainFragment : Fragment() {
     ) = View.inflate(context, R.layout.main_fragment, null)
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         floatingActionButton.setOnClickListener {
             activity?.supportFragmentManager!!.beginTransaction()
                 .replace(R.id.fragment_container, AllApartmentsFragment.newInstance())
@@ -40,12 +41,12 @@ class MainFragment : Fragment() {
                 .commit()
         }
 
-        listAdapter = ApartsListAdapter{}
+        listAdapter = ApartsListAdapter {}
         val itemDecoration = initVerticalDecoration()
         intitRV(itemDecoration)
-        viewModel.verifiedApartments.observe(viewLifecycleOwner,{
+        viewModel.verifiedApartments.observe(viewLifecycleOwner, {
             it?.let {
-                listAdapter.listAparts = it.listApart
+                listAdapter?.listAparts = it.listApart
             }
         })
 
@@ -54,7 +55,7 @@ class MainFragment : Fragment() {
     /**
      * Инициализация RecyclerView
      */
-    private fun intitRV(decor:DividerItemDecoration) {
+    private fun intitRV(decor: DividerItemDecoration) {
         apart_history_list_rv.setHasFixedSize(true)
         apart_history_list_rv.layoutManager = GridLayoutManager(context, 3)
         apart_history_list_rv.addItemDecoration(decor)
@@ -64,9 +65,15 @@ class MainFragment : Fragment() {
     /**
      * Инициализация вертикального разделителя
      */
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun initVerticalDecoration(): DividerItemDecoration {
         val itemDecoration = DividerItemDecoration(activity, RecyclerView.VERTICAL)
-        itemDecoration.setDrawable(resources?.getDrawable(R.drawable.separator_vertical, activity?.theme))
+        itemDecoration.setDrawable(
+            resources?.getDrawable(
+                R.drawable.separator_vertical,
+                activity?.theme
+            )
+        )
         return itemDecoration
     }
 

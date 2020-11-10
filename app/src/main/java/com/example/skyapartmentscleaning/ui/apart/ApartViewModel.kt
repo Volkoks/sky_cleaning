@@ -26,10 +26,10 @@ class ApartViewModel : ViewModel(), CoroutineScope {
         Dispatchers.IO
     }
     private val apartDao by lazy {
-        MyApp.apartDB.getApartDao()
+        MyApp.instance.getDB.getApartDao()
     }
     private val cleaningApartDao by lazy {
-        MyApp.apartDB.getCleaningApartDao()
+        MyApp.instance.getDB.getCleaningApartDao()
     }
     private val apartSource: ApartSource? by lazy {
         ApartSource(apartDao)

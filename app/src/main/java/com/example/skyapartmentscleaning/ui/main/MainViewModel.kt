@@ -17,7 +17,7 @@ class MainViewModel : ViewModel(), CoroutineScope {
         Dispatchers.Default
     }
     private val apartDao by lazy {
-        MyApp.apartDB.getApartDao()
+        MyApp.instance.getDB.getApartDao()
     }
     private val apartSource: ApartSource? by lazy {
         ApartSource(apartDao)

@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
-import com.example.skyapartmentscleaning.ui.allApart.AllApartsAdapter
+import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
 
 
@@ -19,7 +19,7 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    lateinit var adapter: AllApartsAdapter
+    lateinit var listAdapter: ApartsListAdapter
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
@@ -38,11 +38,11 @@ class MainFragment : Fragment() {
                 .commit()
         }
 
-        adapter = AllApartsAdapter{}
+        listAdapter = ApartsListAdapter{}
         intitRV()
         viewModel.verifiedApartments.observe(viewLifecycleOwner,{
             it?.let {
-                adapter.listAparts = it.listApart
+                listAdapter.listAparts = it.listApart
             }
         })
 
@@ -51,7 +51,7 @@ class MainFragment : Fragment() {
     private fun intitRV() {
         apart_history_list_rv.setHasFixedSize(true)
         apart_history_list_rv.layoutManager = GridLayoutManager(context, 3)
-        apart_history_list_rv.adapter = adapter
+        apart_history_list_rv.adapter = listAdapter
     }
 
 }

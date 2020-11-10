@@ -1,4 +1,4 @@
-package com.example.skyapartmentscleaning.ui.allApart
+package com.example.skyapartmentscleaning.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +10,8 @@ import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import kotlinx.android.synthetic.main.apart_card.view.*
 
 
-class AllApartsAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
-    RecyclerView.Adapter<AllApartsAdapter.ViewHolder>() {
+class ApartsListAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
+    RecyclerView.Adapter<ApartsListAdapter.ViewHolder>() {
 
     var listAparts: List<Apart> = listOf()
         set(value) {

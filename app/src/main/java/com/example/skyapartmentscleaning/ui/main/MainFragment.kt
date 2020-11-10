@@ -54,6 +54,12 @@ class MainFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadData()
+        listAdapter.notifyDataSetChanged()
+    }
+
     /**
      * Инициализация RecyclerView
      */

@@ -16,7 +16,9 @@ import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
 
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class MainFragment : Fragment() {
 
     companion object {

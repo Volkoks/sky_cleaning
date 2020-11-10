@@ -3,7 +3,9 @@ package com.example.skycleaning.data.repository
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 
 object ApartsRepository {
 

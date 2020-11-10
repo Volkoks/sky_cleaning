@@ -15,6 +15,7 @@ import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.Cleaning
 import kotlinx.android.synthetic.main.apart_fragment.*
 
 /**
+ * @author Alexander Volkov (Volkoks)
  * Данный фрагмент отображает фрагмент чек листа уборки аппартамента - производит запись в БД, генерацию отправки
  * файла(Пока что CSV файл) в другое приложение.
  */

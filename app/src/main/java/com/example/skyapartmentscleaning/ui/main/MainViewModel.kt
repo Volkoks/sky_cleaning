@@ -9,7 +9,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class MainViewModel : ViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext by lazy {
         Dispatchers.Default

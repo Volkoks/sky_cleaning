@@ -2,7 +2,9 @@ package com.example.skyapartmentscleaning.data.entites.dailyСleaningOfTheApartm
 
 import androidx.room.*
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 @Dao
 interface CleaningApartDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

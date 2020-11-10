@@ -17,7 +17,9 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.coroutines.CoroutineContext
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class ApartViewModel : ViewModel(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext by lazy {

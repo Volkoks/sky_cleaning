@@ -3,7 +3,9 @@ package com.example.skyapartmentscleaning
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.skyapartmentscleaning.ui.main.MainFragment
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

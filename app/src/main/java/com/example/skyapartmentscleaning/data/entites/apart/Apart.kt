@@ -6,6 +6,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 @Parcelize
 @Entity(tableName = "apart")
 data class Apart(

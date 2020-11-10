@@ -5,7 +5,9 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import java.io.File
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 // Создание файла во внутренем хранилище
 fun generateFileCSVToInternalStorage(context: Context, fileName: String): File? {
     val csvFile = File(context.filesDir, fileName)

@@ -1,5 +1,7 @@
 package com.example.skyapartmentscleaning.data
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 const val DONE_DAW:String = "✔"
 const val NOT_DONE_CROSS:String = "✗"
 const val DIRTY:String = "Грязные"

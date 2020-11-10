@@ -1,7 +1,9 @@
 package com.example.skyapartmentscleaning.data.entites.apart
 
 import androidx.room.*
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 @Dao
 interface ApartDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -6,7 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.skyapartmentscleaning.data.entites.dailyСleaningOfTheApartment.CleaningApartDao
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 @Database(entities = arrayOf(Apart::class,CleaningApart::class), version = 1)
 abstract class ApartDatabase : RoomDatabase() {
 

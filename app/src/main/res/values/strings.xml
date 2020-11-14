@@ -64,5 +64,6 @@
     <string name="forgotten_things">Forgotten things</string>
     <string name="apart_check_history">Apart check history</string>
     <string name="jornal_checks">Jornal checks</string>
+    <string name="send_report">send report</string>
 
 </resources>

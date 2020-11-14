@@ -39,7 +39,6 @@ class ApartViewModel : ViewModel(), CoroutineScope {
         val date = Date()
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val formattedDate: String = sdf.format(date)
-        apart?.checkDate = formattedDate
         return formattedDate
     }
 

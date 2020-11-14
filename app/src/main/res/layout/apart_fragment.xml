@@ -1384,9 +1384,15 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/save_apart_btn"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
-                    android:text="SAVE" />
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="25dp"
+                    android:elevation="8dp"
+                    android:text="@string/send_report"
+                    app:cornerRadius="5dp"
+                    app:icon="@drawable/ic_baseline_send_white"
+                    app:iconSize="24dp" />
 
             </LinearLayout>
 

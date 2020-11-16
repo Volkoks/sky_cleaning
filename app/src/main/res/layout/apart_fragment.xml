@@ -378,7 +378,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/forgotten_item_TIL"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp">
+                    android:layout_height="0dp"
+                    app:boxBackgroundColor="?android:attr/textColorHighlight">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/forgotten_item_editText"
@@ -1373,12 +1374,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/commentaries_editTextTextMultiLine"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:hint="@string/commentaries" />
+                        android:layout_height="match_parent"
+                        app:boxBackgroundColor="?android:attr/textColorHighlight">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/commentaries_editTextTextMultiLine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/commentaries"
+                            app:boxBackgroundColor="?android:attr/textColorHighlight"/>
+                    </com.google.android.material.textfield.TextInputLayout>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton

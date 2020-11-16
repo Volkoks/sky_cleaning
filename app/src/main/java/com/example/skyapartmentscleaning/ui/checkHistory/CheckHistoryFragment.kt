@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.skyapartmentscleaning.R
 
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class CheckHistoryFragment : Fragment() {
 
     companion object {

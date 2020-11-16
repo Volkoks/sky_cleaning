@@ -12,12 +12,15 @@ import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.apart_fragment.*
 
 /**
- * Данный фрагмент отображает фрагмент чек листа уборки аппартамента - производит запись в БД, генерацию отправки
+ * @author Alexander Volkov (Volkoks)
+ * Данный фрагмент отображает фрагмент чек листа уборки аппартамента - производит запись в БД(через ViewModel), генерацию отправки
  * файла(Пока что CSV файл) в другое приложение.
  */
+
 class ApartFragment : Fragment() {
 
     companion object {
@@ -25,8 +28,8 @@ class ApartFragment : Fragment() {
             val fragment = ApartFragment()
             val cleaningApart = CleaningApart()
             val bundle = Bundle()
-            bundle.putParcelable("apart", apart)
-            bundle.putParcelable("cleaningApart", cleaningApart)
+            bundle.putParcelable(APART, apart)
+            bundle.putParcelable(CLEANING_APART, cleaningApart)
             fragment.arguments = bundle
             return fragment
         }
@@ -46,9 +49,9 @@ class ApartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        apart = arguments?.getParcelable("apart")
-        cleaningApart = arguments?.getParcelable("cleaningApart")
-
+        apart = arguments?.getParcelable(APART)
+        cleaningApart = arguments?.getParcelable(CLEANING_APART)
+        
         number_apart_fragment.setText(apart?.numberApart.toString())
         date_test.setText(viewModel.getCurrentFormattedDate(apart))
 
@@ -61,15 +64,30 @@ class ApartFragment : Fragment() {
      * Функция сохранения и отправки файла отчёта
      */
     private fun saveAndSendFileReport() {
-        cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
-        cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
+        getEditTextCheckList()
+        dateFormationForApart()
         viewModel.saveApartCleaningReport(apart, cleaningApart)
         activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart,cleaningApart) }
-        Toast.makeText(activity, "СОХРАНИЛИ", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "Отчёт сохранен", Toast.LENGTH_SHORT).show()
+    }
+/**
+ * Метод формирования и записи даты для экземпляра Apart.kt
+ */
+    private fun dateFormationForApart() {
+        apart?.checkDate = viewModel.getCurrentFormattedDate(apart)
+        apart?.id = "${apart?.numberApart}/" + viewModel.getCurrentFormattedDate(apart)
     }
 
     /**
-     * Метод обработки радио-кнопок в чек листе(запись значений в локальный экземпляр CleaningApart
+     * Метод получения того что написано в EditText Чек листов
+     */
+    private fun getEditTextCheckList() {
+        cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
+        cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
+    }
+
+    /**
+     * Метод обработки радио-кнопок в чек листе(запись значений в локальный экземпляр CleaningApart)
      */
     private fun handlingRadioBtnClicks() {
         bypassing_apart_radiogroup.setOnCheckedChangeListener { radioGroup, checkedId ->

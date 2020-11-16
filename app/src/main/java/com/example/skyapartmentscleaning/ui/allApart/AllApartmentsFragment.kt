@@ -10,23 +10,19 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
-import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
-import com.example.skyapartmentscleaning.ui.apart.ApartFragment
 import kotlinx.android.synthetic.main.all_apartments_fragment.*
 
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class AllApartmentsFragment : Fragment() {
 
     companion object {
-        fun newInstance(): AllApartmentsFragment {
-            val fragment = AllApartmentsFragment()
-            val bundle = Bundle()
-            bundle.putString("test", "test")
-            fragment.arguments = bundle
-            return fragment
-        }
+        fun newInstance() = AllApartmentsFragment()
     }
+
 
     lateinit var listAdapterForTowerFederation: ApartsListAdapter
     lateinit var listAdapterForTowerOKO: ApartsListAdapter
@@ -49,10 +45,14 @@ class AllApartmentsFragment : Fragment() {
 
         initRecyclerView(itemDecoration)
 
-        listAdapterForTowerFederation = ApartsListAdapter {initFragment(it)}
-        listAdapterForTowerOKO = ApartsListAdapter{ initFragment(it)}
-        listAdapterForTowerEmpery = ApartsListAdapter{initFragment(it)}
-        listAdapterForTowerGorodStolic = ApartsListAdapter{initFragment(it)}
+        listAdapterForTowerFederation =
+            ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
+        listAdapterForTowerOKO =
+            ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
+        listAdapterForTowerEmpery =
+            ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
+        listAdapterForTowerGorodStolic =
+            ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
 
         aparts_tower_federation_recycler_view.adapter = listAdapterForTowerFederation
         aparts_tower_OKO_recycler_view.adapter = listAdapterForTowerOKO
@@ -64,13 +64,13 @@ class AllApartmentsFragment : Fragment() {
                 listAdapterForTowerFederation.listAparts = it.listApart
             }
         })
-        viewModel.allApartsTowerOKO.observe(viewLifecycleOwner,{
+        viewModel.allApartsTowerOKO.observe(viewLifecycleOwner, {
             listAdapterForTowerOKO.listAparts = it.listApart
         })
-        viewModel.allApartsTowerEmpery.observe(viewLifecycleOwner,{
+        viewModel.allApartsTowerEmpery.observe(viewLifecycleOwner, {
             listAdapterForTowerEmpery.listAparts = it.listApart
         })
-        viewModel.allApartsTowerGorodStolic.observe(viewLifecycleOwner,{
+        viewModel.allApartsTowerGorodStolic.observe(viewLifecycleOwner, {
             listAdapterForTowerGorodStolic.listAparts = it.listApart
         })
     }
@@ -99,17 +99,13 @@ class AllApartmentsFragment : Fragment() {
      */
     private fun initVerticalDecoration(): DividerItemDecoration {
         val itemDecoration = DividerItemDecoration(activity, RecyclerView.VERTICAL)
-        itemDecoration.setDrawable(resources?.getDrawable(R.drawable.separator_vertical, activity?.theme))
+        itemDecoration.setDrawable(
+            resources?.getDrawable(
+                R.drawable.separator_vertical,
+                activity?.theme
+            )
+        )
         return itemDecoration
     }
-
-    /**
-     * Создание фрагмента чек листа
-     */
-    private fun initFragment(it: Apart) {
-        activity?.supportFragmentManager!!.beginTransaction()
-            .replace(R.id.fragment_container, ApartFragment.newInstance(it))
-            .addToBackStack("Apart")
-            .commit()
-    }
 }
+

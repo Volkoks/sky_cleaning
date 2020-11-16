@@ -54,6 +54,7 @@
     <string name="not_available">Не имеются</string>
     <string name="forgotten_things">Забытые вещи</string>
     <string name="apart_check_history">История уборок</string>
-    <string name="jornal_checks">Jornal checks</string>
+    <string name="jornal_checks">Журнал проверок</string>
+    <string name="send_report">Отправить отчёт</string>
 
 </resources>

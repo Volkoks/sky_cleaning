@@ -9,7 +9,9 @@ import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import kotlinx.android.synthetic.main.apart_card.view.*
 
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class ApartsListAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
     RecyclerView.Adapter<ApartsListAdapter.ViewHolder>() {
 

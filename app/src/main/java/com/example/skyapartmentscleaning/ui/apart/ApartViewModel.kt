@@ -17,17 +17,19 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.coroutines.CoroutineContext
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class ApartViewModel : ViewModel(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext by lazy {
         Dispatchers.IO
     }
     private val apartDao by lazy {
-        MyApp.apartDB.getApartDao()
+        MyApp.instance.getDB.getApartDao()
     }
     private val cleaningApartDao by lazy {
-        MyApp.apartDB.getCleaningApartDao()
+        MyApp.instance.getDB.getCleaningApartDao()
     }
     private val apartSource: ApartSource? by lazy {
         ApartSource(apartDao)
@@ -37,7 +39,6 @@ class ApartViewModel : ViewModel(), CoroutineScope {
         val date = Date()
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val formattedDate: String = sdf.format(date)
-        apart?.checkDate = formattedDate
         return formattedDate
     }
 

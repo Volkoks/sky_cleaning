@@ -8,14 +8,21 @@ import com.example.skyapartmentscleaning.data.entites.apart.ApartSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import ru.terrakok.cicerone.Router
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class MainViewModel : ViewModel(), CoroutineScope {
+
+    val router: Router = MyApp.instance.getRouter
+
     override val coroutineContext: CoroutineContext by lazy {
         Dispatchers.Default
     }
     private val apartDao by lazy {
-        MyApp.apartDB.getApartDao()
+        MyApp.instance.getDB.getApartDao()
     }
     private val apartSource: ApartSource? by lazy {
         ApartSource(apartDao)
@@ -23,9 +30,10 @@ class MainViewModel : ViewModel(), CoroutineScope {
     var verifiedApartments: MutableLiveData<ViewState> = MutableLiveData()
 
     init {
-       loadData()
+        loadData()
     }
-    fun loadData(){
+
+    fun loadData() {
         launch {
             verifiedApartments.postValue(apartSource?.loadListAllApart()?.let { ViewState(it) })
         }

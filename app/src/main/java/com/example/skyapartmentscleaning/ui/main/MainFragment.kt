@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
 
-
+/**
+ * @author Alexander Volkov (Volkoks)
+ */
 class MainFragment : Fragment() {
 
     companion object {
@@ -35,13 +38,12 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         floatingActionButton.setOnClickListener {
-            activity?.supportFragmentManager!!.beginTransaction()
-                .replace(R.id.fragment_container, AllApartmentsFragment.newInstance())
-                .addToBackStack("AllApart")
-                .commit()
+            viewModel.router.navigateTo(Screens.AllApartmentsScreen())
         }
 
-        listAdapter = ApartsListAdapter {}
+        listAdapter = ApartsListAdapter {
+            viewModel.router.navigateTo(Screens.CheckHistoryScreen())
+        }
         val itemDecoration = initVerticalDecoration()
         intitRV(itemDecoration)
         viewModel.verifiedApartments.observe(viewLifecycleOwner, {
@@ -50,6 +52,12 @@ class MainFragment : Fragment() {
             }
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadData()
+        listAdapter.notifyDataSetChanged()
     }
 
     /**

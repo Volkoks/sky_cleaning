@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/accent_light"
     tools:context=".ui.checkHistory.CheckHistoryFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -95,6 +96,12 @@
                     android:text="@string/bypassing_the_apartment_the_degree_of_pollution"
                     android:textSize="16sp" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/check_bypassing_apart_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -109,6 +116,12 @@
                     android:layout_weight="2"
                     android:text="@string/make_a_video_recording_of_the_apartment"
                     android:textSize="17sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/check_video_recording_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -130,6 +143,11 @@
                         android:text="@string/adjust_the_temperature_regime_in_the_apartment_checking"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_ceiling_cleaning_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
 
@@ -154,6 +172,11 @@
                         android:text="@string/open_bridges_windows_during_the_warm_season"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_open_window_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -177,6 +200,11 @@
                         android:text="@string/flush_toilet"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_flush_toilet_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -200,6 +228,11 @@
                         android:text="@string/collect_all_garbage_in_the_apartment"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_collect_all_garbage_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -223,8 +256,18 @@
                         android:text="@string/check_forgottem_item"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/forgotten_item_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/check_forgotten_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -258,6 +301,12 @@
                         android:text="@string/smart_home_operation_if_available"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_smart_home_cleaning_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -281,6 +330,11 @@
                         android:text="@string/tv"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_TV_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -304,6 +358,11 @@
                         android:text="@string/remote_contrller"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_remote_controller_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -327,6 +386,11 @@
                         android:text="@string/refrigerator"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_refrigerator_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -350,6 +414,11 @@
                         android:text="@string/lighting"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_lighting_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -373,6 +442,11 @@
                         android:text="@string/bluetooth_column"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_bluetooth_column_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -396,6 +470,11 @@
                         android:text="@string/other_equipment"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_other_equipment_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
 
@@ -432,6 +511,11 @@
                         android:text="@string/cleaning_sinks_tiles_hygiene_areas_walls_and_bathroom_doors"
                         android:textSize="17sp" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/check_cleaning_hygiene_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -453,6 +537,11 @@
                             android:text="@string/shower_bath_cleaning"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_cleaning_shower_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -475,6 +564,11 @@
                             android:text="@string/cleaning_toilet"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_cleaning_toilet_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -497,6 +591,11 @@
                             android:text="@string/changing_towels_and_supplies"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_changing_towels_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -519,6 +618,11 @@
                             android:text="@string/wipe_down_the_mirror_and_bathroom_door"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_wipe_mirror_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -552,6 +656,11 @@
                             android:text="@string/collect_and_wash_dishes"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_wash_dishes_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
 
 
@@ -576,6 +685,11 @@
                             android:text="@string/collect_and_remove_bed_linen"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_remove_bed_linen_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
 
 
@@ -600,6 +714,11 @@
                             android:text="@string/making_bed"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_making_bed_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -622,6 +741,11 @@
                             android:text="@string/wipe_the_shelves_furniture_in_the_apartment"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_wipe_shelves_furniture_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -644,6 +768,11 @@
                             android:text="@string/wipe_down_the_mirrors_and_decor_in_the_apartment"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_wipe_decor_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -666,6 +795,11 @@
                             android:text="@string/check_window"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_check_window_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -688,6 +822,11 @@
                             android:text="@string/wash_windows_wash_if_necessary"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_wash_window_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -710,6 +849,11 @@
                             android:text="@string/top_up_the_guest_accessories_of_the_apartment"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_top_guest_accessories_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -732,30 +876,38 @@
                             android:text="@string/remove_the_floor_vacuum_wash"
                             android:textSize="17sp" />
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/check_remove_floor_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
+
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/commentaries"
                     android:textSize="19sp" />
 
-
-                <EditText
-                    android:id="@+id/commentaries_editTextTextMultiLine"
-                    android:layout_width="match_parent"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/commentaries_tv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine" />
-
+                    android:layout_weight="1" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/save_apart_btn"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
-                    android:text="SAVE" />
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="25dp"
+                    android:elevation="8dp"
+                    android:text="@string/send_report"
+                    app:cornerRadius="5dp"
+                    app:icon="@drawable/ic_baseline_send_white"
+                    app:iconSize="24dp" />
 
             </LinearLayout>
 

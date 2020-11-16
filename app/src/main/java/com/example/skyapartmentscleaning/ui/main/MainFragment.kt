@@ -41,7 +41,9 @@ class MainFragment : Fragment() {
             viewModel.router.navigateTo(Screens.AllApartmentsScreen())
         }
 
-        listAdapter = ApartsListAdapter {}
+        listAdapter = ApartsListAdapter {
+            viewModel.router.navigateTo(Screens.CheckHistoryScreen())
+        }
         val itemDecoration = initVerticalDecoration()
         intitRV(itemDecoration)
         viewModel.verifiedApartments.observe(viewLifecycleOwner, {

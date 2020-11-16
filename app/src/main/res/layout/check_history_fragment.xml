@@ -350,28 +350,6 @@
                         android:text="@string/lighting"
                         android:textSize="17sp" />
 
-                    <RadioGroup
-                        android:id="@+id/lighting_cleaning_radiogroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/yes_lighting_radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/yes_daw" />
-
-                        <RadioButton
-                            android:id="@+id/no_lighting_radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/no_cross" />
-                    </RadioGroup>
-
                 </LinearLayout>
 
             </LinearLayout>
@@ -395,28 +373,6 @@
                         android:text="@string/bluetooth_column"
                         android:textSize="17sp" />
 
-                    <RadioGroup
-                        android:id="@+id/bluetooth_column_cleaning_radiogroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/yes_bluetooth_column_radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/yes_daw" />
-
-                        <RadioButton
-                            android:id="@+id/no_bluetooth_column_radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/no_cross" />
-                    </RadioGroup>
-
                 </LinearLayout>
 
             </LinearLayout>
@@ -439,28 +395,6 @@
                         android:layout_weight="2"
                         android:text="@string/other_equipment"
                         android:textSize="17sp" />
-
-                    <RadioGroup
-                        android:id="@+id/other_equipment_cleaning_radiogroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/yes_other_equipment_radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/yes_daw" />
-
-                        <RadioButton
-                            android:id="@+id/no_other_equipment_radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/no_cross" />
-                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -498,28 +432,6 @@
                         android:text="@string/cleaning_sinks_tiles_hygiene_areas_walls_and_bathroom_doors"
                         android:textSize="17sp" />
 
-                    <RadioGroup
-                        android:id="@+id/cleaning_hygiene_areas_radiogroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/yes_cleaning_hygiene_areas_radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/yes_daw" />
-
-                        <RadioButton
-                            android:id="@+id/no_cleaning_hygiene_areas_radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/no_cross" />
-                    </RadioGroup>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -540,28 +452,6 @@
                             android:layout_weight="2"
                             android:text="@string/shower_bath_cleaning"
                             android:textSize="17sp" />
-
-                        <RadioGroup
-                            android:id="@+id/cleaning_shower_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_cleaning_shower_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_cleaning_shower_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -585,28 +475,6 @@
                             android:text="@string/cleaning_toilet"
                             android:textSize="17sp" />
 
-                        <RadioGroup
-                            android:id="@+id/cleaning_toilet_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_cleaning_toilet_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_cleaning_toilet_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -629,28 +497,6 @@
                             android:text="@string/changing_towels_and_supplies"
                             android:textSize="17sp" />
 
-                        <RadioGroup
-                            android:id="@+id/changing_towels_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_changing_towels_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_changing_towels_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -672,28 +518,6 @@
                             android:layout_weight="2"
                             android:text="@string/wipe_down_the_mirror_and_bathroom_door"
                             android:textSize="17sp" />
-
-                        <RadioGroup
-                            android:id="@+id/wipe_mirror_and_dooor_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_wipe_mirror_and_dooor_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_wipe_mirror_and_dooor_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -728,28 +552,6 @@
                             android:text="@string/collect_and_wash_dishes"
                             android:textSize="17sp" />
 
-                        <RadioGroup
-                            android:id="@+id/wash_dishes_cleaning_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_wash_dishes_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_wash_dishes_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
-
                     </LinearLayout>
 
 
@@ -773,28 +575,6 @@
                             android:layout_weight="2"
                             android:text="@string/collect_and_remove_bed_linen"
                             android:textSize="17sp" />
-
-                        <RadioGroup
-                            android:id="@+id/remove_bed_linen_cleaning_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_remove_bed_linen_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_remove_bed_linen_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -820,28 +600,6 @@
                             android:text="@string/making_bed"
                             android:textSize="17sp" />
 
-                        <RadioGroup
-                            android:id="@+id/making_bed_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_making_bed_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_making_bed_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -863,28 +621,6 @@
                             android:layout_weight="2"
                             android:text="@string/wipe_the_shelves_furniture_in_the_apartment"
                             android:textSize="17sp" />
-
-                        <RadioGroup
-                            android:id="@+id/wipe_shelves_furniture_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_wipe_shelves_furniture_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_wipe_shelves_furniture_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -908,28 +644,6 @@
                             android:text="@string/wipe_down_the_mirrors_and_decor_in_the_apartment"
                             android:textSize="17sp" />
 
-                        <RadioGroup
-                            android:id="@+id/wipe_decor_mirror_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_wipe_decor_mirror_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_wipe_decor_mirror_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -951,28 +665,6 @@
                             android:layout_weight="2"
                             android:text="@string/check_window"
                             android:textSize="17sp" />
-
-                        <RadioGroup
-                            android:id="@+id/check_window_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_check_window_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/dirty" />
-
-                            <RadioButton
-                                android:id="@+id/no_check_window_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/normal" />
-                        </RadioGroup>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -996,28 +688,6 @@
                             android:text="@string/wash_windows_wash_if_necessary"
                             android:textSize="17sp" />
 
-                        <RadioGroup
-                            android:id="@+id/wash_window_mirror_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_wash_window_mirror_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_wash_window_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -1040,28 +710,6 @@
                             android:text="@string/top_up_the_guest_accessories_of_the_apartment"
                             android:textSize="17sp" />
 
-                        <RadioGroup
-                            android:id="@+id/top_guest_accessories_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_top_guest_accessories_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_top_guest_accessories_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -1083,28 +731,6 @@
                             android:layout_weight="2"
                             android:text="@string/remove_the_floor_vacuum_wash"
                             android:textSize="17sp" />
-
-                        <RadioGroup
-                            android:id="@+id/remove_floor_radiogroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/yes_remove_floor_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/yes_daw" />
-
-                            <RadioButton
-                                android:id="@+id/no_remove_floor_radioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/no_cross" />
-                        </RadioGroup>
 
                     </LinearLayout>
                 </LinearLayout>

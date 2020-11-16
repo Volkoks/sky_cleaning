@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.apart_fragment.*
 
 /**
  * @author Alexander Volkov (Volkoks)
- * Данный фрагмент отображает фрагмент чек листа уборки аппартамента - производит запись в БД, генерацию отправки
+ * Данный фрагмент отображает фрагмент чек листа уборки аппартамента - производит запись в БД(через ViewModel), генерацию отправки
  * файла(Пока что CSV файл) в другое приложение.
  */
 
@@ -64,17 +64,30 @@ class ApartFragment : Fragment() {
      * Функция сохранения и отправки файла отчёта
      */
     private fun saveAndSendFileReport() {
-        cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
-        cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
-        apart?.checkDate = viewModel.getCurrentFormattedDate(apart)
-        apart?.id = "${apart?.numberApart}/"+viewModel.getCurrentFormattedDate(apart)
+        getEditTextCheckList()
+        dateFormationForApart()
         viewModel.saveApartCleaningReport(apart, cleaningApart)
         activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart,cleaningApart) }
         Toast.makeText(activity, "Отчёт сохранен", Toast.LENGTH_SHORT).show()
     }
+/**
+ * Метод формирования и записи даты для экземпляра Apart.kt
+ */
+    private fun dateFormationForApart() {
+        apart?.checkDate = viewModel.getCurrentFormattedDate(apart)
+        apart?.id = "${apart?.numberApart}/" + viewModel.getCurrentFormattedDate(apart)
+    }
 
     /**
-     * Метод обработки радио-кнопок в чек листе(запись значений в локальный экземпляр CleaningApart
+     * Метод получения того что написано в EditText Чек листов
+     */
+    private fun getEditTextCheckList() {
+        cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
+        cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
+    }
+
+    /**
+     * Метод обработки радио-кнопок в чек листе(запись значений в локальный экземпляр CleaningApart)
      */
     private fun handlingRadioBtnClicks() {
         bypassing_apart_radiogroup.setOnCheckedChangeListener { radioGroup, checkedId ->

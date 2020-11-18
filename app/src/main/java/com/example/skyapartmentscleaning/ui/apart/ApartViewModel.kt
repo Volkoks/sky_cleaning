@@ -7,7 +7,7 @@ import com.example.skyapartmentscleaning.data.entites.apart.ApartSource
 import com.example.skyapartmentscleaning.MyApp
 import com.example.skyapartmentscleaning.generateFileCSVToInternalStorage
 import com.example.skyapartmentscleaning.shareFile
-import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
+import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CheckListCleaningApart
 import com.github.doyaaaaaken.kotlincsv.client.ICsvFileWriter
 import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
 import kotlinx.coroutines.CoroutineScope
@@ -29,7 +29,7 @@ class ApartViewModel : ViewModel(), CoroutineScope {
         MyApp.instance.getDB.getApartDao()
     }
     private val cleaningApartDao by lazy {
-        MyApp.instance.getDB.getCleaningApartDao()
+        MyApp.instance.getDB.getCheckListCADao()
     }
     private val apartSource: ApartSource? by lazy {
         ApartSource(apartDao)
@@ -45,20 +45,20 @@ class ApartViewModel : ViewModel(), CoroutineScope {
     /**
      * Возможно понадоится сделать класс для работы с CleaningApart по аналогии с ApartSource
      */
-    fun saveApartCleaningReport(apart: Apart?, cleaningApart: CleaningApart?) {
+    fun saveApartCleaningReport(apart: Apart?, checkListCleaningApart: CheckListCleaningApart?) {
         launch {
             apart?.let { apartSource?.addApart(it) }
-            cleaningApart?.let { cleaningApartDao.addCA(it) }
+            checkListCleaningApart?.let { cleaningApartDao.addCheckList(it) }
         }
     }
 
-    fun generateCSVFileAndSend(context: Context, apart: Apart?, cleaningApart: CleaningApart?) {
+    fun generateCSVFileAndSend(context: Context, apart: Apart?, checkListCleaningApart: CheckListCleaningApart?) {
         launch {
             val newCSVFile = generateFileCSVToInternalStorage(context, "Проверка: "+"${apart?.numberApart} ${apart?.checkDate}"+".csv")
             newCSVFile?.let {
                 csvWriter().open(it) {
                     apart?.let { writingStringsApart(apart)}
-                    cleaningApart?.let { writingStringsCleaningApart(cleaningApart) }
+                    checkListCleaningApart?.let { writingStringsCleaningApart(checkListCleaningApart) }
                 }
             }
             newCSVFile?.let { shareFile(context, it) }
@@ -74,74 +74,72 @@ class ApartViewModel : ViewModel(), CoroutineScope {
     /**
      *Метод записи строк с класса чек листа уборки апартамента класса CleaningApart
      */
-    private fun ICsvFileWriter.writingStringsCleaningApart(cleaningApart: CleaningApart) {
+    private fun ICsvFileWriter.writingStringsCleaningApart(checkListCleaningApart: CheckListCleaningApart) {
+        //      Начало уборки
+        writeRow(listOf("Обход аппартамента.Степень загрезнения", checkListCleaningApart.bypassingApart))
+        writeRow(listOf("Сделать видеозапись аппартамента", checkListCleaningApart.videoRecording))
+        writeRow(listOf("Настроить температурный режим в аппартаменте(провертривание)", checkListCleaningApart.temperarureMode))
+        writeRow(listOf("Открыть штроры, окна(в теплое время года)", checkListCleaningApart.openWindowBridges))
+        writeRow(listOf("Спустите туалет и нанесите чистящее средство в унитаз", checkListCleaningApart.flushToilet))
+        writeRow(listOf("Собрать весь мусор в аппартаменте", checkListCleaningApart.collectGarbage))
+        writeRow(listOf("Проверить на наличие забытых вещей гостей",checkListCleaningApart.checkforgottenItem))
+        writeRow(listOf("Забытые вещи", checkListCleaningApart.forgottenItem))
+        //        Техническая часть аппартамента
+        writeRow(listOf("Работа умного дома(при наличии)", checkListCleaningApart.smartHome))
+        writeRow(listOf("Телевизор", checkListCleaningApart.tv))
+        writeRow(listOf("Пульты", checkListCleaningApart.tvController))
+        writeRow(listOf("Холодильник", checkListCleaningApart.refrigerator))
+        writeRow(listOf("Освещение", checkListCleaningApart.lighting))
+        writeRow(listOf("BLUETOOTH Колонка", checkListCleaningApart.bluetoothColumn))
+        writeRow(listOf("Инная аппартура по необходимости", checkListCleaningApart.otherEquipment))
+        //        Уборка ванной комнаты
+        writeRow(
+            listOf(
+                "Чистка раковины, кафеля, гигиенических зон, стен и двери ванной комнаты",
+                checkListCleaningApart.cleaningOfSinksAndHygieneAreas
+            )
+        )
+        writeRow(
+            listOf(
+                "Чистка душевой кабины/ванны",
+                checkListCleaningApart.cleaningShowerBath
+            )
+        )
+        writeRow(listOf("Чистка туалета", checkListCleaningApart.cleaningToilet))
+        writeRow(
+            listOf(
+                "Замена полотенец  и расходных материалов",
+                checkListCleaningApart.changingTowelsSupplies
+            )
+        )
+        writeRow(listOf("Протереть зеркало и  дверь ванной комнаты", checkListCleaningApart.wipeMirrorAndDoor))
 
-        writeRow(listOf("[${CleaningApart.BYPASSING_APART}]", cleaningApart.bypassingApart))
-        writeRow(listOf("[${CleaningApart.VIDEO_RECORDING}]", cleaningApart.videoRecording))
-        writeRow(listOf("[${CleaningApart.TEMPERATURE_MODE}]", cleaningApart.temperarureMode))
-        writeRow(listOf("[${CleaningApart.OPEN_WINDOW_BRIDGES}]", cleaningApart.openWindowBridges))
-        writeRow(listOf("[${CleaningApart.FLUSH_TOILET}]", cleaningApart.flushToilet))
-        writeRow(listOf("[${CleaningApart.COLLECT_GARBAGE}]", cleaningApart.collectGarbage))
+        //      Уборка аппартамента
+        writeRow(listOf("Собрать и вымыть посуду", checkListCleaningApart.washDishes))
+        writeRow(listOf("Протереть  полки, мебель в аппартаменте", checkListCleaningApart.removeBedLinen))
+        writeRow(listOf("Собрать и убрать постельное белье", checkListCleaningApart.makingBed))
         writeRow(
             listOf(
-                "[${CleaningApart.CHECK_FORGOTTEN_ITEM}]",
-                cleaningApart.checkforgottenItem
-            )
-        )
-        writeRow(listOf("[${CleaningApart.FORGOTTEN_ITEM}]", cleaningApart.forgottenItem))
-        writeRow(listOf("[${CleaningApart.COLLECT_GARBAGE}]", cleaningApart.collectGarbage))
-        writeRow(listOf("[${CleaningApart.SMART_HOME}]", cleaningApart.smartHome))
-        writeRow(listOf("[${CleaningApart.TV}]", cleaningApart.tv))
-        writeRow(listOf("[${CleaningApart.TV_CONTOLLER}]", cleaningApart.tvController))
-        writeRow(listOf("[${CleaningApart.REFRIGERATOR}]", cleaningApart.refrigerator))
-        writeRow(listOf("[${CleaningApart.LIGHTING}]", cleaningApart.lighting))
-        writeRow(listOf("[${CleaningApart.BLUETOOTH_COLUMN}]", cleaningApart.bluetoothColumn))
-        writeRow(listOf("[${CleaningApart.OTHER_EQUIPMENT}]", cleaningApart.otherEquipment))
-        writeRow(listOf("[${CleaningApart.WASH_DISHES}]", cleaningApart.washDishes))
-        writeRow(listOf("[${CleaningApart.REMOVE_BED_LINEN}]", cleaningApart.removeBedLinen))
-        writeRow(listOf("[${CleaningApart.MAKING_BED}]", cleaningApart.makingBed))
-        writeRow(
-            listOf(
-                "[${CleaningApart.CLEANING_OF_SINKS_AND_HYGIENE_AREAS}]",
-                cleaningApart.cleaningOfSinksAndHygieneAreas
+                "Заправка постели",
+                checkListCleaningApart.wipeShelvesFurnitureInApart
             )
         )
         writeRow(
             listOf(
-                "[${CleaningApart.CLEANING_SHOWER_BATH}]",
-                cleaningApart.cleaningShowerBath
+                "Протереть  зеркала и декор в аппартаменте",
+                checkListCleaningApart.wipeDecorMirrorInApart
             )
         )
-        writeRow(listOf("[${CleaningApart.CLEANING_TOILET}]", cleaningApart.cleaningToilet))
+        writeRow(listOf("Проверить чистоту окон", checkListCleaningApart.checkWindow))
+        writeRow(listOf("Вымыть окна(при необходимости вымыть)", checkListCleaningApart.washWindow))
         writeRow(
             listOf(
-                "[${CleaningApart.CHANGING_TOWELS_SUPPLIES}]",
-                cleaningApart.changingTowelsSupplies
+                "Пополнить гостевые принадлежности аппартамента",
+                checkListCleaningApart.topGuestAccessries
             )
         )
-        writeRow(listOf("[${CleaningApart.WIPE_MIRROR_AND_DOOR}]", cleaningApart.wipeMirrorAndDoor))
-        writeRow(
-            listOf(
-                "[${CleaningApart.WIPE_SHELVES_FURNITURE_IN_APART}]",
-                cleaningApart.wipeShelvesFurnitureInApart
-            )
-        )
-        writeRow(
-            listOf(
-                "[${CleaningApart.WIPE_DECOR_MIRROR_IN_APART}]",
-                cleaningApart.wipeDecorMirrorInApart
-            )
-        )
-        writeRow(listOf("[${CleaningApart.CHECK_WINDOW}]", cleaningApart.checkWindow))
-        writeRow(listOf("[${CleaningApart.WASH_WINDOW}]", cleaningApart.washWindow))
-        writeRow(
-            listOf(
-                "[${CleaningApart.TOP_GUEST_ACCESSORIES}]",
-                cleaningApart.topGuestAccessries
-            )
-        )
-        writeRow(listOf("[${CleaningApart.REMOVE_FLOOR}]", cleaningApart.removeFloor))
-        writeRow(listOf("[${CleaningApart.CLEANING_COMMENT}]", cleaningApart.cleaningComment))
+        writeRow(listOf("Убрать пол(пропылесосить/вымыть)", checkListCleaningApart.removeFloor))
+        writeRow(listOf("Коментарий по уборке(Доп. Информация)", checkListCleaningApart.cleaningComment))
     }
 
 

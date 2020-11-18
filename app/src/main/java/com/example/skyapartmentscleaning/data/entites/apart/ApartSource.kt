@@ -2,8 +2,7 @@ package com.example.skyapartmentscleaning.data.entites.apart
 /**
  * @author Alexander Volkov (Volkoks)
  */
-class ApartSource(apartDao: ApartDao) {
-    private val apartDao: ApartDao = apartDao
+class ApartSource(val apartDao: ApartDao) {
     private var apartList: List<Apart>? = null
 
     fun loadApart(){

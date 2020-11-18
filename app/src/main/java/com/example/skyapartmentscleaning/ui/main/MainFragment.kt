@@ -42,7 +42,7 @@ class MainFragment : Fragment() {
         }
 
         listAdapter = ApartsListAdapter {
-            viewModel.router.navigateTo(Screens.CheckHistoryScreen())
+            viewModel.router.navigateTo(Screens.CheckHistoryScreen(it))
         }
         val itemDecoration = initVerticalDecoration()
         intitRV(itemDecoration)

@@ -17,8 +17,8 @@ class Screens {
         override fun getFragment() = ApartFragment.newInstance(apart)
     }
 
-    class CheckHistoryScreen:SupportAppScreen(){
-        override fun getFragment()=CheckHistoryFragment.newInstance()
+    class CheckHistoryScreen(val apart: Apart):SupportAppScreen(){
+        override fun getFragment()=CheckHistoryFragment.newInstance(apart)
     }
     class MainScreen:SupportAppScreen(){
         override fun getFragment()=MainFragment.newInstance()

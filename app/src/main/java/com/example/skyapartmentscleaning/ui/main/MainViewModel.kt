@@ -19,7 +19,7 @@ class MainViewModel : ViewModel(), CoroutineScope {
     val router: Router = MyApp.instance.getRouter
 
     override val coroutineContext: CoroutineContext by lazy {
-        Dispatchers.Default
+        Dispatchers.IO
     }
     private val apartDao by lazy {
         MyApp.instance.getDB.getApartDao()

@@ -11,8 +11,7 @@ import androidx.fragment.app.viewModels
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
-import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CheckListCleaningApart
 import kotlinx.android.synthetic.main.apart_fragment.*
 
 /**
@@ -26,7 +25,7 @@ class ApartFragment : Fragment() {
     companion object {
         fun newInstance(apart: Apart): ApartFragment {
             val fragment = ApartFragment()
-            val cleaningApart = CleaningApart()
+            val cleaningApart = CheckListCleaningApart()
             val bundle = Bundle()
             bundle.putParcelable(APART, apart)
             bundle.putParcelable(CLEANING_APART, cleaningApart)
@@ -36,7 +35,7 @@ class ApartFragment : Fragment() {
     }
 
     private var apart: Apart? = null
-    private var cleaningApart: CleaningApart? = null
+    private var checkListCleaningApart: CheckListCleaningApart? = null
     private val viewModel: ApartViewModel by viewModels()
 
 
@@ -50,8 +49,8 @@ class ApartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         apart = arguments?.getParcelable(APART)
-        cleaningApart = arguments?.getParcelable(CLEANING_APART)
-        
+        checkListCleaningApart = arguments?.getParcelable(CLEANING_APART)
+
         number_apart_fragment.setText(apart?.numberApart.toString())
         date_test.setText(viewModel.getCurrentFormattedDate(apart))
 
@@ -66,24 +65,26 @@ class ApartFragment : Fragment() {
     private fun saveAndSendFileReport() {
         getEditTextCheckList()
         dateFormationForApart()
-        viewModel.saveApartCleaningReport(apart, cleaningApart)
-        activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart,cleaningApart) }
+        viewModel.saveApartCleaningReport(apart, checkListCleaningApart)
+        activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart, checkListCleaningApart) }
         Toast.makeText(activity, "Отчёт сохранен", Toast.LENGTH_SHORT).show()
     }
-/**
- * Метод формирования и записи даты для экземпляра Apart.kt
- */
+
+    /**
+     * Метод формирования и записи даты для экземпляра Apart.kt
+     */
     private fun dateFormationForApart() {
         apart?.checkDate = viewModel.getCurrentFormattedDate(apart)
         apart?.id = "${apart?.numberApart}/" + viewModel.getCurrentFormattedDate(apart)
+        checkListCleaningApart?.id = "${apart?.numberApart}/" + viewModel.getCurrentFormattedDate(apart)
     }
 
     /**
      * Метод получения того что написано в EditText Чек листов
      */
     private fun getEditTextCheckList() {
-        cleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
-        cleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
+        checkListCleaningApart?.cleaningComment = commentaries_editTextTextMultiLine.text.toString()
+        checkListCleaningApart?.forgottenItem = forgotten_item_editText.text.toString()
     }
 
     /**
@@ -93,12 +94,12 @@ class ApartFragment : Fragment() {
         bypassing_apart_radiogroup.setOnCheckedChangeListener { radioGroup, checkedId ->
             when (checkedId) {
                 R.id.yes_bypassing_apart_radioButton -> {
-                    cleaningApart?.bypassingApart = DIRTY
+                    checkListCleaningApart?.bypassingApart = DIRTY
                     video_recording_linear_layout.layoutParams = visibleLayout()
                 }
                 R.id.no_bypassing_apart_radioButton -> {
-                    cleaningApart?.bypassingApart = NORMAL
-                    cleaningApart?.videoRecording = "-"
+                    checkListCleaningApart?.bypassingApart = NORMAL
+                    checkListCleaningApart?.videoRecording = "-"
                     video_recording_linear_layout.layoutParams =
                         invisibleLayout()
                 }
@@ -106,43 +107,46 @@ class ApartFragment : Fragment() {
         }
         make_a_video_recording_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_make_a_video_recording_radioButton -> cleaningApart?.videoRecording = DONE_DAW
-                R.id.no_make_a_video_recording_radioButton -> cleaningApart?.videoRecording =
+                R.id.yes_make_a_video_recording_radioButton -> checkListCleaningApart?.videoRecording =
+                    DONE_DAW
+                R.id.no_make_a_video_recording_radioButton -> checkListCleaningApart?.videoRecording =
                     NOT_DONE_CROSS
             }
         }
         temperature_regime_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_temperature_regime_radioButton -> cleaningApart?.temperarureMode = DONE_DAW
-                R.id.no_temperature_regime_radioButton -> cleaningApart?.temperarureMode = NOT_DONE_CROSS
+                R.id.yes_temperature_regime_radioButton -> checkListCleaningApart?.temperarureMode = DONE_DAW
+                R.id.no_temperature_regime_radioButton -> checkListCleaningApart?.temperarureMode =
+                    NOT_DONE_CROSS
             }
         }
         open_window_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_open_window_radioButton -> cleaningApart?.openWindowBridges = DONE_DAW
-                R.id.no_open_window_radioButton -> cleaningApart?.openWindowBridges = NOT_DONE_CROSS
+                R.id.yes_open_window_radioButton -> checkListCleaningApart?.openWindowBridges = DONE_DAW
+                R.id.no_open_window_radioButton -> checkListCleaningApart?.openWindowBridges = NOT_DONE_CROSS
             }
         }
         flush_toilet_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_flush_toilet_radioButton -> cleaningApart?.flushToilet = DONE_DAW
-                R.id.no_flush_toilet_radioButton -> cleaningApart?.flushToilet = NOT_DONE_CROSS
+                R.id.yes_flush_toilet_radioButton -> checkListCleaningApart?.flushToilet = DONE_DAW
+                R.id.no_flush_toilet_radioButton -> checkListCleaningApart?.flushToilet = NOT_DONE_CROSS
             }
         }
         collect_all_garbage_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_collect_all_garbage_radioButton -> cleaningApart?.collectGarbage = DONE_DAW
-                R.id.no_collect_all_garbage_radioButton -> cleaningApart?.collectGarbage = NOT_DONE_CROSS
+                R.id.yes_collect_all_garbage_radioButton -> checkListCleaningApart?.collectGarbage = DONE_DAW
+                R.id.no_collect_all_garbage_radioButton -> checkListCleaningApart?.collectGarbage =
+                    NOT_DONE_CROSS
             }
         }
         check_forgotten_item_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.yes_check_forgotten_item_radioButton -> {
-                    cleaningApart?.checkforgottenItem = AVAILABLE
+                    checkListCleaningApart?.checkforgottenItem = AVAILABLE
                     forgotten_item_TIL.layoutParams = visibleLayout()
                 }
                 R.id.no_check_forgotten_item_radioButton -> {
-                    cleaningApart?.checkforgottenItem =
+                    checkListCleaningApart?.checkforgottenItem =
                         NOT_AVAILABLE
                     forgotten_item_TIL.layoutParams = invisibleLayout()
                 }
@@ -151,150 +155,154 @@ class ApartFragment : Fragment() {
 
         smart_home_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_smart_home_radioButton -> cleaningApart?.smartHome = DONE_DAW
-                R.id.no_smart_home_radioButton -> cleaningApart?.smartHome = NOT_DONE_CROSS
+                R.id.yes_smart_home_radioButton -> checkListCleaningApart?.smartHome = DONE_DAW
+                R.id.no_smart_home_radioButton -> checkListCleaningApart?.smartHome = NOT_DONE_CROSS
             }
         }
         tv_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_tv_radioButton -> cleaningApart?.tv = DONE_DAW
-                R.id.no_tv_radioButton -> cleaningApart?.tv = NOT_DONE_CROSS
+                R.id.yes_tv_radioButton -> checkListCleaningApart?.tv = DONE_DAW
+                R.id.no_tv_radioButton -> checkListCleaningApart?.tv = NOT_DONE_CROSS
             }
         }
         remote_controller_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_remote_controller_radioButton -> cleaningApart?.tvController = DONE_DAW
-                R.id.no_remote_controller_radioButton -> cleaningApart?.tvController = NOT_DONE_CROSS
+                R.id.yes_remote_controller_radioButton -> checkListCleaningApart?.tvController = DONE_DAW
+                R.id.no_remote_controller_radioButton -> checkListCleaningApart?.tvController =
+                    NOT_DONE_CROSS
             }
         }
         refrigerator_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_refrigerator_radioButton -> cleaningApart?.refrigerator = DONE_DAW
-                R.id.no_refrigerator_radioButton -> cleaningApart?.refrigerator = NOT_DONE_CROSS
+                R.id.yes_refrigerator_radioButton -> checkListCleaningApart?.refrigerator = DONE_DAW
+                R.id.no_refrigerator_radioButton -> checkListCleaningApart?.refrigerator = NOT_DONE_CROSS
             }
         }
         lighting_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_lighting_radioButton -> cleaningApart?.lighting = DONE_DAW
-                R.id.no_lighting_radioButton -> cleaningApart?.lighting = NOT_DONE_CROSS
+                R.id.yes_lighting_radioButton -> checkListCleaningApart?.lighting = DONE_DAW
+                R.id.no_lighting_radioButton -> checkListCleaningApart?.lighting = NOT_DONE_CROSS
             }
         }
         bluetooth_column_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_bluetooth_column_radioButton -> cleaningApart?.bluetoothColumn = DONE_DAW
-                R.id.no_bluetooth_column_radioButton -> cleaningApart?.bluetoothColumn =
+                R.id.yes_bluetooth_column_radioButton -> checkListCleaningApart?.bluetoothColumn = DONE_DAW
+                R.id.no_bluetooth_column_radioButton -> checkListCleaningApart?.bluetoothColumn =
                     NOT_DONE_CROSS
             }
         }
         other_equipment_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_other_equipment_radioButton -> cleaningApart?.otherEquipment = DONE_DAW
-                R.id.no_other_equipment_radioButton -> cleaningApart?.otherEquipment = NOT_DONE_CROSS
+                R.id.yes_other_equipment_radioButton -> checkListCleaningApart?.otherEquipment = DONE_DAW
+                R.id.no_other_equipment_radioButton -> checkListCleaningApart?.otherEquipment =
+                    NOT_DONE_CROSS
             }
         }
         wash_dishes_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_wash_dishes_radioButton -> cleaningApart?.washDishes = DONE_DAW
-                R.id.no_wash_dishes_radioButton -> cleaningApart?.washDishes = NOT_DONE_CROSS
+                R.id.yes_wash_dishes_radioButton -> checkListCleaningApart?.washDishes = DONE_DAW
+                R.id.no_wash_dishes_radioButton -> checkListCleaningApart?.washDishes = NOT_DONE_CROSS
             }
         }
         remove_bed_linen_cleaning_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_remove_bed_linen_radioButton -> cleaningApart?.removeBedLinen = DONE_DAW
-                R.id.no_remove_bed_linen_radioButton -> cleaningApart?.removeBedLinen = NOT_DONE_CROSS
+                R.id.yes_remove_bed_linen_radioButton -> checkListCleaningApart?.removeBedLinen = DONE_DAW
+                R.id.no_remove_bed_linen_radioButton -> checkListCleaningApart?.removeBedLinen =
+                    NOT_DONE_CROSS
             }
         }
         making_bed_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_making_bed_radioButton -> cleaningApart?.makingBed = DONE_DAW
-                R.id.no_making_bed_radioButton -> cleaningApart?.makingBed = NOT_DONE_CROSS
+                R.id.yes_making_bed_radioButton -> checkListCleaningApart?.makingBed = DONE_DAW
+                R.id.no_making_bed_radioButton -> checkListCleaningApart?.makingBed = NOT_DONE_CROSS
             }
         }
         cleaning_hygiene_areas_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_cleaning_hygiene_areas_radioButton -> cleaningApart?.cleaningOfSinksAndHygieneAreas =
+                R.id.yes_cleaning_hygiene_areas_radioButton -> checkListCleaningApart?.cleaningOfSinksAndHygieneAreas =
                     DONE_DAW
-                R.id.no_cleaning_hygiene_areas_radioButton -> cleaningApart?.cleaningOfSinksAndHygieneAreas =
+                R.id.no_cleaning_hygiene_areas_radioButton -> checkListCleaningApart?.cleaningOfSinksAndHygieneAreas =
                     NOT_DONE_CROSS
             }
         }
         cleaning_shower_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_cleaning_shower_radioButton -> cleaningApart?.cleaningShowerBath = DONE_DAW
-                R.id.no_cleaning_shower_radioButton -> cleaningApart?.cleaningShowerBath =
+                R.id.yes_cleaning_shower_radioButton -> checkListCleaningApart?.cleaningShowerBath = DONE_DAW
+                R.id.no_cleaning_shower_radioButton -> checkListCleaningApart?.cleaningShowerBath =
                     NOT_DONE_CROSS
             }
         }
         cleaning_toilet_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_cleaning_toilet_radioButton -> cleaningApart?.cleaningToilet = DONE_DAW
-                R.id.no_cleaning_toilet_radioButton -> cleaningApart?.cleaningToilet = NOT_DONE_CROSS
+                R.id.yes_cleaning_toilet_radioButton -> checkListCleaningApart?.cleaningToilet = DONE_DAW
+                R.id.no_cleaning_toilet_radioButton -> checkListCleaningApart?.cleaningToilet =
+                    NOT_DONE_CROSS
             }
         }
         changing_towels_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_changing_towels_radioButton -> cleaningApart?.changingTowelsSupplies =
+                R.id.yes_changing_towels_radioButton -> checkListCleaningApart?.changingTowelsSupplies =
                     DONE_DAW
-                R.id.no_changing_towels_radioButton -> cleaningApart?.changingTowelsSupplies =
+                R.id.no_changing_towels_radioButton -> checkListCleaningApart?.changingTowelsSupplies =
                     NOT_DONE_CROSS
             }
         }
         wipe_mirror_and_dooor_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_wipe_mirror_and_dooor_radioButton -> cleaningApart?.wipeMirrorAndDoor =
+                R.id.yes_wipe_mirror_and_dooor_radioButton -> checkListCleaningApart?.wipeMirrorAndDoor =
                     DONE_DAW
-                R.id.no_wipe_mirror_and_dooor_radioButton -> cleaningApart?.wipeMirrorAndDoor =
+                R.id.no_wipe_mirror_and_dooor_radioButton -> checkListCleaningApart?.wipeMirrorAndDoor =
                     NOT_DONE_CROSS
             }
         }
         wipe_shelves_furniture_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_wipe_shelves_furniture_radioButton -> cleaningApart?.wipeShelvesFurnitureInApart =
+                R.id.yes_wipe_shelves_furniture_radioButton -> checkListCleaningApart?.wipeShelvesFurnitureInApart =
                     DONE_DAW
-                R.id.no_wipe_shelves_furniture_radioButton -> cleaningApart?.wipeShelvesFurnitureInApart =
+                R.id.no_wipe_shelves_furniture_radioButton -> checkListCleaningApart?.wipeShelvesFurnitureInApart =
                     NOT_DONE_CROSS
             }
         }
         wipe_decor_mirror_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_wipe_decor_mirror_radioButton -> cleaningApart?.wipeDecorMirrorInApart =
+                R.id.yes_wipe_decor_mirror_radioButton -> checkListCleaningApart?.wipeDecorMirrorInApart =
                     DONE_DAW
-                R.id.no_wipe_decor_mirror_radioButton -> cleaningApart?.wipeDecorMirrorInApart =
+                R.id.no_wipe_decor_mirror_radioButton -> checkListCleaningApart?.wipeDecorMirrorInApart =
                     NOT_DONE_CROSS
             }
         }
         check_window_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.yes_check_window_radioButton -> {
-                    cleaningApart?.checkWindow = DIRTY
+                    checkListCleaningApart?.checkWindow = DIRTY
                     wash_window_layout_container.layoutParams = visibleLayout()
                 }
                 R.id.no_check_window_radioButton -> {
-                    cleaningApart?.checkWindow = NORMAL
-                    cleaningApart?.washWindow = "-"
+                    checkListCleaningApart?.checkWindow = NORMAL
+                    checkListCleaningApart?.washWindow = "-"
                     wash_window_layout_container.layoutParams = invisibleLayout()
                 }
             }
         }
-        wash_window_mirror_radiogroup.setOnCheckedChangeListener{group,checkedId->
-            when(checkedId){
-                R.id.yes_wash_window_mirror_radioButton->cleaningApart?.washWindow = DONE_DAW
-                R.id.no_wash_window_radioButton->cleaningApart?.washWindow = NOT_DONE_CROSS
+        wash_window_mirror_radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yes_wash_window_mirror_radioButton -> checkListCleaningApart?.washWindow = DONE_DAW
+                R.id.no_wash_window_radioButton -> checkListCleaningApart?.washWindow = NOT_DONE_CROSS
             }
         }
 
         top_guest_accessories_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_top_guest_accessories_radioButton -> cleaningApart?.topGuestAccessries =
+                R.id.yes_top_guest_accessories_radioButton -> checkListCleaningApart?.topGuestAccessries =
                     DONE_DAW
-                R.id.no_top_guest_accessories_radioButton -> cleaningApart?.topGuestAccessries =
+                R.id.no_top_guest_accessories_radioButton -> checkListCleaningApart?.topGuestAccessries =
                     NOT_DONE_CROSS
             }
         }
         remove_floor_radiogroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.yes_remove_floor_radioButton -> cleaningApart?.removeFloor = DONE_DAW
-                R.id.no_remove_floor_radioButton -> cleaningApart?.removeFloor = NOT_DONE_CROSS
+                R.id.yes_remove_floor_radioButton -> checkListCleaningApart?.removeFloor = DONE_DAW
+                R.id.no_remove_floor_radioButton -> checkListCleaningApart?.removeFloor = NOT_DONE_CROSS
             }
         }
     }

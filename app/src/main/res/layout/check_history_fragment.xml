@@ -38,7 +38,7 @@
                     android:textSize="35sp" />
 
                 <TextView
-                    android:id="@+id/number_apart_fragment"
+                    android:id="@+id/number_apart_check_list_tv"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_weight="1"
@@ -893,7 +893,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/commentaries_tv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 

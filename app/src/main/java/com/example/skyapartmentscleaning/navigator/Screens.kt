@@ -6,6 +6,7 @@ import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skyapartmentscleaning.ui.apart.ApartFragment
 import com.example.skyapartmentscleaning.ui.checkHistory.CheckHistoryFragment
 import com.example.skyapartmentscleaning.ui.main.MainFragment
+import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 class Screens {
@@ -14,7 +15,7 @@ class Screens {
     }
 
     class ApartScreen(val apart: Apart) : SupportAppScreen() {
-        override fun getFragment() = ApartFragment.newInstance(apart)
+        override fun getFragment() = ApartFragment.newInstance(apart, CleaningApart())
     }
 
     class CheckHistoryScreen:SupportAppScreen(){

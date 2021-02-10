@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/sky_ap_logo_v5_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.SkyApartmentsCleaning">
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.mainActivity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

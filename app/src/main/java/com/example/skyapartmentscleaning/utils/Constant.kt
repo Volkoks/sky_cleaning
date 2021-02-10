@@ -10,5 +10,5 @@ const val AVAILABLE = "Имеются"
 const val NOT_AVAILABLE = "Не имеются"
 const val APART = "apart"
 const val CLEANING_APART = "cleaningApart"
-
+const val APP_NAME = "SkyCleaning"
 

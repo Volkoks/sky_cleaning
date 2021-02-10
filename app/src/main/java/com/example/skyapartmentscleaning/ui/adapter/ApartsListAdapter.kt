@@ -37,8 +37,10 @@ class ApartsListAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
             number_apart_cardView.text = apart.numberApart.toString()
             if (apart.checkDate != null) {
                 check_date.layoutParams =
-                    LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT)
+                    LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
                 check_date.text = apart.checkDate
             }
 

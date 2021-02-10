@@ -12,7 +12,8 @@
     <string name="level_49">Этаж 49</string>
     <string name="tower_oko">Башня OKO</string>
     <string name="cleaning_start">Начало уборки</string>
-    <string name="bypassing_the_apartment_the_degree_of_pollution">Обход аппартамента.Степень загрезнения</string>
+    <string name="floor_cleaning"></string>
+    <string name="bypassing_the_apartment_the_degree_of_pollution">Обход аппартамента. Степень загрезнения</string>
     <string name="make_a_video_recording_of_the_apartment">Сделать видеозапись аппартамента</string>
     <string name="dirty">Грязно</string>
     <string name="normal">Норм</string>

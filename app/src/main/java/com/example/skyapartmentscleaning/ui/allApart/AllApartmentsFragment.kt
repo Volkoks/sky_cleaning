@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.all_apartments_fragment.*
 /**
  * @author Alexander Volkov (Volkoks)
  */
-class AllApartmentsFragment : Fragment() {
+class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
 
     companion object {
         fun newInstance() = AllApartmentsFragment()
@@ -31,12 +31,6 @@ class AllApartmentsFragment : Fragment() {
 
     private val viewModel: AllApartmentsViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.all_apartments_fragment, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

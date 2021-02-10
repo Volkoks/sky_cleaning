@@ -1,9 +1,10 @@
-package com.example.skyapartmentscleaning
+package com.example.skyapartmentscleaning.ui.mainActivity
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.skyapartmentscleaning.ui.mainActivity.MainActivityViewModel
+import com.example.skyapartmentscleaning.MyApp
+import com.example.skyapartmentscleaning.R
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 
 /**
@@ -17,12 +18,17 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by viewModels()
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+            /*val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+            setSupportActionBar(toolbar)*/
+
         viewModel.startMainFragment()
+
     }
 
     override fun onResumeFragments() {

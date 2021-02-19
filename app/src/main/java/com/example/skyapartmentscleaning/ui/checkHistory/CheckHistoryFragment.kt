@@ -12,7 +12,7 @@ import com.example.skyapartmentscleaning.R
 /**
  * @author Alexander Volkov (Volkoks)
  */
-class CheckHistoryFragment : Fragment() {
+class CheckHistoryFragment : Fragment(R.layout.check_list_history_fragment) {
 
     companion object {
         fun newInstance() = CheckHistoryFragment()
@@ -20,12 +20,7 @@ class CheckHistoryFragment : Fragment() {
 
     private val viewModel: CheckHistoryViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.check_history_fragment, container, false)
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

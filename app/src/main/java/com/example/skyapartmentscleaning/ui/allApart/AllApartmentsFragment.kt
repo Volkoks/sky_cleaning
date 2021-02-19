@@ -40,7 +40,7 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
         initRecyclerView(itemDecoration)
 
         listAdapterForTowerFederation =
-            ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
+            ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
         listAdapterForTowerOKO =
             ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
         listAdapterForTowerEmpery =

@@ -5,17 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
-import com.example.skyapartmentscleaning.data.entites.checklist.DataCheckList
+import com.example.skyapartmentscleaning.data.entites.checklist.DataPointCheckList
 import com.example.skyapartmentscleaning.databinding.ItemCheckListPlainBinding
 import com.example.skyapartmentscleaning.databinding.ItemCheckListPlugBinding
 import com.example.skyapartmentscleaning.databinding.ItemChekListHeadingBinding
 
 
 class CheckListApartAdapter(
-    private val data: List<DataCheckList>,
+    private val data: MutableList<DataPointCheckList>,
     private val chipClick: IClickChipItemCheckList
 ) :
     RecyclerView.Adapter<BaseAdapterForCheckList>() {
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -42,6 +43,7 @@ class CheckListApartAdapter(
 
     override fun onBindViewHolder(holder: BaseAdapterForCheckList, position: Int) {
         holder.bind(data[position])
+
     }
 
     override fun getItemCount() = data.size
@@ -54,29 +56,48 @@ class CheckListApartAdapter(
         }
     }
 
+    fun updateData(newData: MutableList<DataPointCheckList>) {
+        data.addAll(newData)
+    }
 
     inner class ItemCheckheckListHeadingViewHolder(private val itemHeading: ItemChekListHeadingBinding) :
         BaseAdapterForCheckList(itemHeading.root) {
-        override fun bind(data: DataCheckList) {
-            itemHeading.tvItemCheckListHeading.text = data.dataHeadingPoints?.textHeading
+        override fun bind(dataPoint: DataPointCheckList) {
+            itemHeading.tvItemCheckListHeading.text = dataPoint.dataHeadingPoints?.textHeading
         }
 
     }
 
-    inner class ItemCheckListPlainViewHolder(private val itemCheckList: ItemCheckListPlainBinding) :
-        BaseAdapterForCheckList(itemCheckList.root) {
+    inner class ItemCheckListPlainViewHolder(private val binding: ItemCheckListPlainBinding) :
+        BaseAdapterForCheckList(binding.root) {
 
-        override fun bind(data: DataCheckList) {
-            itemCheckList.tvItemCheckListPlain.text = data.dataPoint?.textPoint
-            itemCheckList.yesChipItemCheckList.text = data.dataPoint?.textChipYes
-            itemCheckList.noChipItemCheckList.text = data.dataPoint?.textChipNo
-            itemCheckList.cgItemCheckListPlain.setOnCheckedChangeListener { group, checkedId ->
+        override fun bind(dataPoint: DataPointCheckList) {
+
+            when (dataPoint.dataPoint?.chipSelection) {
+                1 -> binding.yesChipItemCheckList.isChecked = true
+                2 -> binding.noChipItemCheckList.isChecked = true
+                else -> {
+                    binding.yesChipItemCheckList.isChecked = false
+                    binding.noChipItemCheckList.isChecked = false
+                }
+            }
+            binding.tvItemCheckListPlain.text = dataPoint.dataPoint?.textPoint
+            binding.yesChipItemCheckList.text = dataPoint.dataPoint?.textChipYes
+            binding.noChipItemCheckList.text = dataPoint.dataPoint?.textChipNo
+
+            binding.cgItemCheckListPlain.setOnCheckedChangeListener { group, checkedId ->
+
                 when (checkedId) {
                     R.id.yes_chip_item_check_list -> {
-                        chipClick.clickChip(data.dataPoint?.textPoint.toString(), DONE_DAW)
+                        data[layoutPosition].dataPoint?.chipSelection = 1
+                        chipClick.clickChip(dataPoint.dataPoint?.textPoint.toString(), DONE_DAW)
                     }
                     R.id.no_chip_item_check_list -> {
-                        chipClick.clickChip(data.dataPoint?.textPoint.toString(), NOT_DONE_CROSS)
+                        data[layoutPosition].dataPoint?.chipSelection = 2
+                        chipClick.clickChip(
+                            dataPoint.dataPoint?.textPoint.toString(),
+                            NOT_DONE_CROSS
+                        )
                     }
                 }
             }
@@ -86,7 +107,7 @@ class CheckListApartAdapter(
 
     inner class ItemCheckListPlugViewHolder(private val itemCheckList: ItemCheckListPlugBinding) :
         BaseAdapterForCheckList(itemCheckList.root) {
-        override fun bind(data: DataCheckList) {
+        override fun bind(dataPoint: DataPointCheckList) {
         }
     }
 }

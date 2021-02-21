@@ -10,6 +10,7 @@ import com.example.skyapartmentscleaning.R.layout
 import com.example.skyapartmentscleaning.R.string
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.data.entites.checklist.DataPointCheckList
 import com.example.skyapartmentscleaning.databinding.CheckListFforRvFragmentBinding
 import com.example.skyapartmentscleaning.ui.adapter.CheckListApartAdapter
 import com.example.skyapartmentscleaning.ui.adapter.IClickChipItemCheckList
@@ -42,8 +43,8 @@ class CheckListFragment : Fragment(layout.check_list_ffor_rv_fragment), IClickCh
 
         initRV()
 
-        viewModel.dataForCheckList.observe(viewLifecycleOwner, {
-            adapter = CheckListApartAdapter(it, this)
+        viewModel.dataForPointCheckList.observe(viewLifecycleOwner, {
+            adapter = CheckListApartAdapter(it as MutableList<DataPointCheckList>, this)
             binding?.rvForCheckList?.adapter = adapter
         })
 
@@ -55,7 +56,7 @@ class CheckListFragment : Fragment(layout.check_list_ffor_rv_fragment), IClickCh
     }
 
     private fun initRV() {
-//        binding?.rvForCheckList?.setHasFixedSize(true)
+        binding?.rvForCheckList?.setHasFixedSize(true)
         binding?.rvForCheckList?.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
     }
@@ -140,7 +141,6 @@ class CheckListFragment : Fragment(layout.check_list_ffor_rv_fragment), IClickCh
             }
             getString(string.cleaning_toilet) -> when (idChip) {
                 DONE_DAW -> {
-                    tostTest("flush toilet")
                     cleaningApart?.cleaningToilet = DONE_DAW
                 }
                 NOT_DONE_CROSS -> cleaningApart?.cleaningToilet = NOT_DONE_CROSS
@@ -183,15 +183,11 @@ class CheckListFragment : Fragment(layout.check_list_ffor_rv_fragment), IClickCh
             getString(string.remove_the_floor_vacuum_wash) -> when (idChip) {
                 DONE_DAW -> cleaningApart?.removeFloor = DONE_DAW
                 NOT_DONE_CROSS -> {
-                    tostTest("floor")
                     cleaningApart?.removeFloor = NOT_DONE_CROSS
                 }
             }
         }
-
     }
 
-    private fun tostTest(text: String) {
-        Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
-    }
 }
+

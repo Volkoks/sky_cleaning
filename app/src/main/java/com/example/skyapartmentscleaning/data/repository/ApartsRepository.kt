@@ -9,7 +9,6 @@ import com.example.skyapartmentscleaning.data.entites.apart.Apart
 
 object ApartsRepository {
 
-    @RequiresApi(Build.VERSION_CODES.O)
     var listApartsTowerFederationLevel49: List<Apart> = listOf(
         Apart("492"),
         Apart("495"),

@@ -16,8 +16,9 @@ const val APP_NAME = "SkyCleaning"
 // ViewType for CheckList
 const val VT_POINT = 5675887
 const val VT_HEADING_POINT = 384100
-const val VT_POINT_EDIT_TEXT = 39567322
+const val VT_POINT_ENTRY_FIELD = 39567322
 const val VT_PLUG = 9853298
+const val VT_BTN = 2009735632
 
 
 

@@ -1,42 +1,49 @@
 package com.example.skyapartmentscleaning.ui.checkList
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skyapartmentscleaning.R.layout
 import com.example.skyapartmentscleaning.R.string
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
-import com.example.skyapartmentscleaning.data.entites.checklist.DataPointCheckList
-import com.example.skyapartmentscleaning.databinding.CheckListFforRvFragmentBinding
+import com.example.skyapartmentscleaning.data.repository.CheckListPointRespository
+import com.example.skyapartmentscleaning.databinding.CheckListForRvFragmentBinding
+
 import com.example.skyapartmentscleaning.ui.adapter.CheckListApartAdapter
-import com.example.skyapartmentscleaning.ui.adapter.IClickChipItemCheckList
+import com.example.skyapartmentscleaning.ui.adapter.IItemChekListListener
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
 
-class CheckListFragment : Fragment(layout.check_list_ffor_rv_fragment), IClickChipItemCheckList {
+
+class ChekListListenerFragment : Fragment(layout.check_list_for_rv_fragment),
+    IItemChekListListener {
 
     companion object {
-        fun newInstance(apart: Apart, cleaningApart: CleaningApart) = CheckListFragment().apply {
-            arguments = Bundle().apply {
-                putParcelable(APART, apart)
-                putParcelable(CLEANING_APART, cleaningApart)
+        fun newInstance(apart: Apart, cleaningApart: CleaningApart) =
+            ChekListListenerFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(APART, apart)
+                    putParcelable(CLEANING_APART, cleaningApart)
+                }
             }
-        }
     }
 
     private var apart: Apart? = null
     private var cleaningApart: CleaningApart? = null
-    private var binding: CheckListFforRvFragmentBinding? = null
-    private val viewModel: CheckListViewModel by viewModels()
+    private var binding: CheckListForRvFragmentBinding? = null
+
+    private val viewModel: CheckListViewModel by lazy {
+        CheckListViewModel(CheckListPointRespository())
+    }
     private var adapter: CheckListApartAdapter? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = CheckListFforRvFragmentBinding.bind(view)
+        binding = CheckListForRvFragmentBinding.bind(view)
 
         apart = arguments?.getParcelable(APART)
         cleaningApart = arguments?.getParcelable(CLEANING_APART)
@@ -44,15 +51,10 @@ class CheckListFragment : Fragment(layout.check_list_ffor_rv_fragment), IClickCh
         initRV()
 
         viewModel.dataForPointCheckList.observe(viewLifecycleOwner, {
-            adapter = CheckListApartAdapter(it as MutableList<DataPointCheckList>, this)
+            adapter = CheckListApartAdapter(it, this)
             binding?.rvForCheckList?.adapter = adapter
         })
 
-        binding?.mbClForRvSendReport?.setOnClickListener {
-            viewModel.saveApartCleaningReport(apart, cleaningApart)
-            activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart, cleaningApart) }
-            Toast.makeText(activity, "Отчёт сохранен", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun initRV() {
@@ -88,8 +90,8 @@ class CheckListFragment : Fragment(layout.check_list_ffor_rv_fragment), IClickCh
                 NOT_DONE_CROSS -> cleaningApart?.collectGarbage = NOT_DONE_CROSS
             }
             getString(string.check_forgottem_item) -> when (idChip) {
-                DONE_DAW -> cleaningApart?.forgottenItem = DONE_DAW
-                NOT_DONE_CROSS -> cleaningApart?.forgottenItem = NOT_DONE_CROSS
+                DONE_DAW -> cleaningApart?.checkforgottenItem = DONE_DAW
+                NOT_DONE_CROSS -> cleaningApart?.checkforgottenItem = NOT_DONE_CROSS
             }
             getString(string.smart_home_operation_if_available) -> when (idChip) {
                 DONE_DAW -> cleaningApart?.smartHome = DONE_DAW
@@ -188,6 +190,21 @@ class CheckListFragment : Fragment(layout.check_list_ffor_rv_fragment), IClickCh
             }
         }
     }
+
+    override fun sendTextEditText(hint: String, text: String) {
+        Log.d("INFO TO FRAGMENT", "${hint}: ${text}")
+        when (hint) {
+            getString(string.forgotten_things) -> cleaningApart?.forgottenItem = text
+            getString(string.commentaries) -> cleaningApart?.cleaningComment = text
+        }
+    }
+
+    override fun sendReport() {
+        viewModel.saveApartCleaningReport(apart, cleaningApart)
+        activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart, cleaningApart) }
+        Toast.makeText(activity, "Отчёт сохранен", Toast.LENGTH_SHORT).show()
+    }
+
 
 }
 

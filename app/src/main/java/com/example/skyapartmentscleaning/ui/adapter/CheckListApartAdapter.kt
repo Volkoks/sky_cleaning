@@ -1,27 +1,26 @@
 package com.example.skyapartmentscleaning.ui.adapter
 
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.entites.checklist.DataPointCheckList
-import com.example.skyapartmentscleaning.databinding.ItemCheckListPlainBinding
-import com.example.skyapartmentscleaning.databinding.ItemCheckListPlugBinding
-import com.example.skyapartmentscleaning.databinding.ItemChekListHeadingBinding
+import com.example.skyapartmentscleaning.databinding.*
 
 
 class CheckListApartAdapter(
     private val data: MutableList<DataPointCheckList>,
-    private val chipClick: IClickChipItemCheckList
+    private val itemListener: IItemChekListListener
 ) :
-    RecyclerView.Adapter<BaseAdapterForCheckList>() {
+    RecyclerView.Adapter<BaseHolderForCheckList>() {
 
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseAdapterForCheckList {
+    ): BaseHolderForCheckList {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
             VT_POINT -> {
@@ -32,6 +31,14 @@ class CheckListApartAdapter(
                 val itemHeading = ItemChekListHeadingBinding.inflate(inflater, parent, false)
                 ItemCheckheckListHeadingViewHolder(itemHeading)
             }
+            VT_POINT_ENTRY_FIELD -> {
+                val itemEntryField = ItemCheckListEntryFieldBinding.inflate(inflater, parent, false)
+                ItemCheckListEntryFieldHolder(itemEntryField)
+            }
+            VT_BTN -> {
+                val itemBtn = ItemCheckListBtnBinding.inflate(inflater, parent, false)
+                ItemCheckListBtnHolder(itemBtn)
+            }
             else -> {
                 val itemHeading = ItemCheckListPlugBinding.inflate(inflater, parent, false)
                 ItemCheckListPlugViewHolder(itemHeading)
@@ -41,7 +48,7 @@ class CheckListApartAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: BaseAdapterForCheckList, position: Int) {
+    override fun onBindViewHolder(holder: BaseHolderForCheckList, position: Int) {
         holder.bind(data[position])
 
     }
@@ -52,28 +59,26 @@ class CheckListApartAdapter(
         return when (data[position].viewType) {
             VT_POINT -> VT_POINT
             VT_HEADING_POINT -> VT_HEADING_POINT
+            VT_POINT_ENTRY_FIELD -> VT_POINT_ENTRY_FIELD
+            VT_BTN -> VT_BTN
             else -> VT_PLUG
         }
     }
 
-    fun updateData(newData: MutableList<DataPointCheckList>) {
-        data.addAll(newData)
-    }
-
     inner class ItemCheckheckListHeadingViewHolder(private val itemHeading: ItemChekListHeadingBinding) :
-        BaseAdapterForCheckList(itemHeading.root) {
+        BaseHolderForCheckList(itemHeading.root) {
         override fun bind(dataPoint: DataPointCheckList) {
-            itemHeading.tvItemCheckListHeading.text = dataPoint.dataHeadingPoints?.textHeading
+            itemHeading.tvItemCheckListHeading.text = dataPoint.dataHeadingPoint?.textHeading
         }
 
     }
 
     inner class ItemCheckListPlainViewHolder(private val binding: ItemCheckListPlainBinding) :
-        BaseAdapterForCheckList(binding.root) {
+        BaseHolderForCheckList(binding.root) {
 
         override fun bind(dataPoint: DataPointCheckList) {
 
-            when (dataPoint.dataPoint?.chipSelection) {
+            when (dataPoint.dataCheckPoint?.chipSelection) {
                 1 -> binding.yesChipItemCheckList.isChecked = true
                 2 -> binding.noChipItemCheckList.isChecked = true
                 else -> {
@@ -81,21 +86,24 @@ class CheckListApartAdapter(
                     binding.noChipItemCheckList.isChecked = false
                 }
             }
-            binding.tvItemCheckListPlain.text = dataPoint.dataPoint?.textPoint
-            binding.yesChipItemCheckList.text = dataPoint.dataPoint?.textChipYes
-            binding.noChipItemCheckList.text = dataPoint.dataPoint?.textChipNo
+            binding.tvItemCheckListPlain.text = dataPoint.dataCheckPoint?.textPoint
+            binding.yesChipItemCheckList.text = dataPoint.dataCheckPoint?.textChipYes
+            binding.noChipItemCheckList.text = dataPoint.dataCheckPoint?.textChipNo
 
             binding.cgItemCheckListPlain.setOnCheckedChangeListener { group, checkedId ->
 
                 when (checkedId) {
                     R.id.yes_chip_item_check_list -> {
-                        data[layoutPosition].dataPoint?.chipSelection = 1
-                        chipClick.clickChip(dataPoint.dataPoint?.textPoint.toString(), DONE_DAW)
+                        data[layoutPosition].dataCheckPoint?.chipSelection = 1
+                        itemListener.clickChip(
+                            dataPoint.dataCheckPoint?.textPoint.toString(),
+                            DONE_DAW
+                        )
                     }
                     R.id.no_chip_item_check_list -> {
-                        data[layoutPosition].dataPoint?.chipSelection = 2
-                        chipClick.clickChip(
-                            dataPoint.dataPoint?.textPoint.toString(),
+                        data[layoutPosition].dataCheckPoint?.chipSelection = 2
+                        itemListener.clickChip(
+                            dataPoint.dataCheckPoint?.textPoint.toString(),
                             NOT_DONE_CROSS
                         )
                     }
@@ -105,8 +113,45 @@ class CheckListApartAdapter(
 
     }
 
+    inner class ItemCheckListEntryFieldHolder(private val binding: ItemCheckListEntryFieldBinding) :
+        BaseHolderForCheckList(binding.root) {
+
+        override fun bind(dataPoint: DataPointCheckList) {
+            if (dataPoint.dataEntryFieldPoint?.text != null) {
+                binding.tietClItem.setText(dataPoint.dataEntryFieldPoint?.text)
+            } else {
+                binding.tietClItem.text = null
+            }
+            binding.tietClItem.hint = dataPoint.dataEntryFieldPoint?.hintEditText
+            binding.tietClItem.setOnKeyListener { v, keyCode, event ->
+                return@setOnKeyListener when (keyCode) {
+                    KeyEvent.KEYCODE_BACK -> {
+                        data[layoutPosition].dataEntryFieldPoint?.text =
+                            binding.tietClItem.text.toString()
+                        itemListener.sendTextEditText(
+                            dataPoint.dataEntryFieldPoint?.hintEditText.toString(),
+                            binding?.tietClItem.text.toString()
+                        )
+                        binding.tietClItem?.clearFocus()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+    }
+
+    inner class ItemCheckListBtnHolder(private val binding: ItemCheckListBtnBinding) :
+        BaseHolderForCheckList(binding.root) {
+        override fun bind(dataPoint: DataPointCheckList) {
+            binding.btnClItem.text = dataPoint.dataBtnPoint?.textBtn
+            binding.btnClItem.setOnClickListener { itemListener.sendReport() }
+        }
+
+    }
+
     inner class ItemCheckListPlugViewHolder(private val itemCheckList: ItemCheckListPlugBinding) :
-        BaseAdapterForCheckList(itemCheckList.root) {
+        BaseHolderForCheckList(itemCheckList.root) {
         override fun bind(dataPoint: DataPointCheckList) {
         }
     }

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.example.skyapartmentscleaning.utils.customview.MyTextInputEditText
             android:id="@+id/tiet_cl_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

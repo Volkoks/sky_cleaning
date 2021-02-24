@@ -8,6 +8,7 @@ import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import com.example.skyapartmentscleaning.data.entites.apart.ApartSource
 import com.example.skyapartmentscleaning.data.entites.checklist.DataPointCheckList
 import com.example.skyapartmentscleaning.data.repository.CheckListPointRespository
+import com.example.skyapartmentscleaning.data.repository.IRepository
 import com.example.skyapartmentscleaning.generateFileCSVToInternalStorage
 import com.example.skyapartmentscleaning.shareFile
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
@@ -20,12 +21,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.coroutines.CoroutineContext
 
-class CheckListViewModel : ViewModel(), CoroutineScope {
+class CheckListViewModel(
+    private val repo: IRepository<MutableList<DataPointCheckList>>
+) : ViewModel(), CoroutineScope {
 
-    val dataForPointCheckList: MutableLiveData<List<DataPointCheckList>> = MutableLiveData()
+    val dataForPointCheckList: MutableLiveData<MutableList<DataPointCheckList>> = MutableLiveData()
+
 
     init {
-        dataForPointCheckList.value = CheckListPointRespository.getListDataForCheckList()
+        dataForPointCheckList.value = repo.getData()
     }
 
     override val coroutineContext: CoroutineContext by lazy {
@@ -39,6 +43,39 @@ class CheckListViewModel : ViewModel(), CoroutineScope {
     }
     private val apartSource: ApartSource? by lazy {
         ApartSource(apartDao)
+    }
+
+    /**
+     * Возможно понадоится сделать класс для работы с CleaningApart по аналогии с ApartSource
+     */
+    fun saveApartCleaningReport(apart: Apart?, cleaningApart: CleaningApart?) {
+        launch {
+            apart?.let { apartSource?.addApart(it) }
+            cleaningApart?.let { cleaningApartDao.addCA(it) }
+        }
+    }
+
+    fun generateCSVFileAndSend(context: Context, apart: Apart?, cleaningApart: CleaningApart?) {
+        launch {
+            val newCSVFile = generateFileCSVToInternalStorage(
+                context,
+                "Проверка: " + "${apart?.numberApart} ${apart?.checkDate}" + ".csv"
+            )
+            newCSVFile?.let {
+                csvWriter().open(it) {
+                    apart?.let { writingStringsApart(apart) }
+                    cleaningApart?.let { writingStringsCleaningApart(cleaningApart) }
+                }
+            }
+            newCSVFile?.let { shareFile(context, it) }
+        }
+    }
+
+    fun getCurrentFormattedDate(apart: Apart?): String {
+        val date = Date()
+        val sdf = SimpleDateFormat("dd.MM.yyyy")
+        val formattedDate: String = sdf.format(date)
+        return formattedDate
     }
 
     /**
@@ -121,37 +158,4 @@ class CheckListViewModel : ViewModel(), CoroutineScope {
         writeRow(listOf("[${CleaningApart.REMOVE_FLOOR}]", cleaningApart.removeFloor))
         writeRow(listOf("[${CleaningApart.CLEANING_COMMENT}]", cleaningApart.cleaningComment))
     }
-
-    /**
-     * Возможно понадоится сделать класс для работы с CleaningApart по аналогии с ApartSource
-     */
-    fun saveApartCleaningReport(apart: Apart?, cleaningApart: CleaningApart?) {
-        launch {
-            apart?.let { apartSource?.addApart(it) }
-            cleaningApart?.let { cleaningApartDao.addCA(it) }
-        }
-    }
-
-    fun generateCSVFileAndSend(context: Context, apart: Apart?, cleaningApart: CleaningApart?) {
-        launch {
-            val newCSVFile = generateFileCSVToInternalStorage(
-                context,
-                "Проверка: " + "${apart?.numberApart} ${apart?.checkDate}" + ".csv"
-            )
-            newCSVFile?.let {
-                csvWriter().open(it) {
-                    apart?.let { writingStringsApart(apart) }
-                    cleaningApart?.let { writingStringsCleaningApart(cleaningApart) }
-                }
-            }
-            newCSVFile?.let { shareFile(context, it) }
-        }
-    }
-    fun getCurrentFormattedDate(apart: Apart?): String {
-        val date = Date()
-        val sdf = SimpleDateFormat("dd.MM.yyyy")
-        val formattedDate: String = sdf.format(date)
-        return formattedDate
-    }
-
 }

@@ -42,16 +42,13 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
         listAdapterForTowerFederation =
             ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
         listAdapterForTowerOKO =
-            ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
+            ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
         listAdapterForTowerEmpery =
-            ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
+            ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
         listAdapterForTowerGorodStolic =
-            ApartsListAdapter { viewModel.router.navigateTo(Screens.ApartScreen(it)) }
+            ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
 
-        aparts_tower_federation_recycler_view.adapter = listAdapterForTowerFederation
-        aparts_tower_OKO_recycler_view.adapter = listAdapterForTowerOKO
-        aparts_tower_Empery_recycler_view.adapter = listAdapterForTowerEmpery
-        aparts_tower_Gorod_stolic_recycler_view.adapter = listAdapterForTowerGorodStolic
+        initAdapters()
 
         viewModel.allApartsTowerFederation.observe(viewLifecycleOwner, {
             it?.let {
@@ -67,6 +64,13 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
         viewModel.allApartsTowerGorodStolic.observe(viewLifecycleOwner, {
             listAdapterForTowerGorodStolic.listAparts = it.listApart
         })
+    }
+
+    private fun initAdapters() {
+        aparts_tower_federation_recycler_view.adapter = listAdapterForTowerFederation
+        aparts_tower_OKO_recycler_view.adapter = listAdapterForTowerOKO
+        aparts_tower_Empery_recycler_view.adapter = listAdapterForTowerEmpery
+        aparts_tower_Gorod_stolic_recycler_view.adapter = listAdapterForTowerGorodStolic
     }
 
     /**

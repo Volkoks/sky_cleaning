@@ -1,12 +1,11 @@
 package com.example.skyapartmentscleaning.navigator
 
 
-import androidx.fragment.app.Fragment
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skyapartmentscleaning.ui.apart.ApartFragment
 import com.example.skyapartmentscleaning.ui.checkHistory.CheckHistoryFragment
-import com.example.skyapartmentscleaning.ui.checkList.CheckListFragment
+import com.example.skyapartmentscleaning.ui.checkList.ChekListListenerFragment
 import com.example.skyapartmentscleaning.ui.main.MainFragment
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
 import ru.terrakok.cicerone.android.support.SupportAppScreen
@@ -29,6 +28,6 @@ class Screens {
     }
 
     class CheckListScreen(val apart: Apart) : SupportAppScreen() {
-        override fun getFragment() = CheckListFragment.newInstance(apart, CleaningApart())
+        override fun getFragment() = ChekListListenerFragment.newInstance(apart, CleaningApart())
     }
 }

@@ -9,13 +9,13 @@ import java.io.File
  * @author Alexander Volkov (Volkoks)
  */
 // Создание файла во внутренем хранилище
-fun generateFileCSVToInternalStorage(context: Context, fileName: String): File? {
-    val csvFile = File(context.filesDir, fileName)
-    csvFile.createNewFile()
-    return if (csvFile.exists()) {
-        csvFile
+fun generateFileReportToInternalStorage(context: Context, fileName: String): File? {
+    val reportFile = File(context.filesDir, fileName)
+    reportFile.createNewFile()
+    return if (reportFile.exists()) {
+        reportFile
     } else {
-        Toast.makeText(context,"ФАЙЛ CSV НЕ СОЗДАН!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,"ФАЙЛ ОТЧЕТА НЕ СОЗДАН!", Toast.LENGTH_SHORT).show()
         null
     }
 }

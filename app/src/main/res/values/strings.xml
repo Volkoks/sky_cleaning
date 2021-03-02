@@ -1,25 +1,17 @@
 <resources>
     <string name="app_name">SkyCleaning</string>
-    <string name="string">cleaning apartment</string>
     <string name="yes_daw">YES</string>
     <string name="no_cross">NO</string>
     <string name="cleaning_apartment">apartment</string>
     <string name="floor_cleaning">Floor cleaning</string>
-    <string name="wall_cleaning">Wall cleaning</string>
-    <string name="ceiling_cleaning">Ceiling cleaning</string>
-    <string name="window_cleaning">Window cleaning</string>
     <string name="apartment">Apartment №</string>
     <string name="basic_cleaning">Basic cleaning</string>
     <string name="date_cleaning">Date cleaning: </string>
     <string name="decor">Decor</string>
     <string name="corridor">corridor</string>
-    <string name="shoe_spoon">Shoe spoon</string>
-    <string name="slippers">Slippers</string>
     <string name="federation_tower">Federation Tower</string>
     <string name="level_49">Level 49</string>
     <string name="tower_oko">Tower OKO</string>
-    <string name="mirror">Mirror</string>
-    <string name="sign_on_the_door">Sign on the door</string>
     <string name="cleaning_start">Cleaning start</string>
     <string name="bypassing_the_apartment_the_degree_of_pollution">Bypassing the apartment, the degree of pollution</string>
     <string name="make_a_video_recording_of_the_apartment">Make a video recording of the apartment</string>
@@ -65,5 +57,8 @@
     <string name="apart_check_history">Apart check history</string>
     <string name="jornal_checks">Jornal checks</string>
     <string name="send_report">send report</string>
+    <string name="setting">setting</string>
+    <string name="theme">Theme</string>
+    <string name="dark">Dark</string>
 
 </resources>

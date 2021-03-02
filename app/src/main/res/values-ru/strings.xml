@@ -12,12 +12,13 @@
     <string name="level_49">Этаж 49</string>
     <string name="tower_oko">Башня OKO</string>
     <string name="cleaning_start">Начало уборки</string>
-    <string name="bypassing_the_apartment_the_degree_of_pollution">Обход аппартамента.Степень загрезнения</string>
+    <string name="floor_cleaning"></string>
+    <string name="bypassing_the_apartment_the_degree_of_pollution">Обход аппартамента. Степень загрезнения</string>
     <string name="make_a_video_recording_of_the_apartment">Сделать видеозапись аппартамента</string>
     <string name="dirty">Грязно</string>
     <string name="normal">Норм</string>
     <string name="adjust_the_temperature_regime_in_the_apartment_checking">Настроить температурный режим в аппартаменте(провертривание)</string>
-    <string name="open_bridges_windows_during_the_warm_season">Открыть штроры, окна(в теплое время года)</string>
+    <string name="open_bridges_windows_during_the_warm_season">Открыть шторы, окна(в теплое время года)</string>
     <string name="collect_all_garbage_in_the_apartment">Собрать весь мусор в аппартаменте</string>
     <string name="the_technical_part_of_the_apartment">Техническая часть аппартамента</string>
     <string name="smart_home_operation_if_available">Работа умного дома(при наличии)</string>
@@ -56,5 +57,8 @@
     <string name="apart_check_history">История уборок</string>
     <string name="jornal_checks">Журнал проверок</string>
     <string name="send_report">Отправить отчёт</string>
+    <string name="setting">Настройки</string>
+    <string name="theme">Тема</string>
+    <string name="dark">Темная</string>
 
 </resources>

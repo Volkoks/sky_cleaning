@@ -65,7 +65,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/date_test"
+                    android:id="@+id/tv_clf_date_cleaning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
@@ -98,7 +98,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/check_bypassing_apart_tv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
@@ -165,7 +165,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/open_window_text"
+                        android:id="@+id/tv_clf_text_open_window"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -193,7 +193,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/flush_toilet_text"
+                        android:id="@+id/tv_clf_text_flush_toilet"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"

@@ -8,7 +8,9 @@ import com.example.skycleaning.data.repository.ApartsRepository
 import ru.terrakok.cicerone.Router
 
 
-class AllApartmentsViewModel : ViewModel() {
+class AllApartmentsViewModel(
+    private val repo: ApartsRepository = ApartsRepository()
+) : ViewModel() {
     val router: Router = MyApp.instance.getRouter
 
     val allApartsTowerFederation: MutableLiveData<ViewState> = MutableLiveData()
@@ -17,9 +19,10 @@ class AllApartmentsViewModel : ViewModel() {
     val allApartsTowerGorodStolic: MutableLiveData<ViewState> = MutableLiveData()
 
     init {
-        allApartsTowerFederation.value = ViewState(ApartsRepository.listApartsTowerFederationLevel49)
-        allApartsTowerOKO.value = ViewState(ApartsRepository.listApartsTowerOKO)
-        allApartsTowerEmpery.value = ViewState(ApartsRepository.listApartTowerImpery)
-        allApartsTowerGorodStolic.value = ViewState(ApartsRepository.listApartTowerGorodStolic)
+        allApartsTowerFederation.value =
+            ViewState(repo.getTowerFederation())
+        allApartsTowerOKO.value = ViewState(repo.getTowerOKO())
+        allApartsTowerEmpery.value = ViewState(repo.getTowerImpery())
+        allApartsTowerGorodStolic.value = ViewState(repo.getToweGorodStolic())
     }
 }

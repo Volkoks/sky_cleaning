@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
-    tools:context=".ui.main.MainFragment"
-    android:theme="@style/Theme.SkyApartmentsCleaning">
+    tools:context=".ui.main.MainFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +18,7 @@
             android:layout_gravity="center|center_horizontal"
             android:gravity="center_horizontal"
             android:text="@string/jornal_checks"
-            android:textSize="20dp"
-            android:textColor="@color/primary_text"/>
+            android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/apart_history_list_rv"
@@ -41,9 +38,7 @@
         android:layout_marginBottom="24dp"
         android:clickable="true"
         android:src="@drawable/ic_baseline_add_white"
-        app:backgroundTint="@color/accent"
-        app:tint="@color/primary"
-        app:maxImageSize="38dp"/>
+        app:maxImageSize="38dp" />
 
 
 </FrameLayout>

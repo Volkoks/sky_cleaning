@@ -11,22 +11,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
         app:layout_constraintEnd_toEndOf="@id/barrier_item_check_list"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/wash_windows_wash_if_necessary" />
 
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier_item_check_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="start"
-        app:constraint_referenced_ids="cg_item_check_list_plain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cg_item_check_list_plain"
@@ -44,9 +34,7 @@
             android:id="@+id/yes_chip_item_check_list"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            />
+            android:layout_height="wrap_content" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/no_chip_item_check_list"
@@ -55,17 +43,10 @@
             android:layout_height="wrap_content" />
     </com.google.android.material.chip.ChipGroup>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_item_check_list_plain"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_item_check_list"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/tv_item_check_list_plain">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tied_item_check_list_plain"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.google.android.material.textfield.TextInputLayout>
-
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="cg_item_check_list_plain" />
 </androidx.constraintlayout.widget.ConstraintLayout>

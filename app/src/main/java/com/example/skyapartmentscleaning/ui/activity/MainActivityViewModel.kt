@@ -1,4 +1,4 @@
-package com.example.skyapartmentscleaning.ui.mainActivity
+package com.example.skyapartmentscleaning.ui.activity
 
 import androidx.lifecycle.ViewModel
 import com.example.skyapartmentscleaning.MyApp

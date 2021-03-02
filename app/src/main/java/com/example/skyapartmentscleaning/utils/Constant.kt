@@ -1,5 +1,7 @@
 package com.example.skyapartmentscleaning.data
 
+import com.example.skyapartmentscleaning.R
+
 /**
  * @author Alexander Volkov (Volkoks)
  */
@@ -20,5 +22,13 @@ const val VT_POINT_ENTRY_FIELD = 39567322
 const val VT_PLUG = 9853298
 const val VT_BTN = 2009735632
 
+//Theme
+const val MY_SETTING = "my_setting"
+const val THEME_KEY = "theme app"
+const val LIGHT_THEME = R.style.LightTheme
+const val DARK_THEME = R.style.DarkTheme
 
+//state switch
+const val TAG_STATE_SWITCH_THEME_SETTING = "state switch"
+const val TAG_SWITCH_THEME_SETTING_KEY = "32432535-235325-674775-65856823"
 

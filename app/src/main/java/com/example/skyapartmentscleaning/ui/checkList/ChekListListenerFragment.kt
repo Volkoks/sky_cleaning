@@ -1,7 +1,6 @@
 package com.example.skyapartmentscleaning.ui.checkList
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -12,9 +11,9 @@ import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
 import com.example.skyapartmentscleaning.data.repository.CheckListPointRespository
 import com.example.skyapartmentscleaning.databinding.CheckListForRvFragmentBinding
-
 import com.example.skyapartmentscleaning.ui.adapter.CheckListApartAdapter
 import com.example.skyapartmentscleaning.ui.adapter.IItemChekListListener
+import com.example.skyapartmentscleaning.utils.maper.GenerateReport
 import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
 
 
@@ -36,7 +35,7 @@ class ChekListListenerFragment : Fragment(layout.check_list_for_rv_fragment),
     private var binding: CheckListForRvFragmentBinding? = null
 
     private val viewModel: CheckListViewModel by lazy {
-        CheckListViewModel(CheckListPointRespository())
+        CheckListViewModel(CheckListPointRespository(), GenerateReport())
     }
     private var adapter: CheckListApartAdapter? = null
 
@@ -48,6 +47,7 @@ class ChekListListenerFragment : Fragment(layout.check_list_for_rv_fragment),
         apart = arguments?.getParcelable(APART)
         cleaningApart = arguments?.getParcelable(CLEANING_APART)
 
+        initTitleAndDateApart()
         initRV()
 
         viewModel.dataForPointCheckList.observe(viewLifecycleOwner, {
@@ -55,6 +55,24 @@ class ChekListListenerFragment : Fragment(layout.check_list_for_rv_fragment),
             binding?.rvForCheckList?.adapter = adapter
         })
 
+    }
+
+    private fun initTitleAndDateApart() {
+        apart?.checkDate = viewModel.getCurrentFormattedDate()
+        apart?.id = "${apart?.numberApart},${apart?.checkDate}"
+        activity?.title =
+            "${getString(string.apartment)}:${apart?.numberApart}  ${viewModel.getCurrentFormattedDate()}"
+    }
+
+    override fun onPause() {
+        super.onPause()
+        activity?.title = APP_NAME
+        apart?.checkDate = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initTitleAndDateApart()
     }
 
     private fun initRV() {
@@ -192,7 +210,6 @@ class ChekListListenerFragment : Fragment(layout.check_list_for_rv_fragment),
     }
 
     override fun sendTextEditText(hint: String, text: String) {
-        Log.d("INFO TO FRAGMENT", "${hint}: ${text}")
         when (hint) {
             getString(string.forgotten_things) -> cleaningApart?.forgottenItem = text
             getString(string.commentaries) -> cleaningApart?.cleaningComment = text

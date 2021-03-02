@@ -17,9 +17,9 @@ data class Apart(
     @ColumnInfo(name = NUMBER_APARTS)
     var numberApart: String,
     @ColumnInfo(name = CHECK_DATE)
-    var checkDate: String = "",
+    var checkDate: String? = null,
     @PrimaryKey
-    var id: String =""
+    var id: String = ""
 
 ) : Parcelable {
     companion object {

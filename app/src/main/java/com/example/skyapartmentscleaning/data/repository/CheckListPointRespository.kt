@@ -252,7 +252,7 @@ class CheckListPointRespository : IRepository<MutableList<DataPointCheckList>> {
 
     private fun getTextToRes(resId: Int): String = context.getString(resId)
 
-    override fun getData(): MutableList<DataPointCheckList> = listDataCheckList
+    override fun getList(): MutableList<DataPointCheckList> = listDataCheckList
 
 
 }

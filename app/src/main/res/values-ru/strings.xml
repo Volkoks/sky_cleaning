@@ -57,5 +57,8 @@
     <string name="apart_check_history">История уборок</string>
     <string name="jornal_checks">Журнал проверок</string>
     <string name="send_report">Отправить отчёт</string>
+    <string name="setting">Настройки</string>
+    <string name="theme">Тема</string>
+    <string name="dark">Темная</string>
 
 </resources>

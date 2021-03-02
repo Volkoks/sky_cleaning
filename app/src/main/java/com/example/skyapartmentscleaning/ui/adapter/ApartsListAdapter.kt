@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.entites.apart.Apart
-import kotlinx.android.synthetic.main.apart_card.view.*
+import kotlinx.android.synthetic.main.item_apart_card.view.*
 
 /**
  * @author Alexander Volkov (Volkoks)
@@ -22,7 +22,7 @@ class ApartsListAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.apart_card, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_apart_card, parent, false)
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

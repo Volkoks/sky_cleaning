@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
     tools:context=".ui.allApart.AllApartmentsFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -24,10 +23,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/primary"
                     android:gravity="center_horizontal"
                     android:text="@string/federation_tower"
-                    android:textColor="#3F51B5"
                     android:textSize="22sp" />
 
 
@@ -49,10 +46,8 @@
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/primary"
                     android:gravity="center_horizontal"
                     android:text="@string/tower_oko"
-                    android:textColor="#3F51B5"
                     android:textSize="22sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -72,10 +67,8 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/primary"
                     android:gravity="center_horizontal"
                     android:text="@string/tower_empery"
-                    android:textColor="#3F51B5"
                     android:textSize="22sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -95,10 +88,8 @@
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/primary"
                     android:gravity="center_horizontal"
                     android:text="@string/tower_gorod_stolic"
-                    android:textColor="#3F51B5"
                     android:textSize="22sp" />
 
                 <androidx.recyclerview.widget.RecyclerView

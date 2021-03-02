@@ -2,10 +2,7 @@ package com.example.skyapartmentscleaning.ui.main
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,14 +10,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.navigator.Screens
-import com.example.skyapartmentscleaning.ui.allApart.AllApartmentsFragment
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
 
 /**
  * @author Alexander Volkov (Volkoks)
  */
-class MainFragment : Fragment() {
+class MainFragment : Fragment(R.layout.main_fragment) {
 
     companion object {
         fun newInstance() = MainFragment()
@@ -29,14 +25,9 @@ class MainFragment : Fragment() {
     lateinit var listAdapter: ApartsListAdapter
     private val viewModel: MainViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = View.inflate(context, R.layout.main_fragment, null)
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         floatingActionButton.setOnClickListener {
             viewModel.router.navigateTo(Screens.AllApartmentsScreen())
         }
@@ -52,6 +43,20 @@ class MainFragment : Fragment() {
             }
         })
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_main_fragment, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_setting -> {
+                viewModel.router.navigateTo(Screens.SettingScreen())
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onResume() {

@@ -24,4 +24,5 @@ class AllApartmentsViewModel(
         allApartsTowerEmpery.value = ViewState.Succes(repo.getTowerImpery())
         allApartsTowerGorodStolic.value = ViewState.Succes(repo.getToweGorodStolic())
     }
+
 }

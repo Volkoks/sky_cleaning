@@ -27,6 +27,12 @@
                     android:text="@string/federation_tower"
                     android:textSize="22sp" />
 
+                <ProgressBar
+                    android:id="@+id/progress_all_aparts_federation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:visibility="gone" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/aparts_tower_federation_recycler_view"
@@ -50,11 +56,18 @@
                     android:text="@string/tower_oko"
                     android:textSize="22sp" />
 
+                <ProgressBar
+                    android:id="@+id/progress_all_aparts_oko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:visibility="gone" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/aparts_tower_OKO_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"/>
+                    android:layout_marginStart="16dp" />
 
             </LinearLayout>
 
@@ -70,12 +83,17 @@
                     android:gravity="center_horizontal"
                     android:text="@string/tower_empery"
                     android:textSize="22sp" />
-
+                <ProgressBar
+                    android:id="@+id/progress_all_aparts_impery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:visibility="gone" />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/aparts_tower_Empery_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"/>
+                    android:layout_marginStart="16dp" />
 
             </LinearLayout>
 
@@ -91,12 +109,17 @@
                     android:gravity="center_horizontal"
                     android:text="@string/tower_gorod_stolic"
                     android:textSize="22sp" />
-
+                <ProgressBar
+                    android:id="@+id/progress_all_aparts_gorod_stolic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:visibility="gone" />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/aparts_tower_Gorod_stolic_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"/>
+                    android:layout_marginStart="16dp" />
 
             </LinearLayout>
 

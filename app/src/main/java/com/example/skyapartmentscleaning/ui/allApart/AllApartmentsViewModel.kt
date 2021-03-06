@@ -19,10 +19,9 @@ class AllApartmentsViewModel(
     val allApartsTowerGorodStolic: MutableLiveData<ViewState> = MutableLiveData()
 
     init {
-        allApartsTowerFederation.value =
-            ViewState(repo.getTowerFederation())
-        allApartsTowerOKO.value = ViewState(repo.getTowerOKO())
-        allApartsTowerEmpery.value = ViewState(repo.getTowerImpery())
-        allApartsTowerGorodStolic.value = ViewState(repo.getToweGorodStolic())
+        allApartsTowerFederation.value = ViewState.Succes(repo.getTowerFederation())
+        allApartsTowerOKO.value = ViewState.Succes(repo.getTowerOKO())
+        allApartsTowerEmpery.value = ViewState.Succes(repo.getTowerImpery())
+        allApartsTowerGorodStolic.value = ViewState.Succes(repo.getToweGorodStolic())
     }
 }

@@ -35,7 +35,8 @@ class MainViewModel : ViewModel(), CoroutineScope {
 
     fun loadData() {
         launch {
-            verifiedApartments.postValue(apartSource?.loadListAllApart()?.let { ViewState(it) })
+            verifiedApartments.postValue(
+                apartSource?.loadListAllApart()?.let { ViewState.Succes(it) })
         }
     }
 }

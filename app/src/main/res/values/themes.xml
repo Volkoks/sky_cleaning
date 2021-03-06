@@ -12,18 +12,50 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/primary_text</item>
+        <item name="colorPrimarySurface">@color/accent</item>
+        <item name="styleApartCard">@style/StyleCardApartLight</item>
+
+
     </style>
 
     <style name="DarkTheme" parent="Theme.MaterialComponents">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/purple_500</item>
+        <item name="colorOnPrimary">@color/primary_text</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorOnSecondary">@color/primary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
         <item name="android:textColor">@color/divider</item>
+        <item name="styleApartCard">@style/StyleCardApartLight.Dark</item>
+
+
     </style>
 
-    <style name="StyleCardApart" parent="CardView">
+    <style name="StyleCardApartLight" parent="CardView">
+        <item name="cardBackgroundColor">@color/primary_light</item>
+        <item name="cardCornerRadius">@dimen/small_radius_apart_card</item>
+        <item name="android:foreground">?selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textSize">@dimen/middle_text_size_apart_card</item>
+    </style>
 
+    <style name="StyleCardApartLight.Dark">
+        <item name="cardBackgroundColor">@color/cardview_dark_background</item>
+    </style>
+
+    <style name="TextStyleApartCard">
+        <item name="android:textSize">@dimen/middle_text_size_apart_card</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="TextCLF">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/middle_text_size_item_cl_plain</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_middle</item>
+        <item name="android:layout_marginStart">@dimen/margin_start_small</item>
     </style>
 
     <style name="TextCLFChip" parent="Widget.MaterialComponents.Chip.Choice">

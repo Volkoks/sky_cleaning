@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.data.ViewState
 import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -38,8 +39,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         val itemDecoration = initVerticalDecoration()
         intitRV(itemDecoration)
         viewModel.verifiedApartments.observe(viewLifecycleOwner, {
-            it?.let {
-                listAdapter?.listAparts = it.listApart
+            when (it) {
+                is ViewState.Succes -> listAdapter?.listAparts = it.listApart
             }
         })
 

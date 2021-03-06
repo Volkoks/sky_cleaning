@@ -32,6 +32,6 @@ class MyApp : Application() {
     val getRouter
         get() = cicerone.router
     val getNavigatorHolder
-    get() = cicerone.navigatorHolder
+        get() = cicerone.navigatorHolder
 
 }

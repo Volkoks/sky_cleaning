@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.data.ViewState
 import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
 import kotlinx.android.synthetic.main.all_apartments_fragment.*
@@ -51,18 +52,24 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
         initAdapters()
 
         viewModel.allApartsTowerFederation.observe(viewLifecycleOwner, {
-            it?.let {
-                listAdapterForTowerFederation.listAparts = it.listApart
+            when (it) {
+                is ViewState.Succes -> listAdapterForTowerFederation.listAparts = it.listApart
             }
         })
         viewModel.allApartsTowerOKO.observe(viewLifecycleOwner, {
-            listAdapterForTowerOKO.listAparts = it.listApart
+            when (it) {
+                is ViewState.Succes -> listAdapterForTowerOKO.listAparts = it.listApart
+            }
         })
         viewModel.allApartsTowerEmpery.observe(viewLifecycleOwner, {
-            listAdapterForTowerEmpery.listAparts = it.listApart
+            when (it) {
+                is ViewState.Succes -> listAdapterForTowerEmpery.listAparts = it.listApart
+            }
         })
         viewModel.allApartsTowerGorodStolic.observe(viewLifecycleOwner, {
-            listAdapterForTowerGorodStolic.listAparts = it.listApart
+            when (it) {
+                is ViewState.Succes -> listAdapterForTowerGorodStolic.listAparts = it.listApart
+            }
         })
     }
 

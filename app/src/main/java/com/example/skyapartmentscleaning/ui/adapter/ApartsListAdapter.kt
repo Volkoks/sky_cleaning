@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
-import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.data.room.entites.Apart
 import kotlinx.android.synthetic.main.item_apart_card.view.*
 
 /**

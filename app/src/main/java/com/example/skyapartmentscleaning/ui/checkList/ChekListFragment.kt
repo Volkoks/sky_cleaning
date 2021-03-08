@@ -8,21 +8,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skyapartmentscleaning.R.layout
 import com.example.skyapartmentscleaning.R.string
 import com.example.skyapartmentscleaning.data.*
-import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.data.room.entites.Apart
 import com.example.skyapartmentscleaning.data.repository.CheckListPointRespository
 import com.example.skyapartmentscleaning.databinding.CheckListForRvFragmentBinding
 import com.example.skyapartmentscleaning.ui.adapter.CheckListApartAdapter
 import com.example.skyapartmentscleaning.ui.adapter.IItemChekListListener
-import com.example.skyapartmentscleaning.utils.maper.GenerateReport
-import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
+import com.example.skyapartmentscleaning.utils.generate_report.GenerateReport
+import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
 
 
-class ChekListListenerFragment : Fragment(layout.check_list_for_rv_fragment),
+class ChekListFragment : Fragment(layout.check_list_for_rv_fragment),
     IItemChekListListener {
 
     companion object {
         fun newInstance(apart: Apart, cleaningApart: CleaningApart) =
-            ChekListListenerFragment().apply {
+            ChekListFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(APART, apart)
                     putParcelable(CLEANING_APART, cleaningApart)
@@ -46,6 +46,7 @@ class ChekListListenerFragment : Fragment(layout.check_list_for_rv_fragment),
 
         apart = arguments?.getParcelable(APART)
         cleaningApart = arguments?.getParcelable(CLEANING_APART)
+
 
         initTitleAndDateApart()
         initRV()
@@ -217,6 +218,7 @@ class ChekListListenerFragment : Fragment(layout.check_list_for_rv_fragment),
     }
 
     override fun sendReport() {
+        cleaningApart?.apartId = apart?.id
         viewModel.saveApartCleaningReport(apart, cleaningApart)
         activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart, cleaningApart) }
         Toast.makeText(activity, "Отчёт сохранен", Toast.LENGTH_SHORT).show()

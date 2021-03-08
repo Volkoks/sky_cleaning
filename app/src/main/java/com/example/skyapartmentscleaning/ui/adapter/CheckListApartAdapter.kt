@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
-import com.example.skyapartmentscleaning.data.entites.checklist.DataPointCheckList
+import com.example.skyapartmentscleaning.data.checklist.DataPointCheckList
 import com.example.skyapartmentscleaning.databinding.*
 
 

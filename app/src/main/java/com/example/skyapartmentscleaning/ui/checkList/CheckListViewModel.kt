@@ -4,13 +4,13 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.skyapartmentscleaning.MyApp
-import com.example.skyapartmentscleaning.data.entites.apart.Apart
-import com.example.skyapartmentscleaning.data.entites.apart.ApartSource
-import com.example.skyapartmentscleaning.data.entites.checklist.DataPointCheckList
+import com.example.skyapartmentscleaning.data.room.entites.Apart
+import com.example.skyapartmentscleaning.data.room.datasource.ApartSource
+import com.example.skyapartmentscleaning.data.checklist.DataPointCheckList
 import com.example.skyapartmentscleaning.data.repository.IRepository
 import com.example.skyapartmentscleaning.shareFile
-import com.example.skyapartmentscleaning.utils.maper.IGenerateReport
-import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
+import com.example.skyapartmentscleaning.utils.generate_report.IGenerateReport
+import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ class CheckListViewModel(
 
 
     init {
-        dataForPointCheckList.value = repo.getList()
+        dataForPointCheckList.value = repo.getData()
     }
 
     override val coroutineContext: CoroutineContext by lazy {

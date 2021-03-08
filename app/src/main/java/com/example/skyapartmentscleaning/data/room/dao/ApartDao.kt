@@ -1,6 +1,8 @@
-package com.example.skyapartmentscleaning.data.entites.apart
+package com.example.skyapartmentscleaning.data.room.dao
 
 import androidx.room.*
+import com.example.skyapartmentscleaning.data.room.entites.Apart
+
 /**
  * @author Alexander Volkov (Volkoks)
  */
@@ -17,5 +19,8 @@ interface ApartDao {
 
     @Query("SELECT COUNT() FROM apart")
     fun getCountApart(): Long
+
+    @Query("SELECT * FROM apart WHERE id = :id LIMIT 1")
+    fun getApartById(id: String): Apart
 
 }

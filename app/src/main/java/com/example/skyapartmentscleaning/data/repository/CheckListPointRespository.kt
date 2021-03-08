@@ -3,11 +3,11 @@ package com.example.skyapartmentscleaning.data.repository
 import com.example.skyapartmentscleaning.MyApp
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
-import com.example.skyapartmentscleaning.data.entites.checklist.points.CheckListHeadingPoint
-import com.example.skyapartmentscleaning.data.entites.checklist.points.CheckListEntryFieldPoint
-import com.example.skyapartmentscleaning.data.entites.checklist.points.CheckListCheckPoint
-import com.example.skyapartmentscleaning.data.entites.checklist.DataPointCheckList
-import com.example.skyapartmentscleaning.data.entites.checklist.points.CheckListBtnPoint
+import com.example.skyapartmentscleaning.data.checklist.points.CheckListHeadingPoint
+import com.example.skyapartmentscleaning.data.checklist.points.CheckListEntryFieldPoint
+import com.example.skyapartmentscleaning.data.checklist.points.CheckListCheckPoint
+import com.example.skyapartmentscleaning.data.checklist.DataPointCheckList
+import com.example.skyapartmentscleaning.data.checklist.points.CheckListBtnPoint
 
 class CheckListPointRespository : IRepository<MutableList<DataPointCheckList>> {
 
@@ -252,7 +252,7 @@ class CheckListPointRespository : IRepository<MutableList<DataPointCheckList>> {
 
     private fun getTextToRes(resId: Int): String = context.getString(resId)
 
-    override fun getList(): MutableList<DataPointCheckList> = listDataCheckList
+    override fun getData(): MutableList<DataPointCheckList> = listDataCheckList
 
 
 }

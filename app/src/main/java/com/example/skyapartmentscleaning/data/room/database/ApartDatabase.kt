@@ -1,11 +1,13 @@
-package com.example.skyapartmentscleaning.data.entites.apart
+package com.example.skyapartmentscleaning.data.room.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.skyapartmentscleaning.data.entites.dailyСleaningOfTheApartment.CleaningApartDao
-import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
+import com.example.skyapartmentscleaning.data.room.entites.Apart
+import com.example.skyapartmentscleaning.data.room.dao.ApartDao
+import com.example.skyapartmentscleaning.data.room.dao.CleaningApartDao
+import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
 
 /**
  * @author Alexander Volkov (Volkoks)
@@ -18,7 +20,8 @@ abstract class ApartDatabase : RoomDatabase() {
             var db = Room.databaseBuilder(
                 context.applicationContext,
                 ApartDatabase::class.java, "Apart.db"
-            ).fallbackToDestructiveMigration().build()
+            ).fallbackToDestructiveMigration()
+                .build()
             return db
         }
     }

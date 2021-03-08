@@ -1,4 +1,4 @@
-package com.example.skyapartmentscleaning.data.entites.checklist.points
+package com.example.skyapartmentscleaning.data.checklist.points
 
 data class CheckListCheckPoint(
     val textPoint: String,

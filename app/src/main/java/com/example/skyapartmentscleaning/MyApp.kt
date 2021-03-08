@@ -1,7 +1,7 @@
 package com.example.skyapartmentscleaning
 
 import android.app.Application
-import com.example.skyapartmentscleaning.data.entites.apart.ApartDatabase
+import com.example.skyapartmentscleaning.data.room.database.ApartDatabase
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.Router
 

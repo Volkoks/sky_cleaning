@@ -1,4 +1,8 @@
-package com.example.skyapartmentscleaning.data.entites.apart
+package com.example.skyapartmentscleaning.data.room.datasource
+
+import com.example.skyapartmentscleaning.data.room.dao.ApartDao
+import com.example.skyapartmentscleaning.data.room.entites.Apart
+
 /**
  * @author Alexander Volkov (Volkoks)
  */
@@ -6,7 +10,7 @@ class ApartSource(apartDao: ApartDao) {
     private val apartDao: ApartDao = apartDao
     private var apartList: List<Apart>? = null
 
-    fun loadApart(){
+    fun loadApart() {
         apartList = apartDao.getAllApart()
     }
 
@@ -23,9 +27,14 @@ class ApartSource(apartDao: ApartDao) {
     fun getCountApart(): Long {
         return apartDao.getCountApart()
     }
+
     fun loadListAllApart(): List<Apart>? {
-            loadApart()
+        loadApart()
         return apartList
+    }
+
+    fun getApartById(id: String): Apart {
+        return apartDao.getApartById(id)
     }
 
 }

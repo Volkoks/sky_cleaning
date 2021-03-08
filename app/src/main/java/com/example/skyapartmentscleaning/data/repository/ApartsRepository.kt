@@ -1,6 +1,6 @@
 package com.example.skycleaning.data.repository
 
-import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.data.room.entites.Apart
 
 /**
  * @author Alexander Volkov (Volkoks)

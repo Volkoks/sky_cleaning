@@ -1,10 +1,11 @@
-package com.example.skyapartmentscleaning.utils.maper
+package com.example.skyapartmentscleaning.utils.generate_report
 
 import android.content.Context
-import com.example.skyapartmentscleaning.data.entites.apart.Apart
-import com.example.skyapartmentscleaning.data.entites.checklist.DataForExcelFile
+import com.example.skyapartmentscleaning.data.room.entites.Apart
+import com.example.skyapartmentscleaning.data.checklist.DataForExcelFile
+import com.example.skyapartmentscleaning.data.room.ConstantApartDB
 import com.example.skyapartmentscleaning.generateFileReportToInternalStorage
-import com.example.skycleaning.data.entity.dailyСleaningOfTheApartment.CleaningApart
+import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.File
 import java.io.FileOutputStream
@@ -59,115 +60,121 @@ class GenerateReport : IGenerateReport {
         cleaningApart: CleaningApart
     ): Map<String, DataForExcelFile> {
         val mapData: Map<String, DataForExcelFile> = mapOf(
-            Pair("1", DataForExcelFile(Apart.NUMBER_APARTS, apart.numberApart)),
-            Pair("2", DataForExcelFile(Apart.CHECK_DATE, apart.checkDate.toString())),
+            Pair("1", DataForExcelFile(ConstantApartDB.NUMBER_APARTS, apart.numberApart)),
+            Pair("2", DataForExcelFile(ConstantApartDB.CHECK_DATE, apart.checkDate.toString())),
             Pair(
                 "3",
-                DataForExcelFile(CleaningApart.BYPASSING_APART, cleaningApart.bypassingApart)
+                DataForExcelFile(ConstantApartDB.BYPASSING_APART, cleaningApart.bypassingApart)
             ),
             Pair(
                 "4",
-                DataForExcelFile(CleaningApart.VIDEO_RECORDING, cleaningApart.videoRecording)
+                DataForExcelFile(ConstantApartDB.VIDEO_RECORDING, cleaningApart.videoRecording)
             ),
             Pair(
                 "5",
-                DataForExcelFile(CleaningApart.TEMPERATURE_MODE, cleaningApart.temperarureMode)
+                DataForExcelFile(ConstantApartDB.TEMPERATURE_MODE, cleaningApart.temperarureMode)
             ),
             Pair(
                 "6",
-                DataForExcelFile(CleaningApart.OPEN_WINDOW_BRIDGES, cleaningApart.openWindowBridges)
+                DataForExcelFile(
+                    ConstantApartDB.OPEN_WINDOW_BRIDGES,
+                    cleaningApart.openWindowBridges
+                )
             ),
-            Pair("7", DataForExcelFile(CleaningApart.FLUSH_TOILET, cleaningApart.flushToilet)),
+            Pair("7", DataForExcelFile(ConstantApartDB.FLUSH_TOILET, cleaningApart.flushToilet)),
             Pair(
                 "7",
-                DataForExcelFile(CleaningApart.COLLECT_GARBAGE, cleaningApart.collectGarbage)
+                DataForExcelFile(ConstantApartDB.COLLECT_GARBAGE, cleaningApart.collectGarbage)
             ),
             Pair(
                 "9",
                 DataForExcelFile(
-                    CleaningApart.CHECK_FORGOTTEN_ITEM,
+                    ConstantApartDB.CHECK_FORGOTTEN_ITEM,
                     cleaningApart.checkforgottenItem
                 )
             ),
-            Pair("10", DataForExcelFile(CleaningApart.FORGOTTEN_ITEM, cleaningApart.forgottenItem)),
-            Pair("11", DataForExcelFile(CleaningApart.SMART_HOME, cleaningApart.smartHome)),
-            Pair("12", DataForExcelFile(CleaningApart.TV, cleaningApart.tv)),
-            Pair("13", DataForExcelFile(CleaningApart.TV_CONTOLLER, cleaningApart.tvController)),
-            Pair("14", DataForExcelFile(CleaningApart.REFRIGERATOR, cleaningApart.refrigerator)),
-            Pair("15", DataForExcelFile(CleaningApart.LIGHTING, cleaningApart.lighting)),
+            Pair(
+                "10",
+                DataForExcelFile(ConstantApartDB.FORGOTTEN_ITEM, cleaningApart.forgottenItem)
+            ),
+            Pair("11", DataForExcelFile(ConstantApartDB.SMART_HOME, cleaningApart.smartHome)),
+            Pair("12", DataForExcelFile(ConstantApartDB.TV, cleaningApart.tv)),
+            Pair("13", DataForExcelFile(ConstantApartDB.TV_CONTOLLER, cleaningApart.tvController)),
+            Pair("14", DataForExcelFile(ConstantApartDB.REFRIGERATOR, cleaningApart.refrigerator)),
+            Pair("15", DataForExcelFile(ConstantApartDB.LIGHTING, cleaningApart.lighting)),
             Pair(
                 "16",
-                DataForExcelFile(CleaningApart.BLUETOOTH_COLUMN, cleaningApart.bluetoothColumn)
+                DataForExcelFile(ConstantApartDB.BLUETOOTH_COLUMN, cleaningApart.bluetoothColumn)
             ),
             Pair(
                 "17",
-                DataForExcelFile(CleaningApart.OTHER_EQUIPMENT, cleaningApart.otherEquipment)
+                DataForExcelFile(ConstantApartDB.OTHER_EQUIPMENT, cleaningApart.otherEquipment)
             ),
-            Pair("18", DataForExcelFile(CleaningApart.WASH_DISHES, cleaningApart.washDishes)),
+            Pair("18", DataForExcelFile(ConstantApartDB.WASH_DISHES, cleaningApart.washDishes)),
             Pair(
                 "19",
-                DataForExcelFile(CleaningApart.REMOVE_BED_LINEN, cleaningApart.removeBedLinen)
+                DataForExcelFile(ConstantApartDB.REMOVE_BED_LINEN, cleaningApart.removeBedLinen)
             ),
-            Pair("20", DataForExcelFile(CleaningApart.MAKING_BED, cleaningApart.makingBed)),
+            Pair("20", DataForExcelFile(ConstantApartDB.MAKING_BED, cleaningApart.makingBed)),
             Pair(
                 "21",
                 DataForExcelFile(
-                    CleaningApart.CLEANING_OF_SINKS_AND_HYGIENE_AREAS,
+                    ConstantApartDB.CLEANING_OF_SINKS_AND_HYGIENE_AREAS,
                     cleaningApart.cleaningOfSinksAndHygieneAreas
                 )
             ),
             Pair(
                 "22",
                 DataForExcelFile(
-                    CleaningApart.CLEANING_SHOWER_BATH,
+                    ConstantApartDB.CLEANING_SHOWER_BATH,
                     cleaningApart.cleaningShowerBath
                 )
             ),
             Pair(
                 "23",
-                DataForExcelFile(CleaningApart.CLEANING_TOILET, cleaningApart.cleaningToilet)
+                DataForExcelFile(ConstantApartDB.CLEANING_TOILET, cleaningApart.cleaningToilet)
             ),
             Pair(
                 "24",
                 DataForExcelFile(
-                    CleaningApart.CHANGING_TOWELS_SUPPLIES,
+                    ConstantApartDB.CHANGING_TOWELS_SUPPLIES,
                     cleaningApart.changingTowelsSupplies
                 )
             ),
             Pair(
                 "25",
                 DataForExcelFile(
-                    CleaningApart.WIPE_MIRROR_AND_DOOR,
+                    ConstantApartDB.WIPE_MIRROR_AND_DOOR,
                     cleaningApart.wipeMirrorAndDoor
                 )
             ),
             Pair(
                 "26",
                 DataForExcelFile(
-                    CleaningApart.WIPE_SHELVES_FURNITURE_IN_APART,
+                    ConstantApartDB.WIPE_SHELVES_FURNITURE_IN_APART,
                     cleaningApart.wipeShelvesFurnitureInApart
                 )
             ),
             Pair(
                 "27",
                 DataForExcelFile(
-                    CleaningApart.WIPE_DECOR_MIRROR_IN_APART,
+                    ConstantApartDB.WIPE_DECOR_MIRROR_IN_APART,
                     cleaningApart.wipeDecorMirrorInApart
                 )
             ),
-            Pair("28", DataForExcelFile(CleaningApart.CHECK_WINDOW, cleaningApart.checkWindow)),
-            Pair("29", DataForExcelFile(CleaningApart.WASH_WINDOW, cleaningApart.washWindow)),
+            Pair("28", DataForExcelFile(ConstantApartDB.CHECK_WINDOW, cleaningApart.checkWindow)),
+            Pair("29", DataForExcelFile(ConstantApartDB.WASH_WINDOW, cleaningApart.washWindow)),
             Pair(
                 "30",
                 DataForExcelFile(
-                    CleaningApart.TOP_GUEST_ACCESSORIES,
+                    ConstantApartDB.TOP_GUEST_ACCESSORIES,
                     cleaningApart.topGuestAccessries
                 )
             ),
-            Pair("31", DataForExcelFile(CleaningApart.REMOVE_FLOOR, cleaningApart.removeFloor)),
+            Pair("31", DataForExcelFile(ConstantApartDB.REMOVE_FLOOR, cleaningApart.removeFloor)),
             Pair(
                 "32",
-                DataForExcelFile(CleaningApart.CLEANING_COMMENT, cleaningApart.cleaningComment)
+                DataForExcelFile(ConstantApartDB.CLEANING_COMMENT, cleaningApart.cleaningComment)
             )
         )
         return mapData

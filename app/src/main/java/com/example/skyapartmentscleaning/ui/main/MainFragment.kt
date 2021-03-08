@@ -38,7 +38,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         listAdapter = ApartsListAdapter {
-            viewModel.router.navigateTo(Screens.CheckHistoryScreen())
+            viewModel.router.navigateTo(Screens.CheckHistoryScreen(it))
         }
         val itemDecoration = initVerticalDecoration()
         intitRV(itemDecoration)

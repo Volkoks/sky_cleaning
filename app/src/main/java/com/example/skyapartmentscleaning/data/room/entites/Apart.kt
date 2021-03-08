@@ -1,12 +1,10 @@
-package com.example.skyapartmentscleaning.data.entites.apart
+package com.example.skyapartmentscleaning.data.room.entites
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 /**
  * @author Alexander Volkov (Volkoks)
@@ -14,16 +12,11 @@ import java.util.*
 @Parcelize
 @Entity(tableName = "apart")
 data class Apart(
-    @ColumnInfo(name = NUMBER_APARTS)
+    @ColumnInfo
     var numberApart: String,
-    @ColumnInfo(name = CHECK_DATE)
+    @ColumnInfo
     var checkDate: String? = null,
     @PrimaryKey
     var id: String = ""
 
-) : Parcelable {
-    companion object {
-        const val NUMBER_APARTS = "номер апартаментов"
-        const val CHECK_DATE = "дата проверки"
-    }
-}
+) : Parcelable

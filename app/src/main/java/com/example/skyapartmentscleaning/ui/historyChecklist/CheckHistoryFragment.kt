@@ -4,14 +4,17 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.APART
 import com.example.skyapartmentscleaning.data.hystory_checklist.HistoryChecklistPoint
 import com.example.skyapartmentscleaning.data.repository.HistoryChecklistRepository
 import com.example.skyapartmentscleaning.data.room.entites.Apart
 import com.example.skyapartmentscleaning.databinding.HistoryCheckListFragmentBinding
 import com.example.skyapartmentscleaning.ui.adapter.HistoryChecklistAdapter
+import javax.inject.Inject
 
 /**
  * @author Alexander Volkov (Volkoks)
@@ -26,15 +29,19 @@ class CheckHistoryFragment : Fragment(R.layout.history_check_list_fragment) {
         }
     }
 
+
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: CheckHistoryViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(CheckHistoryViewModel::class.java)
+    }
     private var apart: Apart? = null
     private var adapter: HistoryChecklistAdapter? = null
-    private val viewModel: CheckHistoryViewModel by lazy {
-        CheckHistoryViewModel(HistoryChecklistRepository())
-    }
     private var binding: HistoryCheckListFragmentBinding? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        MyApp.instance.appComponent.inject(this)
         super.onViewCreated(view, savedInstanceState)
 
         apart = arguments?.getParcelable(APART)

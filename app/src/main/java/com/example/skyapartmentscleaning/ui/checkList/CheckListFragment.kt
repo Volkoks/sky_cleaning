@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skyapartmentscleaning.R.layout
 import com.example.skyapartmentscleaning.R.string
+import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.room.entites.Apart
 import com.example.skyapartmentscleaning.data.repository.CheckListPointRespository
@@ -15,14 +17,15 @@ import com.example.skyapartmentscleaning.ui.adapter.CheckListApartAdapter
 import com.example.skyapartmentscleaning.ui.adapter.IItemChekListListener
 import com.example.skyapartmentscleaning.utils.generate_report.GenerateReport
 import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
+import javax.inject.Inject
 
 
-class ChekListFragment : Fragment(layout.check_list_for_rv_fragment),
+class CheckListFragment : Fragment(layout.check_list_for_rv_fragment),
     IItemChekListListener {
 
     companion object {
         fun newInstance(apart: Apart, cleaningApart: CleaningApart) =
-            ChekListFragment().apply {
+            CheckListFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(APART, apart)
                     putParcelable(CLEANING_APART, cleaningApart)
@@ -30,17 +33,20 @@ class ChekListFragment : Fragment(layout.check_list_for_rv_fragment),
             }
     }
 
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: CheckListViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(CheckListViewModel::class.java)
+    }
     private var apart: Apart? = null
     private var cleaningApart: CleaningApart? = null
-    private var binding: CheckListForRvFragmentBinding? = null
 
-    private val viewModel: CheckListViewModel by lazy {
-        CheckListViewModel(CheckListPointRespository(), GenerateReport())
-    }
+    private var binding: CheckListForRvFragmentBinding? = null
     private var adapter: CheckListApartAdapter? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        MyApp.instance.appComponent.inject(this)
         super.onViewCreated(view, savedInstanceState)
         binding = CheckListForRvFragmentBinding.bind(view)
 
@@ -62,7 +68,7 @@ class ChekListFragment : Fragment(layout.check_list_for_rv_fragment),
         apart?.checkDate = viewModel.getCurrentFormattedDate()
         apart?.id = "${apart?.numberApart},${apart?.checkDate}"
         activity?.title =
-            "${getString(string.apartment)}:${apart?.numberApart}  ${viewModel.getCurrentFormattedDate()}"
+            "${apart?.numberApart}, ${viewModel.getCurrentFormattedDate()}"
     }
 
     override fun onPause() {
@@ -219,6 +225,7 @@ class ChekListFragment : Fragment(layout.check_list_for_rv_fragment),
 
     override fun sendReport() {
         cleaningApart?.apartId = apart?.id
+        apart?.checkTime = viewModel.getCurrentFormattedTime()
         viewModel.saveApartCleaningReport(apart, cleaningApart)
         activity?.let { it1 -> viewModel.generateCSVFileAndSend(it1, apart, cleaningApart) }
         Toast.makeText(activity, "Отчёт сохранен", Toast.LENGTH_SHORT).show()

@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.content.edit
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.databinding.SettingFragmentBinding
+import javax.inject.Inject
 
 class SettingFragment : Fragment(R.layout.setting_fragment) {
 
@@ -16,11 +19,16 @@ class SettingFragment : Fragment(R.layout.setting_fragment) {
         fun newInstance() = SettingFragment()
     }
 
-    private val viewModel: SettingViewModel by viewModels()
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: SettingViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(SettingViewModel::class.java)
+    }
     private var binding: SettingFragmentBinding? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        MyApp.instance.appComponent.inject(this)
         super.onViewCreated(view, savedInstanceState)
         binding = SettingFragmentBinding.bind(view)
         stateSwitchTheme()

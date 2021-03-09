@@ -7,19 +7,30 @@
 
     <TextView
         android:id="@+id/tv_item_history_cl_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/tv_item_history_cl_description"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/barrier_item_history_checklist"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="test_name" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_item_history_checklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="tv_item_history_cl_description" />
 
     <TextView
         android:id="@+id/tv_item_history_cl_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:maxWidth="100dp"
+        android:minWidth="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintTop_toTopOf="@+id/tv_item_history_cl_name"

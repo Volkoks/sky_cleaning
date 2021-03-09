@@ -16,6 +16,8 @@ data class Apart(
     var numberApart: String,
     @ColumnInfo
     var checkDate: String? = null,
+    @ColumnInfo
+    var checkTime:String? = null,
     @PrimaryKey
     var id: String = ""
 

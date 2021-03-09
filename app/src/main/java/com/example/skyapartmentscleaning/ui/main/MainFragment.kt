@@ -6,14 +6,17 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.ViewState
 import com.example.skyapartmentscleaning.databinding.MainFragmentBinding
 import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
+import javax.inject.Inject
 
 /**
  * @author Alexander Volkov (Volkoks)
@@ -24,12 +27,19 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         fun newInstance() = MainFragment()
     }
 
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+    }
     lateinit var listAdapter: ApartsListAdapter
-    private val viewModel: MainViewModel by viewModels()
     private var binding: MainFragmentBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        MyApp.instance.appComponent.inject(this)
         super.onViewCreated(view, savedInstanceState)
+
         setHasOptionsMenu(true)
         binding = MainFragmentBinding.bind(view)
 

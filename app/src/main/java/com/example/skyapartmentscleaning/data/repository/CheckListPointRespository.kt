@@ -1,6 +1,6 @@
 package com.example.skyapartmentscleaning.data.repository
 
-import com.example.skyapartmentscleaning.MyApp
+import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.checklist.points.CheckListHeadingPoint

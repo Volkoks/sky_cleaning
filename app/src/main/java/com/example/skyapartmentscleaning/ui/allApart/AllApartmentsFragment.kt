@@ -6,14 +6,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.databinding.AllApartmentsFragmentBinding
 import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
+import javax.inject.Inject
 
 /**
  * @author Alexander Volkov (Volkoks)
@@ -30,11 +33,18 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
     lateinit var listAdapterForTowerEmpery: ApartsListAdapter
     lateinit var listAdapterForTowerGorodStolic: ApartsListAdapter
 
-    private val viewModel: AllApartmentsViewModel by viewModels()
+
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: AllApartmentsViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(AllApartmentsViewModel::class.java)
+    }
     private var binding: AllApartmentsFragmentBinding? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        MyApp.instance.appComponent.inject(this)
         super.onViewCreated(view, savedInstanceState)
         binding = AllApartmentsFragmentBinding.bind(view)
         val itemDecoration = initVerticalDecoration()

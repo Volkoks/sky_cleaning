@@ -9,14 +9,15 @@ import com.example.skyapartmentscleaning.data.repository.IRepositoryHistory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 
 /**
  * @author Alexander Volkov (Volkoks)
  */
-class CheckHistoryViewModel(
-    private val repo: IRepositoryHistory<List<HistoryChecklistPoint>>
+class CheckHistoryViewModel @Inject constructor(
+    val repo: IRepositoryHistory<List<HistoryChecklistPoint>>
 ) : ViewModel(), CoroutineScope {
 
     private val livedataHistoryChecklist: MutableLiveData<List<HistoryChecklistPoint>> =

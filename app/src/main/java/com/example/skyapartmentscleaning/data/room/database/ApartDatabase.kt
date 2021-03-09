@@ -16,14 +16,7 @@ import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
 abstract class ApartDatabase : RoomDatabase() {
 
     companion object {
-        fun getInstance(context: Context): ApartDatabase {
-            var db = Room.databaseBuilder(
-                context.applicationContext,
-                ApartDatabase::class.java, "Apart.db"
-            ).fallbackToDestructiveMigration()
-                .build()
-            return db
-        }
+        const val DB_NAME = "Apart.db"
     }
 
     abstract fun getApartDao(): ApartDao

@@ -14,13 +14,17 @@ class DataForHistoryChecklist(val apart: Apart, val cleaningApart: CleaningApart
     private val listHistoryChecklist: List<HistoryChecklistPoint> = listOf(
         HistoryChecklistPoint(ConstantApartDB.NUMBER_APARTS, apart.numberApart),
         HistoryChecklistPoint(ConstantApartDB.CHECK_DATE, apart.checkDate.toString()),
+        HistoryChecklistPoint(ConstantApartDB.CHECK_TIME, apart.checkTime.toString()),
         HistoryChecklistPoint(ConstantApartDB.BYPASSING_APART, cleaningApart.bypassingApart),
         HistoryChecklistPoint(ConstantApartDB.VIDEO_RECORDING, cleaningApart.videoRecording),
         HistoryChecklistPoint(ConstantApartDB.TEMPERATURE_MODE, cleaningApart.temperarureMode),
         HistoryChecklistPoint(ConstantApartDB.OPEN_WINDOW_BRIDGES, cleaningApart.openWindowBridges),
         HistoryChecklistPoint(ConstantApartDB.FLUSH_TOILET, cleaningApart.flushToilet),
         HistoryChecklistPoint(ConstantApartDB.COLLECT_GARBAGE, cleaningApart.collectGarbage),
-        HistoryChecklistPoint(ConstantApartDB.CHECK_FORGOTTEN_ITEM, cleaningApart.checkforgottenItem),
+        HistoryChecklistPoint(
+            ConstantApartDB.CHECK_FORGOTTEN_ITEM,
+            cleaningApart.checkforgottenItem
+        ),
         HistoryChecklistPoint(ConstantApartDB.FORGOTTEN_ITEM, cleaningApart.forgottenItem),
         HistoryChecklistPoint(ConstantApartDB.SMART_HOME, cleaningApart.smartHome),
         HistoryChecklistPoint(ConstantApartDB.TV, cleaningApart.tv),
@@ -36,7 +40,10 @@ class DataForHistoryChecklist(val apart: Apart, val cleaningApart: CleaningApart
             ConstantApartDB.CLEANING_OF_SINKS_AND_HYGIENE_AREAS,
             cleaningApart.cleaningOfSinksAndHygieneAreas
         ),
-        HistoryChecklistPoint(ConstantApartDB.CLEANING_SHOWER_BATH, cleaningApart.cleaningShowerBath),
+        HistoryChecklistPoint(
+            ConstantApartDB.CLEANING_SHOWER_BATH,
+            cleaningApart.cleaningShowerBath
+        ),
         HistoryChecklistPoint(ConstantApartDB.CLEANING_TOILET, cleaningApart.cleaningToilet),
         HistoryChecklistPoint(
             ConstantApartDB.CHANGING_TOWELS_SUPPLIES,

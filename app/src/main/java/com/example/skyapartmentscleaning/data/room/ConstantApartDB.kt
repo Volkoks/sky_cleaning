@@ -1,8 +1,9 @@
 package com.example.skyapartmentscleaning.data.room
 
 object ConstantApartDB {
-    const val NUMBER_APARTS = "номер апартаментов"
-    const val CHECK_DATE = "дата проверки"
+    const val NUMBER_APARTS = "Номер апартаментов"
+    const val CHECK_DATE = "Дата проверки"
+    const val CHECK_TIME = "Время проверки"
     //        Начало уборки
     const val BYPASSING_APART = "Обход аппартамента.Степень загрезнения"
     const val VIDEO_RECORDING = "Сделать видеозапись аппартамента"

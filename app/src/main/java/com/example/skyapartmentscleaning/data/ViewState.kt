@@ -1,8 +1,13 @@
 package com.example.skyapartmentscleaning.data
 
-import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.data.room.entites.Apart
+
 /**
  * @author Alexander Volkov (Volkoks)
  */
-data class ViewState(var listApart: List<Apart>) {
+sealed class ViewState {
+    data class Succes(val listApart: List<Apart>) : ViewState()
+    data class Loading(val progress: Int?) : ViewState()
+    data class Error(val e: Throwable) : ViewState()
+
 }

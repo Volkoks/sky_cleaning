@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/apart_card"
+    style="?styleApartCard"
     android:layout_width="80dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
-    android:layout_marginTop="5dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="6dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="false">
+    android:layout_marginTop="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,15 +15,21 @@
 
         <TextView
             android:id="@+id/number_apart_cardView"
+            style="@style/TextStyleApartCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:accessibilityLiveRegion="none"
-            android:textAlignment="center"
-            android:textSize="24sp" />
+            tools:text="5555" />
 
         <TextView
             android:id="@+id/check_date"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/check_time"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0"

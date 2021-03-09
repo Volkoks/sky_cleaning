@@ -1,17 +1,18 @@
 package com.example.skycleaning.data.repository
 
-import com.example.skyapartmentscleaning.data.entites.apart.Apart
+import com.example.skyapartmentscleaning.data.repository.IReposirotyAparts
+import com.example.skyapartmentscleaning.data.room.entites.Apart
 
 /**
  * @author Alexander Volkov (Volkoks)
  */
 
-class ApartsRepository {
+class ApartsRepository : IReposirotyAparts {
 
-    fun getTowerFederation(): List<Apart> = listApartsTowerFederation
-    fun getTowerOKO(): List<Apart> = listApartsTowerOKO
-    fun getTowerImpery(): List<Apart> = listApartTowerImpery
-    fun getToweGorodStolic(): List<Apart> = listApartTowerGorodStolic
+    override fun getTowerFederation(): List<Apart> = listApartsTowerFederation
+    override fun getTowerOKO(): List<Apart> = listApartsTowerOKO
+    override fun getTowerImpery(): List<Apart> = listApartTowerImpery
+    override fun getToweGorodStolic(): List<Apart> = listApartTowerGorodStolic
 
     private var listApartsTowerFederation: List<Apart> = listOf(
         Apart("492"),

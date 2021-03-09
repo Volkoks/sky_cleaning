@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_radius_apart_card">10dp</dimen>
+    <dimen name="middle_text_size_apart_card">24sp</dimen>
+    <dimen name="middle_text_size_item_cl_plain">20sp</dimen>
+    // margin
+    <dimen name="margin_top_small">5dp</dimen>
+    <dimen name="margin_top_middle">10dp</dimen>
+    <dimen name="margin_top_big">15dp</dimen>
+    <dimen name="margin_start_small">5dp</dimen>
+    <dimen name="margin_start_middle">10dp</dimen>
+    <dimen name="margin_start_big">16dp</dimen>
+</resources>

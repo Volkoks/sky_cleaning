@@ -2,16 +2,18 @@ package com.example.skyapartmentscleaning.ui.allApart
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.skyapartmentscleaning.MyApp
+import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.ViewState
+import com.example.skyapartmentscleaning.data.repository.IReposirotyAparts
 import com.example.skycleaning.data.repository.ApartsRepository
 import ru.terrakok.cicerone.Router
+import javax.inject.Inject
 
 
-class AllApartmentsViewModel(
-    private val repo: ApartsRepository = ApartsRepository()
+class AllApartmentsViewModel @Inject constructor(
+    private val repo: IReposirotyAparts,
+    val router: Router
 ) : ViewModel() {
-    val router: Router = MyApp.instance.getRouter
 
     val allApartsTowerFederation: MutableLiveData<ViewState> = MutableLiveData()
     val allApartsTowerOKO: MutableLiveData<ViewState> = MutableLiveData()
@@ -19,10 +21,10 @@ class AllApartmentsViewModel(
     val allApartsTowerGorodStolic: MutableLiveData<ViewState> = MutableLiveData()
 
     init {
-        allApartsTowerFederation.value =
-            ViewState(repo.getTowerFederation())
-        allApartsTowerOKO.value = ViewState(repo.getTowerOKO())
-        allApartsTowerEmpery.value = ViewState(repo.getTowerImpery())
-        allApartsTowerGorodStolic.value = ViewState(repo.getToweGorodStolic())
+        allApartsTowerFederation.value = ViewState.Succes(repo.getTowerFederation())
+        allApartsTowerOKO.value = ViewState.Succes(repo.getTowerOKO())
+        allApartsTowerEmpery.value = ViewState.Succes(repo.getTowerImpery())
+        allApartsTowerGorodStolic.value = ViewState.Succes(repo.getToweGorodStolic())
     }
+
 }

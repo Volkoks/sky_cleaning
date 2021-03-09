@@ -3,15 +3,20 @@ package com.example.skyapartmentscleaning.ui.main
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.application.MyApp
+import com.example.skyapartmentscleaning.data.ViewState
+import com.example.skyapartmentscleaning.databinding.MainFragmentBinding
 import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
-import kotlinx.android.synthetic.main.main_fragment.*
+import javax.inject.Inject
 
 /**
  * @author Alexander Volkov (Volkoks)
@@ -22,24 +27,39 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         fun newInstance() = MainFragment()
     }
 
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+    }
     lateinit var listAdapter: ApartsListAdapter
-    private val viewModel: MainViewModel by viewModels()
+    private var binding: MainFragmentBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        MyApp.instance.appComponent.inject(this)
         super.onViewCreated(view, savedInstanceState)
+
         setHasOptionsMenu(true)
-        floatingActionButton.setOnClickListener {
+        binding = MainFragmentBinding.bind(view)
+
+        binding?.floatingActionButton?.setOnClickListener {
             viewModel.router.navigateTo(Screens.AllApartmentsScreen())
         }
 
         listAdapter = ApartsListAdapter {
-            viewModel.router.navigateTo(Screens.CheckHistoryScreen())
+            viewModel.router.navigateTo(Screens.CheckHistoryScreen(it))
         }
         val itemDecoration = initVerticalDecoration()
         intitRV(itemDecoration)
         viewModel.verifiedApartments.observe(viewLifecycleOwner, {
-            it?.let {
-                listAdapter?.listAparts = it.listApart
+            when (it) {
+                is ViewState.Loading -> showLoading(it.progress)
+                is ViewState.Succes -> {
+                    stopProgressLoading()
+                    listAdapter.listAparts = it.listApart
+                }
+                is ViewState.Error -> showError(it.e)
             }
         })
 
@@ -69,10 +89,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
      * Инициализация RecyclerView
      */
     private fun intitRV(decor: DividerItemDecoration) {
-        apart_history_list_rv.setHasFixedSize(true)
-        apart_history_list_rv.layoutManager = GridLayoutManager(context, 3)
-        apart_history_list_rv.addItemDecoration(decor)
-        apart_history_list_rv.adapter = listAdapter
+        binding?.apartHistoryListRv?.setHasFixedSize(true)
+        binding?.apartHistoryListRv?.layoutManager = GridLayoutManager(context, 3)
+        binding?.apartHistoryListRv?.addItemDecoration(decor)
+        binding?.apartHistoryListRv?.adapter = listAdapter
     }
 
     /**
@@ -82,7 +102,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private fun initVerticalDecoration(): DividerItemDecoration {
         val itemDecoration = DividerItemDecoration(activity, RecyclerView.VERTICAL)
         itemDecoration.setDrawable(
-            resources?.getDrawable(
+            resources.getDrawable(
                 R.drawable.separator_vertical,
                 activity?.theme
             )
@@ -90,4 +110,21 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         return itemDecoration
     }
 
+    private fun showLoading(progress: Int?) {
+        when (progress) {
+            1 -> startProgressLoading()
+        }
+    }
+
+    private fun startProgressLoading() {
+        binding?.progressMainFragment?.visibility = ViewGroup.VISIBLE
+    }
+
+    private fun stopProgressLoading() {
+        binding?.progressMainFragment?.visibility = ViewGroup.GONE
+    }
+
+    private fun showError(e: Throwable) {
+        Toast.makeText(activity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+    }
 }

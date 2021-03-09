@@ -1,18 +1,22 @@
 package com.example.skyapartmentscleaning.ui.allApart
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
+import com.example.skyapartmentscleaning.application.MyApp
+import com.example.skyapartmentscleaning.data.*
+import com.example.skyapartmentscleaning.databinding.AllApartmentsFragmentBinding
 import com.example.skyapartmentscleaning.navigator.Screens
 import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
-import kotlinx.android.synthetic.main.all_apartments_fragment.*
+import javax.inject.Inject
 
 /**
  * @author Alexander Volkov (Volkoks)
@@ -29,12 +33,20 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
     lateinit var listAdapterForTowerEmpery: ApartsListAdapter
     lateinit var listAdapterForTowerGorodStolic: ApartsListAdapter
 
-    private val viewModel: AllApartmentsViewModel by viewModels()
+
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: AllApartmentsViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(AllApartmentsViewModel::class.java)
+    }
+    private var binding: AllApartmentsFragmentBinding? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        MyApp.instance.appComponent.inject(this)
         super.onViewCreated(view, savedInstanceState)
-
+        binding = AllApartmentsFragmentBinding.bind(view)
         val itemDecoration = initVerticalDecoration()
 
         initRecyclerView(itemDecoration)
@@ -51,45 +63,72 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
         initAdapters()
 
         viewModel.allApartsTowerFederation.observe(viewLifecycleOwner, {
-            it?.let {
-                listAdapterForTowerFederation.listAparts = it.listApart
+            when (it) {
+                is ViewState.Loading -> showLoading(it.progress, FEDERATION_TOWER)
+                is ViewState.Succes -> {
+                    stopProgressLoading(FEDERATION_TOWER)
+                    listAdapterForTowerFederation.listAparts = it.listApart
+                }
+                is ViewState.Error -> showError(it.e)
             }
         })
         viewModel.allApartsTowerOKO.observe(viewLifecycleOwner, {
-            listAdapterForTowerOKO.listAparts = it.listApart
+            when (it) {
+                is ViewState.Loading -> showLoading(it.progress, OKO_TOWER)
+                is ViewState.Succes -> {
+                    stopProgressLoading(OKO_TOWER)
+                    listAdapterForTowerOKO.listAparts = it.listApart
+                }
+                is ViewState.Error -> showError(it.e)
+            }
         })
         viewModel.allApartsTowerEmpery.observe(viewLifecycleOwner, {
-            listAdapterForTowerEmpery.listAparts = it.listApart
+            when (it) {
+                is ViewState.Loading -> showLoading(it.progress, EMPERY_TOWER)
+                is ViewState.Succes -> {
+                    stopProgressLoading(EMPERY_TOWER)
+                    listAdapterForTowerEmpery.listAparts = it.listApart
+                }
+                is ViewState.Error -> showError(it.e)
+            }
         })
-        viewModel.allApartsTowerGorodStolic.observe(viewLifecycleOwner, {
-            listAdapterForTowerGorodStolic.listAparts = it.listApart
-        })
+        viewModel.allApartsTowerGorodStolic.observe(viewLifecycleOwner,
+            {
+                when (it) {
+                    is ViewState.Loading -> showLoading(it.progress, GOROD_STOLIC)
+                    is ViewState.Succes -> {
+                        stopProgressLoading(GOROD_STOLIC)
+                        listAdapterForTowerGorodStolic.listAparts = it.listApart
+                    }
+                    is ViewState.Error -> showError(it.e)
+                }
+            })
     }
 
     private fun initAdapters() {
-        aparts_tower_federation_recycler_view.adapter = listAdapterForTowerFederation
-        aparts_tower_OKO_recycler_view.adapter = listAdapterForTowerOKO
-        aparts_tower_Empery_recycler_view.adapter = listAdapterForTowerEmpery
-        aparts_tower_Gorod_stolic_recycler_view.adapter = listAdapterForTowerGorodStolic
+        binding?.apartsTowerFederationRecyclerView?.adapter = listAdapterForTowerFederation
+        binding?.apartsTowerOKORecyclerView?.adapter = listAdapterForTowerOKO
+        binding?.apartsTowerEmperyRecyclerView?.adapter = listAdapterForTowerEmpery
+        binding?.apartsTowerGorodStolicRecyclerView?.adapter = listAdapterForTowerGorodStolic
     }
 
     /**
      * Инициализация RecyclerView для списка аппартаментов
      */
     private fun initRecyclerView(itemDecoration: DividerItemDecoration) {
-        aparts_tower_federation_recycler_view.setHasFixedSize(true)
-        aparts_tower_OKO_recycler_view.setHasFixedSize(true)
-        aparts_tower_Empery_recycler_view.setHasFixedSize(true)
-        aparts_tower_Gorod_stolic_recycler_view.setHasFixedSize(true)
+        binding?.apartsTowerFederationRecyclerView?.setHasFixedSize(true)
+        binding?.apartsTowerOKORecyclerView?.setHasFixedSize(true)
+        binding?.apartsTowerGorodStolicRecyclerView?.setHasFixedSize(true)
+        binding?.apartsTowerEmperyRecyclerView?.setHasFixedSize(true)
 
-        aparts_tower_federation_recycler_view.layoutManager = GridLayoutManager(activity, 3)
-        aparts_tower_federation_recycler_view.addItemDecoration(itemDecoration)
-        aparts_tower_OKO_recycler_view.layoutManager = GridLayoutManager(activity, 3)
-        aparts_tower_OKO_recycler_view.addItemDecoration(itemDecoration)
-        aparts_tower_Empery_recycler_view.layoutManager = GridLayoutManager(activity, 3)
-        aparts_tower_Empery_recycler_view.addItemDecoration(itemDecoration)
-        aparts_tower_Gorod_stolic_recycler_view.layoutManager = GridLayoutManager(activity, 3)
-        aparts_tower_Gorod_stolic_recycler_view.addItemDecoration(itemDecoration)
+        binding?.apartsTowerFederationRecyclerView?.layoutManager = GridLayoutManager(activity, 3)
+        binding?.apartsTowerFederationRecyclerView?.addItemDecoration(itemDecoration)
+        binding?.apartsTowerOKORecyclerView?.layoutManager = GridLayoutManager(activity, 3)
+        binding?.apartsTowerOKORecyclerView?.addItemDecoration(itemDecoration)
+        binding?.apartsTowerEmperyRecyclerView?.layoutManager = GridLayoutManager(activity, 3)
+        binding?.apartsTowerEmperyRecyclerView?.addItemDecoration(itemDecoration)
+        binding?.apartsTowerGorodStolicRecyclerView?.layoutManager = GridLayoutManager(activity, 3)
+        binding?.apartsTowerGorodStolicRecyclerView?.addItemDecoration(itemDecoration)
     }
 
     /**
@@ -98,12 +137,41 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
     private fun initVerticalDecoration(): DividerItemDecoration {
         val itemDecoration = DividerItemDecoration(activity, RecyclerView.VERTICAL)
         itemDecoration.setDrawable(
-            resources?.getDrawable(
+            resources.getDrawable(
                 R.drawable.separator_vertical,
                 activity?.theme
             )
         )
         return itemDecoration
+    }
+
+    private fun showLoading(progress: Int?, tower: String) {
+        when (progress) {
+            1 -> startProgressLoading(tower)
+        }
+    }
+
+    private fun startProgressLoading(tower: String) {
+        when (tower) {
+            FEDERATION_TOWER -> binding?.progressAllApartsFederation?.visibility = ViewGroup.VISIBLE
+            OKO_TOWER -> binding?.progressAllApartsOko?.visibility = ViewGroup.VISIBLE
+            EMPERY_TOWER -> binding?.progressAllApartsImpery?.visibility = ViewGroup.VISIBLE
+            GOROD_STOLIC -> binding?.progressAllApartsGorodStolic?.visibility = ViewGroup.VISIBLE
+        }
+
+    }
+
+    private fun stopProgressLoading(tower: String) {
+        when (tower) {
+            FEDERATION_TOWER -> binding?.progressAllApartsFederation?.visibility = ViewGroup.GONE
+            OKO_TOWER -> binding?.progressAllApartsOko?.visibility = ViewGroup.GONE
+            EMPERY_TOWER -> binding?.progressAllApartsImpery?.visibility = ViewGroup.GONE
+            GOROD_STOLIC -> binding?.progressAllApartsGorodStolic?.visibility = ViewGroup.GONE
+        }
+    }
+
+    private fun showError(e: Throwable) {
+        Toast.makeText(activity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
     }
 }
 

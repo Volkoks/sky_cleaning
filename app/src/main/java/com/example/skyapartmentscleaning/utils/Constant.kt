@@ -32,3 +32,8 @@ const val DARK_THEME = R.style.DarkTheme
 const val TAG_STATE_SWITCH_THEME_SETTING = "state switch"
 const val TAG_SWITCH_THEME_SETTING_KEY = "32432535-235325-674775-65856823"
 
+const val FEDERATION_TOWER= "FederationTower"
+const val OKO_TOWER = "OkoTower"
+const val EMPERY_TOWER = "EmperyTower"
+const val GOROD_STOLIC = "GorodStolic"
+

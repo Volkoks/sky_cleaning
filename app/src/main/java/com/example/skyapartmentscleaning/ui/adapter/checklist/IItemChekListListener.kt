@@ -1,4 +1,4 @@
-package com.example.skyapartmentscleaning.ui.adapter
+package com.example.skyapartmentscleaning.ui.adapter.checklist
 
 
 interface IItemChekListListener {

@@ -1,4 +1,4 @@
-package com.example.skyapartmentscleaning.ui.adapter
+package com.example.skyapartmentscleaning.ui.adapter.checklist
 
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.checklist.DataPointCheckList
 import com.example.skyapartmentscleaning.databinding.*
+import com.example.skyapartmentscleaning.ui.adapter.checklist.IItemChekListListener
 
 
 class CheckListApartAdapter(

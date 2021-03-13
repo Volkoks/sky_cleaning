@@ -59,5 +59,8 @@
     <string name="setting">setting</string>
     <string name="theme">Theme</string>
     <string name="dark">Dark</string>
+    <string name="undo_delete">Undo delete</string>
+    <string name="undo">undo</string>
+
 
 </resources>

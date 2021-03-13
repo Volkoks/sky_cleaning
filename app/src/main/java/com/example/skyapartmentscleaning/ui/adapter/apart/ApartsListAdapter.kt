@@ -1,23 +1,26 @@
-package com.example.skyapartmentscleaning.ui.adapter
+package com.example.skyapartmentscleaning.ui.adapter.apart
 
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.room.entites.Apart
 import com.example.skyapartmentscleaning.databinding.ItemApartCardBinding
-import com.example.skyapartmentscleaning.databinding.ItemHistoryCheckListPointBinding
-import kotlinx.android.synthetic.main.item_apart_card.view.*
 
 /**
  * @author Alexander Volkov (Volkoks)
  */
-class ApartsListAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
+class ApartsListAdapter(
+    val onItemClick: (
+        (Apart) -> Unit)? = null,
+    val onItemLongClick:
+    ((ItemApartCardBinding,Apart) -> Unit)? = null,
+    val onClickBtnDel: ((Apart) -> Unit)? = null
+) :
     RecyclerView.Adapter<ApartsListAdapter.ViewHolder>() {
 
-    var listAparts: List<Apart> = listOf()
+    var listAparts: MutableList<Apart> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -39,6 +42,10 @@ class ApartsListAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(apart: Apart) = with(itemView) {
+            when (apart.longSpecifiedStatus) {
+                false -> binding.itemApartCardDeleteLayout.visibility = ViewGroup.GONE
+                true -> binding.itemApartCardDeleteLayout.visibility = ViewGroup.VISIBLE
+            }
             binding.numberApartCardView.text = apart.numberApart.toString()
             if (apart.checkDate != null && apart.checkTime != null) {
                 binding.checkDate.layoutParams = visibleDataAndTime()
@@ -47,8 +54,17 @@ class ApartsListAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
                 binding.checkTime.text = apart.checkTime
             }
 
-            itemView.setOnClickListener {
+            binding.apartCard.setOnClickListener {
                 onItemClick?.invoke(apart)
+            }
+            binding.apartCard.setOnLongClickListener {
+                onItemLongClick?.invoke(binding,apart)
+                true
+            }
+            binding.itemApartFabDeleteCard.setOnClickListener {
+                listAparts.removeAt(layoutPosition)
+                notifyDataSetChanged()
+                onClickBtnDel?.invoke(apart)
             }
         }
 
@@ -57,4 +73,5 @@ class ApartsListAdapter(val onItemClick: ((Apart) -> Unit)? = null) :
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
     }
+
 }

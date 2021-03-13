@@ -3,9 +3,11 @@ package com.example.skyapartmentscleaning.ui.historyChecklist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.skyapartmentscleaning.data.ViewState
 import com.example.skyapartmentscleaning.data.hystory_checklist.HistoryChecklistPoint
 import com.example.skyapartmentscleaning.data.repository.IRepository
 import com.example.skyapartmentscleaning.data.repository.IRepositoryHistory
+import com.example.skyapartmentscleaning.ui.base.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,23 +20,20 @@ import kotlin.coroutines.CoroutineContext
  */
 class CheckHistoryViewModel @Inject constructor(
     val repo: IRepositoryHistory<List<HistoryChecklistPoint>>
-) : ViewModel(), CoroutineScope {
+) : BaseViewModel<ViewState>() {
 
-    private val livedataHistoryChecklist: MutableLiveData<List<HistoryChecklistPoint>> =
-        MutableLiveData()
-
-    override val coroutineContext: CoroutineContext by lazy {
-        Dispatchers.IO
-    }
-
-    fun subscribe(): LiveData<List<HistoryChecklistPoint>> {
-        return livedataHistoryChecklist
+    fun subscribe(): LiveData<ViewState> {
+        return liveDataToObserve
     }
 
     fun loadData(apartId: String) {
-        launch {
-            livedataHistoryChecklist.postValue(repo.getData(apartId))
+        viewModelCoroutineScope.launch {
+            liveDataToObserve.postValue(ViewState.SuccesDataHistoryCheckList(repo.getData(apartId)))
         }
+    }
+
+    override fun errorReturned(t: Throwable) {
+        liveDataToObserve.value = ViewState.Error(t)
     }
 
 }

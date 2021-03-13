@@ -11,11 +11,9 @@ import com.example.skyapartmentscleaning.R.string
 import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.room.entites.Apart
-import com.example.skyapartmentscleaning.data.repository.CheckListPointRespository
 import com.example.skyapartmentscleaning.databinding.CheckListForRvFragmentBinding
-import com.example.skyapartmentscleaning.ui.adapter.CheckListApartAdapter
-import com.example.skyapartmentscleaning.ui.adapter.IItemChekListListener
-import com.example.skyapartmentscleaning.utils.generate_report.GenerateReport
+import com.example.skyapartmentscleaning.ui.adapter.checklist.CheckListApartAdapter
+import com.example.skyapartmentscleaning.ui.adapter.checklist.IItemChekListListener
 import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
 import javax.inject.Inject
 

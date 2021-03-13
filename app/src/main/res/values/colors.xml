@@ -18,4 +18,5 @@
     <color name="divider">#BDBDBD</color>
     <color name="teal_translucent">#E3F6F5</color>
     <color name="dark_scarlet">#a83005</color>
+    <color name="red">#D50000</color>
 </resources>

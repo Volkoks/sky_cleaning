@@ -1,11 +1,9 @@
-package com.example.skyapartmentscleaning.ui.adapter
+package com.example.skyapartmentscleaning.ui.adapter.history_checklist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.hystory_checklist.HistoryChecklistPoint
-import com.example.skyapartmentscleaning.data.room.entites.Apart
 import com.example.skyapartmentscleaning.databinding.ItemHistoryCheckListPointBinding
 
 class HistoryChecklistAdapter : RecyclerView.Adapter<HistoryChecklistAdapter.ViewHolder>() {
@@ -36,6 +34,8 @@ class HistoryChecklistAdapter : RecyclerView.Adapter<HistoryChecklistAdapter.Vie
         fun bind(data: HistoryChecklistPoint) {
             binding.tvItemHistoryClName.text = data.namePoint
             binding.tvItemHistoryClDescription.text = data.descriptionPoint
+
         }
+
     }
 }

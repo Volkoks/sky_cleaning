@@ -26,7 +26,6 @@ class RepositoryModule {
         HistoryChecklistRepository(localHistoryDatasource)
 
     @Provides
-    @Singleton
     fun repoChecklist(): IRepository<MutableList<DataPointCheckList>> = CheckListPointRespository()
 
     @Provides

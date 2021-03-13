@@ -3,17 +3,17 @@ package com.example.skyapartmentscleaning.ui.historyChecklist
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.APART
 import com.example.skyapartmentscleaning.data.hystory_checklist.HistoryChecklistPoint
-import com.example.skyapartmentscleaning.data.repository.HistoryChecklistRepository
 import com.example.skyapartmentscleaning.data.room.entites.Apart
 import com.example.skyapartmentscleaning.databinding.HistoryCheckListFragmentBinding
-import com.example.skyapartmentscleaning.ui.adapter.HistoryChecklistAdapter
+import com.example.skyapartmentscleaning.ui.adapter.history_checklist.HistoryChecklistAdapter
 import javax.inject.Inject
 
 /**
@@ -59,6 +59,7 @@ class CheckHistoryFragment : Fragment(R.layout.history_check_list_fragment) {
             binding?.rvHistoryChecklistFragment?.setHasFixedSize(true)
             binding?.rvHistoryChecklistFragment?.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            binding?.rvHistoryChecklistFragment?.addItemDecoration(initDecorator())
             binding?.rvHistoryChecklistFragment?.adapter = adapter
             listData?.let {
                 adapter?.listData = it
@@ -70,5 +71,9 @@ class CheckHistoryFragment : Fragment(R.layout.history_check_list_fragment) {
         }
 
     }
-
+    private fun initDecorator():DividerItemDecoration{
+        val decorator = DividerItemDecoration(activity,RecyclerView.VERTICAL)
+        decorator.setDrawable(resources.getDrawable(R.drawable.item_decoration_,null))
+        return decorator
+    }
 }

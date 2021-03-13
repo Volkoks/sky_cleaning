@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="LightTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="LightTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_dark</item>
@@ -18,9 +18,8 @@
 
     </style>
 
-    <style name="DarkTheme" parent="Theme.MaterialComponents">
+    <style name="DarkTheme" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/purple_500</item>
         <item name="colorOnPrimary">@color/primary_text</item>
         <!-- Secondary brand color. -->
@@ -33,6 +32,14 @@
         <item name="styleApartCard">@style/StyleCardApartLight.Dark</item>
 
 
+    </style>
+
+    <style name="Toolbar">
+        <item name="title">@string/app_name</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <!-- <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item> -->
+        <item name="android:background">?attr/colorPrimary</item>
     </style>
 
     <style name="StyleCardApartLight" parent="CardView">

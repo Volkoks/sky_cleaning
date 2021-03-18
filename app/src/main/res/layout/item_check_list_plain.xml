@@ -21,7 +21,6 @@
         android:id="@+id/cg_item_check_list_plain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         app:layout_constraintBottom_toBottomOf="@id/tv_item_check_list_plain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -31,13 +30,14 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/yes_chip_item_check_list"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/ChipStyle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@color/selector_chips_checklist"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/no_chip_item_check_list"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/ChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </com.google.android.material.chip.ChipGroup>

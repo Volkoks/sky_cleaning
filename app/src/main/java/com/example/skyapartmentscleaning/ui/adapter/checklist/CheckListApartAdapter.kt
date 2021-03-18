@@ -1,5 +1,7 @@
 package com.example.skyapartmentscleaning.ui.adapter.checklist
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -144,8 +146,12 @@ class CheckListApartAdapter(
 
     inner class ItemCheckListBtnHolder(private val binding: ItemCheckListBtnBinding) :
         BaseHolderForCheckList(binding.root) {
+        @SuppressLint("UseCompatLoadingForDrawables")
         override fun bind(dataPoint: DataPointCheckList) {
             binding.btnClItem.text = dataPoint.dataBtnPoint?.textBtn
+            binding.btnClItem.icon = dataPoint.dataBtnPoint?.icon?.let {
+                itemView.context.getDrawable(it)
+            }
             binding.btnClItem.setOnClickListener { itemListener.sendReport() }
         }
 

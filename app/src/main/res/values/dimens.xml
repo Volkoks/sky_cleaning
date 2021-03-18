@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //elevation
+    <dimen name="small_elevation">3dp</dimen>
+    <dimen name="middle_elevation">5dp</dimen>
+    <dimen name="big_elevation">8dp</dimen>
+    //radius
     <dimen name="small_radius_apart_card">10dp</dimen>
+    //textsize
+    <dimen name="small_text_size_apart_card">15sp</dimen>
+    <dimen name="small_text_size_item_cl_plain">15sp</dimen>
     <dimen name="middle_text_size_apart_card">24sp</dimen>
     <dimen name="middle_text_size_item_cl_plain">20sp</dimen>
+    <dimen name="middle_text_size">20sp</dimen>
+    <dimen name="xl_text_size">30sp</dimen>
+    <dimen name="xxl_text_size">34sp</dimen>
+    <dimen name="xxxl_text_size">36sp</dimen>
     // margin
     <dimen name="margin_top_small">5dp</dimen>
     <dimen name="margin_top_middle">10dp</dimen>

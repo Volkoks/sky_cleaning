@@ -8,14 +8,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#00BCD4</color>
+    <color name="primary_transparency_50">#7500BCD4</color>
+    <color name="primary_transparency_75">#A839E8FF</color>
     <color name="primary_dark">#0097A7</color>
     <color name="primary_light">#B2EBF2</color>
     <color name="accent">#FFEB3B</color>
     <color name="accent_light">#FFFCDE</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
+    <color name="grey">#434242</color>
+    <color name="light_grey">#A9EAE9E9</color>
+    <color name="dark_grey">#373737</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="teal_translucent">#E3F6F5</color>
     <color name="dark_scarlet">#a83005</color>
+    <color name="red">#D50000</color>
+
 </resources>

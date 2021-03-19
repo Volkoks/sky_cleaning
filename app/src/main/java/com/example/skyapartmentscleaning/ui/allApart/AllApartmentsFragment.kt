@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,9 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.*
+import com.example.skyapartmentscleaning.data.room.entites.Apart
 import com.example.skyapartmentscleaning.databinding.AllApartmentsFragmentBinding
 import com.example.skyapartmentscleaning.navigator.Screens
-import com.example.skyapartmentscleaning.ui.adapter.ApartsListAdapter
+import com.example.skyapartmentscleaning.ui.adapter.apart.ApartsListAdapter
 import javax.inject.Inject
 
 /**
@@ -52,22 +52,22 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
         initRecyclerView(itemDecoration)
 
         listAdapterForTowerFederation =
-            ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
+            ApartsListAdapter({viewModel.router.navigateTo(Screens.CheckListScreen(it))})
         listAdapterForTowerOKO =
-            ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
+            ApartsListAdapter ({ viewModel.router.navigateTo(Screens.CheckListScreen(it)) })
         listAdapterForTowerEmpery =
-            ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
+            ApartsListAdapter ({ viewModel.router.navigateTo(Screens.CheckListScreen(it)) })
         listAdapterForTowerGorodStolic =
-            ApartsListAdapter { viewModel.router.navigateTo(Screens.CheckListScreen(it)) }
+            ApartsListAdapter ({ viewModel.router.navigateTo(Screens.CheckListScreen(it)) })
 
         initAdapters()
 
         viewModel.allApartsTowerFederation.observe(viewLifecycleOwner, {
             when (it) {
                 is ViewState.Loading -> showLoading(it.progress, FEDERATION_TOWER)
-                is ViewState.Succes -> {
+                is ViewState.SuccesApart -> {
                     stopProgressLoading(FEDERATION_TOWER)
-                    listAdapterForTowerFederation.listAparts = it.listApart
+                    listAdapterForTowerFederation.listAparts = it.listApart as MutableList<Apart>
                 }
                 is ViewState.Error -> showError(it.e)
             }
@@ -75,9 +75,9 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
         viewModel.allApartsTowerOKO.observe(viewLifecycleOwner, {
             when (it) {
                 is ViewState.Loading -> showLoading(it.progress, OKO_TOWER)
-                is ViewState.Succes -> {
+                is ViewState.SuccesApart -> {
                     stopProgressLoading(OKO_TOWER)
-                    listAdapterForTowerOKO.listAparts = it.listApart
+                    listAdapterForTowerOKO.listAparts = it.listApart as MutableList<Apart>
                 }
                 is ViewState.Error -> showError(it.e)
             }
@@ -85,9 +85,9 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
         viewModel.allApartsTowerEmpery.observe(viewLifecycleOwner, {
             when (it) {
                 is ViewState.Loading -> showLoading(it.progress, EMPERY_TOWER)
-                is ViewState.Succes -> {
+                is ViewState.SuccesApart -> {
                     stopProgressLoading(EMPERY_TOWER)
-                    listAdapterForTowerEmpery.listAparts = it.listApart
+                    listAdapterForTowerEmpery.listAparts = it.listApart as MutableList<Apart>
                 }
                 is ViewState.Error -> showError(it.e)
             }
@@ -96,9 +96,9 @@ class AllApartmentsFragment : Fragment(R.layout.all_apartments_fragment) {
             {
                 when (it) {
                     is ViewState.Loading -> showLoading(it.progress, GOROD_STOLIC)
-                    is ViewState.Succes -> {
+                    is ViewState.SuccesApart -> {
                         stopProgressLoading(GOROD_STOLIC)
-                        listAdapterForTowerGorodStolic.listAparts = it.listApart
+                        listAdapterForTowerGorodStolic.listAparts = it.listApart as MutableList<Apart>
                     }
                     is ViewState.Error -> showError(it.e)
                 }

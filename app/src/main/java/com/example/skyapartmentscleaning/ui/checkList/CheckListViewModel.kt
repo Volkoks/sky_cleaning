@@ -1,9 +1,11 @@
 package com.example.skyapartmentscleaning.ui.checkList
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.skyapartmentscleaning.application.MyApp
+import com.example.skyapartmentscleaning.data.ViewState
 import com.example.skyapartmentscleaning.data.room.entites.Apart
 import com.example.skyapartmentscleaning.data.room.datasource.ApartSource
 import com.example.skyapartmentscleaning.data.checklist.DataPointCheckList
@@ -12,6 +14,7 @@ import com.example.skyapartmentscleaning.data.room.database.ApartDatabase
 import com.example.skyapartmentscleaning.shareFile
 import com.example.skyapartmentscleaning.utils.generate_report.IGenerateReport
 import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
+import com.example.skyapartmentscleaning.ui.base.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,17 +27,14 @@ class CheckListViewModel @Inject constructor(
     private val db: ApartDatabase,
     repo: IRepository<MutableList<DataPointCheckList>>,
     private val genReport: IGenerateReport
-) : ViewModel(), CoroutineScope {
-
-    val dataForPointCheckList: MutableLiveData<MutableList<DataPointCheckList>> = MutableLiveData()
-
+) : BaseViewModel<ViewState>() {
 
     init {
-        dataForPointCheckList.value = repo.getData()
+        liveDataToObserve.value = ViewState.SuccesDataCheckList(repo.getData())
     }
 
-    override val coroutineContext: CoroutineContext by lazy {
-        Dispatchers.IO
+    fun sunscribeLivedata():LiveData<ViewState>{
+        return liveDataToObserve
     }
 
     private val apartSource: ApartSource? by lazy {
@@ -45,14 +45,14 @@ class CheckListViewModel @Inject constructor(
      * Возможно понадоится сделать класс для работы с CleaningApart по аналогии с ApartSource
      */
     fun saveApartCleaningReport(apart: Apart?, cleaningApart: CleaningApart?) {
-        launch {
+        viewModelCoroutineScope.launch {
             apart?.let { apartSource?.addApart(it) }
             cleaningApart?.let { db.getCleaningApartDao().addCA(it) }
         }
     }
 
     fun generateCSVFileAndSend(context: Context, apart: Apart?, cleaningApart: CleaningApart?) {
-        launch {
+        viewModelCoroutineScope.launch {
             val report = genReport.generateExcelReport(context, apart, cleaningApart)
             report?.let { shareFile(context, it) }
         }
@@ -70,5 +70,9 @@ class CheckListViewModel @Inject constructor(
         val sdf = SimpleDateFormat("HH:mm")
         val formattedDate: String = sdf.format(date)
         return formattedDate
+    }
+
+    override fun errorReturned(t: Throwable) {
+
     }
 }

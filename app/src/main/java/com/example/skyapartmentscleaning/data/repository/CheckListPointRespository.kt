@@ -245,9 +245,11 @@ class CheckListPointRespository : IRepository<MutableList<DataPointCheckList>> {
         ),
         DataPointCheckList(
             VT_BTN,
-            dataBtnPoint = CheckListBtnPoint(getTextToRes(R.string.send_report))
-        ),
-        DataPointCheckList(VT_PLUG)
+            dataBtnPoint = CheckListBtnPoint(
+                getTextToRes(R.string.send_report),
+               R.drawable.ic_baseline_send_24
+            )
+        )
     )
 
     private fun getTextToRes(resId: Int): String = context.getString(resId)

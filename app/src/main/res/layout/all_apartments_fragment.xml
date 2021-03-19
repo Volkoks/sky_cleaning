@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.allApart.AllApartmentsFragment">
+    tools:context=".ui.allApart.AllApartmentsFragment"
+    style="@style/LightTheme">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

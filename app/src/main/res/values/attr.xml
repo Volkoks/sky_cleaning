@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="styleApartCard" format="reference" />
+    <attr name="colorChipChecked" format="color"/>
+    <attr name="colorChipUnchecked" format="color"/>
+    <attr name="colorTextChipChecked" format="color"/>
+    <attr name="colorTextChipUnchecked" format="color"/>
 </resources>

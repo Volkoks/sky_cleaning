@@ -11,11 +11,9 @@ import com.example.skyapartmentscleaning.R.string
 import com.example.skyapartmentscleaning.application.MyApp
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.room.entites.Apart
-import com.example.skyapartmentscleaning.data.repository.CheckListPointRespository
 import com.example.skyapartmentscleaning.databinding.CheckListForRvFragmentBinding
-import com.example.skyapartmentscleaning.ui.adapter.CheckListApartAdapter
-import com.example.skyapartmentscleaning.ui.adapter.IItemChekListListener
-import com.example.skyapartmentscleaning.utils.generate_report.GenerateReport
+import com.example.skyapartmentscleaning.ui.adapter.checklist.CheckListApartAdapter
+import com.example.skyapartmentscleaning.ui.adapter.checklist.IItemChekListListener
 import com.example.skyapartmentscleaning.data.room.entites.CleaningApart
 import javax.inject.Inject
 
@@ -57,9 +55,19 @@ class CheckListFragment : Fragment(layout.check_list_for_rv_fragment),
         initTitleAndDateApart()
         initRV()
 
-        viewModel.dataForPointCheckList.observe(viewLifecycleOwner, {
-            adapter = CheckListApartAdapter(it, this)
-            binding?.rvForCheckList?.adapter = adapter
+        viewModel.sunscribeLivedata().observe(viewLifecycleOwner, {
+            when (it) {
+                is ViewState.SuccesDataCheckList -> {
+                    adapter = CheckListApartAdapter(it.dataCheckList, this)
+                    binding?.rvForCheckList?.adapter = adapter
+                }
+                is ViewState.Loading -> {
+                    /**
+                     * подумать над вариантом отображения загрузки
+                     */
+                }
+                is ViewState.Error -> showError(it.e)
+            }
         })
 
     }
@@ -231,6 +239,9 @@ class CheckListFragment : Fragment(layout.check_list_for_rv_fragment),
         Toast.makeText(activity, "Отчёт сохранен", Toast.LENGTH_SHORT).show()
     }
 
+    private fun showError(e: Throwable) {
+        Toast.makeText(activity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+    }
 
 }
 

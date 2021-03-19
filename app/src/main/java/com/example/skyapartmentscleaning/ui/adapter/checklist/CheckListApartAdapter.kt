@@ -1,5 +1,7 @@
-package com.example.skyapartmentscleaning.ui.adapter
+package com.example.skyapartmentscleaning.ui.adapter.checklist
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +10,7 @@ import com.example.skyapartmentscleaning.R
 import com.example.skyapartmentscleaning.data.*
 import com.example.skyapartmentscleaning.data.checklist.DataPointCheckList
 import com.example.skyapartmentscleaning.databinding.*
+import com.example.skyapartmentscleaning.ui.adapter.checklist.IItemChekListListener
 
 
 class CheckListApartAdapter(
@@ -122,7 +125,7 @@ class CheckListApartAdapter(
             } else {
                 binding.tietClItem.text = null
             }
-            binding.tietClItem.hint = dataPoint.dataEntryFieldPoint?.hintEditText
+            binding.tilClItemComment.hint = dataPoint.dataEntryFieldPoint?.hintEditText
             binding.tietClItem.setOnKeyListener { v, keyCode, event ->
                 return@setOnKeyListener when (keyCode) {
                     KeyEvent.KEYCODE_BACK -> {
@@ -143,8 +146,12 @@ class CheckListApartAdapter(
 
     inner class ItemCheckListBtnHolder(private val binding: ItemCheckListBtnBinding) :
         BaseHolderForCheckList(binding.root) {
+        @SuppressLint("UseCompatLoadingForDrawables")
         override fun bind(dataPoint: DataPointCheckList) {
             binding.btnClItem.text = dataPoint.dataBtnPoint?.textBtn
+            binding.btnClItem.icon = dataPoint.dataBtnPoint?.icon?.let {
+                itemView.context.getDrawable(it)
+            }
             binding.btnClItem.setOnClickListener { itemListener.sendReport() }
         }
 

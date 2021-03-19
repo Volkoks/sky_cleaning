@@ -125,7 +125,7 @@ class CheckListApartAdapter(
             } else {
                 binding.tietClItem.text = null
             }
-            binding.tietClItem.hint = dataPoint.dataEntryFieldPoint?.hintEditText
+            binding.tilClItemComment.hint = dataPoint.dataEntryFieldPoint?.hintEditText
             binding.tietClItem.setOnKeyListener { v, keyCode, event ->
                 return@setOnKeyListener when (keyCode) {
                     KeyEvent.KEYCODE_BACK -> {

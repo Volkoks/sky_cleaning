@@ -13,3 +13,9 @@
 * Apache POI
 * ViewBinding
 
+## Промо ролик:
+![Промо ролик](https://github.com/Volkoks/SkyApartmentsCleaning/blob/master/app/src/main/res/drawable/promo_skyapp_cleaning.gif)
+
+
+## Пример генерируемого отчёта в Excel файл:
+![Promo foto](https://github.com/Volkoks/SkyApartmentsCleaning/blob/master/app/src/main/res/drawable/promo_tables.png)
